@@ -151,6 +151,7 @@ class log:
         round_losing_medic_death_window = self.round_losing_medic_death_window
         players = self.players
         round_events = self.round_events
+        rounds = self.rounds
         team_medic_stats = self.team_medic_stats
 
         team_medic_stats = advanced_med_stats.post_uber(
@@ -164,6 +165,9 @@ class log:
             round_events=round_events,
             team_medic_stats=team_medic_stats
         )
+
+        team_medic_stats = advanced_med_stats.additional_rates(rounds = rounds,players = players,
+                                                               team_medic_stats=team_medic_stats)
         
         return team_medic_stats
 

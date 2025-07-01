@@ -139,3 +139,20 @@ def post_uber(round_events, team_medic_stats, players,
     ).astype(float).round(4)
 
     return team_medic_stats
+
+def additional_rates(rounds,players,team_medic_stats):
+    num_rounds = len(rounds)
+
+    team_medic_stats['advantages_lost_per_round'] = team_medic_stats['medicstats.advantages_lost'].div(num_rounds).astype(float).round(4)
+
+    medic_time = players[players['primary_class'] =='medic'][['team','primary_class_time']]
+
+    team_medic_stats = team_medic_stats.merge(medic_time)
+
+    team_medic_stats['mins'] = team_medic_stats['primary_class_time'].div(60)
+
+    team_medic_stats['uberspm'] = team_medic_stats['ubers'].div(team_medic_stats['mins']).astype(float).round(4)
+
+    team_medic_stats.drop(['mins','primary_class_time'],axis = 1,inplace = True)
+
+    return(team_medic_stats)

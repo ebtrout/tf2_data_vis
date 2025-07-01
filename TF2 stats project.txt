@@ -57,9 +57,8 @@ Team Medic Stats are Fucky.
 
 ##Fix it so if theres only one team that has scores then they are the winner?
 
-Advantages lost per round
+##Advantages lost per round
 
-ubers per minute
-
+##ubers per minute
 
 ENsure that the points are actually correct...
