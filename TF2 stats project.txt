@@ -1,0 +1,58 @@
+# Modeling Goals
+- Quantify Individual Player Impact
+   - Find metrics that quantify player success, look at quantiles over lots of data
+- 
+
+## Advanced Stats
+
+##- Midfight Won Conversion Rate
+##- Time Spent Off Classing
+- ## Already HaveNumber of medic deaths within 15 seconds of charge
+##- Percentage of Damage Done Per Player
+	- Per ROUND - Cant be done
+	- Real Damage
+## - Percentage of Damage Done Per Class
+	- Per round? - Cant be done
+	- Real damage
+##- Push Success Rate
+	-Your team caps a point from mid or 2nd to last (point 3 → 2 or 2 → 1)
+##- Cpc / Total Caps
+##- Drop / charge 
+##- Average Time to Cap 
+##- Average Push Time
+## - Round Length 
+##- Last comebacks
+##- Convert round off getting team to last
+##- Healing return on investment
+## - Average Round Win Length
+##- Ready access to who won
+##- Most lead changes?
+
+##Successful uber pushes
+##Ubers with no caps
+##Ubers forced
+##Medic kills after uber
+##Drops forced after uber 
+
+##Fix team deaths
+
+##Separate team stats
+
+## Make uber stats, and have uber event rates
+
+## Medic deaths capitalized on
+
+Fix all the map issues
+
+## offclass times can be negative
+
+- Fix lack of rates for 95-99 uber and 20s med deaths
+
+- Add in healing per minute stat
+
+Team Medic Stats are Fucky.
+- Make sure numerators and denominators are what they should be for each of the stats.
+- Make every stat have a own team and enemy team version
+- Change forces to uber exchanged initiated
+
+##Fix it so if theres only one team that has scores then they are the winner?
