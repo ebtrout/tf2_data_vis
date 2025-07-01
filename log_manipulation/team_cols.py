@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from pandas import json_normalize
 
+# Add extra columns to team_cols
 
 def midfight_conversion(rounds,teams):
 ## Midfight Conversion ##

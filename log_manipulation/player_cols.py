@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 from pandas import json_normalize
 
+# Add extra stats to the players datasets
+
 ## REQUIRES PLAYERS ##
 def names(log,players):
     ## NAMES ##
@@ -10,7 +12,6 @@ def names(log,players):
 
     players = pd.concat([df['name'],players],axis = 1)
     return players
-
 
 ## REQUIRES CLASS_STATS and PLAYERS ##
 def primary_class(class_stats,players):

@@ -1,7 +1,16 @@
 import pandas as pd
 import numpy as np
 from pandas import json_normalize
-
+### 
+# Add stats related to Post ubers and medic deaths
+# Exchanges 
+# Successes
+# Medic Deaths Forced
+# Medic Deaths Capitalized
+# Round Losing MEdic Deaths
+# Drops Forced
+# Make stats like adavantages lost and ubers into rate statistics
+###
 ## POST UBER EVENTS
 def post_uber(round_events, team_medic_stats, players,
               exchange_width,success_width,
@@ -143,7 +152,8 @@ def post_uber(round_events, team_medic_stats, players,
 def additional_rates(rounds,players,team_medic_stats):
     num_rounds = len(rounds)
 
-    team_medic_stats['advantages_lost_per_round'] = team_medic_stats['medicstats.advantages_lost'].div(num_rounds).astype(float).round(4)
+    if 'medicstats.advantages_lost' in team_medic_stats.columns:
+        team_medic_stats['advantages_lost_per_round'] = team_medic_stats['medicstats.advantages_lost'].div(num_rounds).astype(float).round(4)
 
     medic_time = players[players['primary_class'] =='medic'][['team','primary_class_time']]
 

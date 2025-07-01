@@ -3,6 +3,9 @@ import player_cols
 import team_cols
 import advanced_med_stats
 
+# Organized class that takes in a logs.tf log and turns it into
+# A log class that contains all useful data from it 
+
 class log:
     def __init__(self,log,id):
         ## Init From Log

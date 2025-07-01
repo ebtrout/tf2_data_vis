@@ -2,6 +2,10 @@ import pandas as pd
 import numpy as np
 from pandas import json_normalize
 
+# Initialize each of the major datasets from the keys of the log JSON
+# Medic+stats, class_stats, and round_events are created 
+# From their respective parent dataset
+
 ## INFO ##
 def info(log,id):
     map = log['info']['map']
@@ -12,9 +16,6 @@ def info(log,id):
 
     info = pd.DataFrame({'id': [id], 'length': [length], 'map': [map],'title':[title],'date':[date]})
     info['date'] = pd.to_datetime(info['date'], unit='s')
-    # If Too Short Skip
-    if length < 200:
-        return(f'{log} Too Short. Only {length} seconds long')
 
     return(info)
 
