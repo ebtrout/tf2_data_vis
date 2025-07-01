@@ -46,9 +46,9 @@ Fix all the map issues
 
 ## offclass times can be negative
 
-- Fix lack of rates for 95-99 uber and 20s med deaths
+##- Fix lack of rates for 95-99 uber and 20s med deaths
 
-- Add in healing per minute stat
+##- Add in healing per minute stat
 
 Team Medic Stats are Fucky.
 - Make sure numerators and denominators are what they should be for each of the stats.
@@ -56,3 +56,10 @@ Team Medic Stats are Fucky.
 - Change forces to uber exchanged initiated
 
 ##Fix it so if theres only one team that has scores then they are the winner?
+
+Advantages lost per round
+
+ubers per minute
+
+
+ENsure that the points are actually correct...

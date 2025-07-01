@@ -1,5 +1,0 @@
-pandas
-numpy
-requests
-time
-joblib
