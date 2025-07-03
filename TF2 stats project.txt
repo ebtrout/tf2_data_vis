@@ -62,3 +62,7 @@ Team Medic Stats are Fucky.
 ##ubers per minute
 
 ENsure that the points are actually correct...
+
+## Randomly assign the 1 and 2
+
+Make Medkitshp per round

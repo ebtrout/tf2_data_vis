@@ -142,6 +142,8 @@ class log:
 
         players = player_cols.suicide_rate(players = players)
 
+        players = player_cols.medkits_hpps(players = players)
+
         return players
     
 

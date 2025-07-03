@@ -104,6 +104,11 @@ def healps(players):
     
     return(players)
 
+def medkits_hpps(players):
+    players['medkits_hpps'] = players['medkits_hp'].div(players['total_time']).astype(float).round(4)
+    
+    return(players)
+
 def suicide_rate(players):
     ## Suicide Rate ##
 

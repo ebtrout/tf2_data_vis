@@ -41,7 +41,7 @@ for i,log_data in enumerate(rgl_data):
         "info" : log_data.info,
         "players" : log_data.players,
         "teams" : log_data.teams,
-        "rounds" : log_data.teams,
+        "rounds" : log_data.rounds,
         "player_rounds" : log_data.player_rounds,
         "class_kda" : log_data.class_kda,
         "push_stats" : log_data.push_stats,
