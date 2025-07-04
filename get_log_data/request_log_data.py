@@ -1,41 +1,33 @@
 import joblib
-import pandas as pd
 import requests
-from pandas import json_normalize
 import numpy as np
-import os
 import time
 
 ## Go through all RGL logs saved from log_info.py and grab the data for each of them ##
 # Each id is passed to the logs.tf API and returned a JSON file #
-# Added to a list and then saved to a pkl #
 
+def request_log_data(log_info_df,print_interval = 50):
 
-file_dir = os.path.dirname(os.path.abspath(__file__))
+    # Loop and save jsons to a list 
+    log_data = {}
+    count = 0
 
-os.chdir(file_dir)
+    for i,match in enumerate(log_info_df['id'].values):
+        count += 1
+        # Sleep for .4 second to avoid overloading the api
+        time.sleep(.4)
+        log = match
+        url = f'https://logs.tf/api/v1/log/{log}'
+        response = requests.get(url)
 
+        if response.status_code == 200:
+            data = response.json()
+            if count == print_interval:
+                count = 0
+                print(f'Requested {i} / {len(log_info_df)} Individual log data')
+        else:
+            print("Failed to retrieve data from log:{log}:", response.status_code)
+        
+        log_data[match] = data
 
-rgl_logs = joblib.load("../data/rgl_log_info.pkl")
-
-
-# Loop and save jsons to a list 
-saved_logs = []
-for i,match in enumerate(rgl_logs['id'].values):
-    # Sleep for 1 second to avoid overloading the api
-    time.sleep(1)
-    log = match
-    url = f'https://logs.tf/api/v1/log/{log}'
-    response = requests.get(url)
-
-    
-    if response.status_code == 200:
-        data = response.json()
-        if i % np.floor(len(rgl_logs) / 150) == 0:
-            print(f'{i} / {len(rgl_logs)}')
-    else:
-        print("Failed to retrieve data from log:{log}:", response.status_code)
-    
-    saved_logs.append(data)
-
-joblib.dump(saved_logs,'../data/pkls/rgl_logs_pre_manip.pkl')
+    return log_data

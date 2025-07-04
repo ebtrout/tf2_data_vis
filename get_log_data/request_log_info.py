@@ -1,67 +1,76 @@
-import joblib
 import pandas as pd
 import requests
 from pandas import json_normalize
 import numpy as np
-import os
 
-file_dir = os.path.dirname(os.path.abspath(__file__))
+def request_log_info(limit = 100, 
+                     title = "RGL",offset_change = 80, 
+                     n = 2000,date = '2016-07-07',start = 0,
+                     print_interval = 50):
 
-os.chdir(file_dir)
+    #### Grab RGL Logs from Logs.tf API ####
 
-#### Grab RGL Logs from Logs.tf API ####
-# Save them to a pkl file 
-
-def request_rgl_logs(offset = 0,limit = 100):
-    url = f'http://logs.tf/api/v1/log?title= RGL &limit={limit}&offset={offset}'
-    response = requests.get(url)
+    # region request function
+    def request_rgl_logs(offset = 0,limit = 100,title = "RGL"):
+        url = f'http://logs.tf/api/v1/log?title= {title} &limit={limit}&offset={offset}'
+        response = requests.get(url)
+            
+        if response.status_code == 200:
+            result = response.json()
+        else:
+            print("Failed to retrieve data from the URL:", response.status_code)
         
-    if response.status_code == 200:
-        logs = response.json()
-    else:
-        print("Failed to retrieve data from the URL:", response.status_code)
-    
-    logs = json_normalize(logs['logs'])
-    
-    if 'date' in logs.columns:
-        logs.sort_values(by='date', ascending=True)
-        logs['date'] = pd.to_datetime(logs['date'], unit='s')
+        log_info = json_normalize(result['logs'])
+        
+        if 'date' in log_info.columns:
+            log_info.sort_values(by='date', ascending=True)
+            log_info['date'] = pd.to_datetime(log_info['date'], unit='s')
+        else: 
+            return None
+        
 
+        lower_title = title.lower()
 
-    logs = logs[(logs['title'].str.lower().str.contains('rgl')) & (logs['views'])]
-    logs = logs[~(logs['title'].str.lower().str.contains(' rgl vs '))]
-    logs = logs[~(logs['title'].str.lower().str.contains('vs rgl'))]
-    return(logs)
+        if 'title' in log_info.columns:
+            # Only keep logs with RGL in title
+            log_info = log_info[(log_info['title'].str.lower().str.contains(lower_title))]
+        else: 
+            return None
 
-### Parameters to use function
-offset_change = 80
-n = 2000
-limit = 100
+        return(log_info)
+    # endregion
 
-start = 0
+    # region use the request function
+    log_info_df = pd.DataFrame()
+    # Loop for n rounds and request log info and add them to the df
+    count = 0 
+    for i in range(start,n+1):
+        count = count + 1
+        if count == print_interval:
+            s = f'Requested {i} / {n} rounds of log info'
+            count = 0
+            print(s)
+        
+        result = request_rgl_logs(offset = i * offset_change,
+                                  limit = limit,title = title)
+        if type(result) != type(None):
+            log_info_df = pd.concat([log_info_df,result])
 
-rgl_logs = pd.DataFrame()
-for i in range(start,n+1):
-    if i % np.floor((n- start) /50) == 0:
-        print(i)
-    result = request_rgl_logs(offset = i * offset_change)
-    rgl_logs = pd.concat([rgl_logs,result])
+    ### SUBSET DOWN TO REMOVE BAD LOGS
 
-### SUBSET DOWN TO REMOVE BAD LOGS
+    # Incorrect plauer numbers
+    log_info_df = log_info_df[log_info_df['players'] > 11]
+    log_info_df = log_info_df[log_info_df['players'] < 14]
 
-# Incorrect plauer numbers
-rgl_logs = rgl_logs[rgl_logs['players'] > 11]
-rgl_logs = rgl_logs[rgl_logs['players'] < 14]
+    # :Limiit to past the specified date
+    log_info_df['date'] = pd.to_datetime(log_info_df['date'])
+    log_info_df = log_info_df[log_info_df['date'] > date]
 
-# :Limiit to past the Meet Your Match Update
-rgl_logs['date'] = pd.to_datetime(rgl_logs['date'])
-rgl_logs = rgl_logs[rgl_logs['date'] > '2016-07-07']
+    # Drop Dupes
+    log_info_df = log_info_df.drop_duplicates()
 
-# Drop Dupes
-rgl_logs = rgl_logs.drop_duplicates()
-
-# Remove maps that arent cp maps
-rgl_logs = rgl_logs[~rgl_logs['map'].str.startswith("pl_")]
-rgl_logs = rgl_logs[~rgl_logs['map'].str.startswith("pass_")]
-
-joblib.dump(rgl_logs,'../data/pkls/rgl_log_info.pkl')
+    # Remove maps that arent cp maps
+    log_info_df = log_info_df[~log_info_df['map'].str.startswith("pl_")]
+    log_info_df = log_info_df[~log_info_df['map'].str.startswith("pass_")]
+    # endregion
+    return log_info_df

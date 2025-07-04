@@ -6,7 +6,7 @@ import os
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 pd.set_option('future.no_silent_downcasting', True)
-data = joblib.load("../data/pkls/rgl_df_dict.pkl")
+data = joblib.load("../data/pkls/df_dict.pkl")
 
 
 ### SETUP ###
@@ -304,8 +304,13 @@ X = X.astype({col: bool for col in X.select_dtypes(include='object').columns})
 
 # Output to pkl
 
-data_list = [X,y]
+model_ready_data_dict = {
+     'X':X,
+     'y':y
+}
 
-joblib.dump(data_list,'../data/pkls/model_ready_data_list.pkl')
+print(valid_map_names)
+
+joblib.dump(model_ready_data_dict,'../data/pkls/model_ready_data_dict.pkl')
 
 print("Successfully dumped Model Ready Data to pkl")

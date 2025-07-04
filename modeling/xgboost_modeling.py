@@ -12,9 +12,9 @@ import time
 begin = time.time()
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-data_list = joblib.load('../data/pkls/model_ready_data_list.pkl')
-X = data_list[0]
-y = data_list[1]
+model_ready_data_dict = joblib.load('../data/pkls/model_ready_data_dict.pkl')
+X = model_ready_data_dict['X']
+y = model_ready_data_dict['y']
 seed = 123
 
 # Set seeds
