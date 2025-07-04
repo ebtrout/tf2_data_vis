@@ -25,22 +25,35 @@ np.random.seed(seed)
 # Split into test and eval
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
+
 X_test, X_eval, y_test, y_eval = train_test_split(X_test, y_test, test_size=0.3)
+
+# Set all the X datasets to have boolean columns
+for name in ['X_train', 'X_test', 'X_eval']:
+    df = eval(name)
+    df = df.astype({col: bool for col in X.select_dtypes(include='object').columns})
+    locals()[name] = df
+
+
 
 # Define the base model
 model = XGBClassifier(eval_metric='logloss', random_state=seed)
 
 # Define parameter grid to search over
 param_grid = {
-    'max_depth': np.arange(3, 7, 1),
-    'learning_rate': np.arange(.01, .10, .01),
-    'n_estimators': np.arange(100, 200, 10),
+    'max_depth': [7,10,15,20,None],
+    'learning_rate': [.01],
+    'n_estimators': np.arange(1400,1600,50),
+    'gamma': [1],
+    'reg_alpha': [.5],
+    'reg_lambda': [1],
+    'min_child_weight': np.arange(10,20,2),
     'subsample': [.8],
-    'colsample_bytree': [.75]
+    'colsample_bytree': [.4]
 }
 
 # Define cross-validation strategy
-cv = StratifiedKFold(n_splits=6, shuffle=True, random_state=seed)
+cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=seed)
 
 # Set up GridSearchCV   
 grid_search = GridSearchCV(
@@ -48,11 +61,11 @@ grid_search = GridSearchCV(
     param_grid=param_grid,
     scoring='accuracy',   
     cv=cv,
-    verbose=0,
-    n_jobs=25
+    verbose=1,
+    n_jobs=24
 )
 
-grid_search.fit(X_train, y_train)
+grid_search.fit(X_train, y_train,)
 
 best_model = grid_search.best_estimator_
 

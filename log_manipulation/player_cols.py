@@ -89,6 +89,25 @@ def player_percentages(teams,players):
     players = players.merge(player_av,on = "steamid")
     return players
 
+def player_per_death(players):
+    # ASSISTS
+    players['assistspd'] = players['assists'] / players['deaths']
+
+def players_per_minute(players):
+    # DT
+    # Deaths
+    # CPC
+    # healps
+    # medkit_hp
+
+    minutes = (1 / (players['dapm']) ) * players['dmg']
+
+    cols = ['heal','dt','dt_real','cpc','medkits_hp']
+
+    for col in cols:
+        name = col + "pm"
+        players[name] = (players[col] / minutes).astype(float).round(4)
+
 def hroi(players):
     ## HROI
     # region HROI
@@ -98,16 +117,6 @@ def hroi(players):
     players['hroi_real'] = players['dmg_real'].div(players['hr'])
 
     return players
-
-def healps(players):
-    players['healps'] = players['heal'].div(players['total_time']).astype(float).round(4)
-    
-    return(players)
-
-def medkits_hpps(players):
-    players['medkits_hpps'] = players['medkits_hp'].div(players['total_time']).astype(float).round(4)
-    
-    return(players)
 
 def suicide_rate(players):
     ## Suicide Rate ##

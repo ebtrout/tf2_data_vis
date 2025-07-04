@@ -34,6 +34,7 @@ def save_data(log_info_df,log_data,clean_log_data,error_logs,df_dict,
     # Save into csv
     if datasets_as_csv == True:
         for key in df_dict.keys():
+            print(f'Saved to {key}.csv')
             df = df_dict[key]
             path = f'../data/{key}.csv'
             df.to_csv(path)

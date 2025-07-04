@@ -164,7 +164,7 @@ drop_medic = ['offclass_pct','hroi_real','hr_pct',
        'round_losing_medic_death_rate', 'medic_death_capitalization_rate',
        'advantages_lost_per_round']
 
-drop_combat = ['healps']
+drop_combat = ['heal_pm']
 
 combat_players.drop(drop_combat,axis = 1,inplace = True)
 
@@ -295,10 +295,10 @@ for map in correct_map['map'].str.lower().values:
 correct_map['map_name'] = map_list
 
 # Bind that sucker in
-team_maps = players_wide.merge(correct_map[['id','map_name']],on = 'id')['map_name']
-map_dummies = pd.get_dummies(team_maps)
-X = pd.concat([X,map_dummies],axis =1 )
-X = X.astype({col: bool for col in X.select_dtypes(include='object').columns})
+# team_maps = players_wide.merge(correct_map[['id','map_name']],on = 'id')['map_name']
+# map_dummies = pd.get_dummies(team_maps)
+# X = pd.concat([X,map_dummies],axis =1 )
+# X = X.astype({col: bool for col in X.select_dtypes(include='object').columns})
 
 # endregion
 
@@ -308,8 +308,6 @@ model_ready_data_dict = {
      'X':X,
      'y':y
 }
-
-print(valid_map_names)
 
 joblib.dump(model_ready_data_dict,'../data/pkls/model_ready_data_dict.pkl')
 
