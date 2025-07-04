@@ -92,6 +92,8 @@ def player_percentages(teams,players):
 def player_per_death(players):
     # ASSISTS
     players['assistspd'] = players['assists'] / players['deaths']
+    
+    return(players)
 
 def players_per_minute(players):
     # DT
@@ -107,6 +109,8 @@ def players_per_minute(players):
     for col in cols:
         name = col + "pm"
         players[name] = (players[col] / minutes).astype(float).round(4)
+        
+    return(players)
 
 def hroi(players):
     ## HROI
