@@ -1,0 +1,11 @@
+scikit-learn
+pandas
+joblib
+numpy
+xgboost
+plyer
+scipy
+matplotlib
+shap
+os
+requests
