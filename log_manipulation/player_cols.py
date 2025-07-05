@@ -104,12 +104,12 @@ def players_per_minute(players):
 
     minutes = (1 / (players['dapm']) ) * players['dmg']
 
-    cols = ['heal','dt','dt_real','cpc','medkits_hp']
+    cols = ['heal','dt','dt_real','cpc','medkits_hp','hr']
 
     for col in cols:
         name = col + "pm"
         players[name] = (players[col] / minutes).astype(float).round(4)
-        
+
     return(players)
 
 def hroi(players):

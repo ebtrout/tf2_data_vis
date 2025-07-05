@@ -49,7 +49,7 @@ param_grid = {
     'reg_lambda': [1],
     'min_child_weight': np.arange(10,20,2),
     'subsample': [.8],
-    'colsample_bytree': [.4]
+    'colsample_bytree': [.3]
 }
 
 # Define cross-validation strategy

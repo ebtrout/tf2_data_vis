@@ -22,9 +22,9 @@ def save_data(log_info_df,log_data,clean_log_data,error_logs,df_dict,
     print("Dumped clean_log_data to pkl file")
 
     # Error_logs
-    path = '../data/pkls/clean_log_data.pkl'
+    path = '../data/pkls/error_logs.pkl'
     joblib.dump(error_logs,path)
-    print("Dumped clean_log_data to pkl file")
+    print("Dumped error_logs to pkl file")
 
     # df_dict
     path = '../data/pkls/df_dict.pkl'
