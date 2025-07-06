@@ -126,6 +126,7 @@ class log:
     def add_player_cols(self):
         players = self.players
         class_stats = self.class_stats
+        class_kda = self.class_kda
         teams = self.teams
 
         players = player_cols.names(log = self.log, players = players)
@@ -143,7 +144,8 @@ class log:
         players = player_cols.players_per_minute(players = players)
 
         players = player_cols.suicide_rate(players = players)
-
+        
+        players = player_cols.player_class_kda(players = players,class_kda = class_kda)
 
         return players
     
