@@ -30,8 +30,16 @@ drop_medic = ['offclass_pct','hroi_real','hr_pct',
 
 drop_combat = ['healpm']
 
-
-
+unimportant_columns = ['soldier_dt_real_pct_2', 'medic_healpm', 'soldier_hrpm_1',
+       'medic_hrpm', 'scout_dt_real_pct_1', 'soldier_dt_pct_2',
+       'scout_hrpm_2', 'medic_deaths_within_20s_after_uber_rate',
+       'demoman_deaths_pct', 'soldier_deaths_pct_1',
+       'soldier_assists_pct_1', 'scout_dt_pct_2', 'medic_dt_pct',
+       'medic_kill_pct', 'demoman_dt_real_pct', 'soldier_hr_pct_2',
+       'scout_assists_pct_1', 'medic_avg_time_before_using',
+       'soldier_dt_realpm_2', 'soldier_hrpm_2', 'scout_medkits_hppm_1',
+       'medic_assists_pct', 'scout_hr_pct_1', 'demoman_hrpm',
+       'medic_dapm']
 
 ### SETUP ###
 # region SETUP
@@ -291,24 +299,17 @@ X = pd.concat([scout_soldier,medic_demo],axis = 1)
 
 # Drop 30 Least Useful Predictors
 # These are gotten from a previous model iteration 
-
-unimportant_columns = ['soldier_dt_real_pct_2', 'medic_healpm', 'soldier_hrpm_1',
-       'medic_hrpm', 'scout_dt_real_pct_1', 'soldier_dt_pct_2',
-       'scout_hrpm_2', 'medic_deaths_within_20s_after_uber_rate',
-       'demoman_deaths_pct', 'soldier_deaths_pct_1',
-       'soldier_assists_pct_1', 'scout_dt_pct_2', 'medic_dt_pct',
-       'medic_kill_pct', 'demoman_dt_real_pct', 'soldier_hr_pct_2',
-       'scout_assists_pct_1', 'medic_avg_time_before_using',
-       'soldier_dt_realpm_2', 'soldier_hrpm_2', 'scout_medkits_hppm_1',
-       'medic_assists_pct', 'scout_hr_pct_1', 'demoman_hrpm',
-       'medic_dapm']
+# region DROP NON USEFUL PREDICTORS
 
 X.drop(unimportant_columns,axis =1, inplace = True)
+
+# endregion
 
 # Merge Map NOT USED BC NOT IMPORTANT
 # region MAP MERGE!!!
 # Map name
 map_list = []
+
 for map in correct_map['map'].str.lower().values:
     for map_name in valid_map_names:
         if map_name in map:

@@ -20,8 +20,6 @@ X.drop(cols,axis = 1,inplace = True)
 
 model = joblib.load('../data/pkls/xgb.pkl')
 
-
-
 # Set seeds
 seed = 123
 random.seed(seed)
