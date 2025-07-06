@@ -8,6 +8,30 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 pd.set_option('future.no_silent_downcasting', True)
 data = joblib.load("../data/pkls/df_dict.pkl")
 
+short_match_cutoff = 450
+
+min_map_play_count = 50
+
+drop_cols = [ 'primary_class_time', 'name',
+       'assists', 'cpc','heal', 'hr','deaths', 'dmg', 'dmg_real', 'drops',
+       'dt', 'dt_real','kills','medkits','medkits_hp','sentries', 
+       'suicides','ka','offclass_time','total_time','kapd','ka','ka_pct','hroi',"dmg_real_pct",
+       "dmg_pct"]
+
+drop_medic = ['offclass_pct','hroi_real','hr_pct',
+              'medicstats.advantages_lost','medicstats.deaths_with_95_99_uber',
+       'medicstats.deaths_within_20s_after_uber', 'ubers', 'drops',
+       'medic_deaths', 'exchanges_initiated', 'drops_forced',
+       'successful_ubers', 'medic_deaths_forced', 'exchanges_not_initiated',
+       'successful_uber_rate', 'forced_medic_death_rate', 'forced_drop_rate',
+       'medic_deaths_capitalized', 'round_losing_medic_deaths',
+        'medic_death_capitalization_rate',
+       'advantages_lost_per_round']
+
+drop_combat = ['healpm']
+
+
+
 
 ### SETUP ###
 # region SETUP
@@ -15,9 +39,9 @@ data = joblib.load("../data/pkls/df_dict.pkl")
 
 players = data['players']
 teams = data['teams']
-players['suicide_rate'] = players['suicides'].div(players['deaths']).astype(float).round(4)
 team_medic_stats = data['team_medic_stats']
 info = data['info']
+class_kda = data['class_kda']
 # endregion
 
 ## Limit to only 1 med 1 demo 2 scout 2 soldier teams
@@ -62,7 +86,7 @@ players = players[players['id'].isin(team_comp.reset_index()['id'])]
 
 # Drop short matches
 # region DROP SHORT MATCHES
-short_matches = info[info['length'] < 450]
+short_matches = info[info['length'] < short_match_cutoff]
 players = players[~players['id'].isin(short_matches['id'])]
 
 # endregion
@@ -75,12 +99,11 @@ players = players[~players['id'].isin(short_matches['id'])]
 # region MAPS
 
 # Find valid map names
-play_count = 50
 info_correct = info[info['id'].isin(players['id'])].copy()
 maps = info_correct['map'].str.lower().str.split("_")
 map_counts = pd.Series(maps.str[1].value_counts())
 
-valid_maps = map_counts[map_counts > play_count]
+valid_maps = map_counts[map_counts > min_map_play_count]
 valid_map_names = valid_maps.index
 
 # Grab the first and second word of the mapname
@@ -134,11 +157,6 @@ players_fixed.drop('level_2', axis=1, inplace=True)
 
 # Drop Columns That Dont work or are too highly correlated
 # region DROP COLS
-drop_cols = [ 'primary_class_time', 'name',
-       'assists', 'cpc','heal', 'hr','deaths', 'dmg', 'dmg_real', 'drops',
-       'dt', 'dt_real','kills','medkits','medkits_hp','sentries', 
-       'suicides','ka','offclass_time','total_time','kapd','ka','ka_pct','hroi',"dmg_real_pct",
-       "dmg_pct",'suicide_rate']
 
 players_fixed.drop(drop_cols,axis =1,inplace = True)
 
@@ -152,19 +170,7 @@ medic_players = players_fixed[players_fixed['primary_class'] == 'medic'].copy()
 # Bind in team_medic
 medic_players = medic_players.merge(team_medic_stats,on= ['id','team'])
 
-
 # Drop Bad columns
-drop_medic = ['offclass_pct','hroi_real','hr_pct',
-              'medicstats.advantages_lost','medicstats.deaths_with_95_99_uber',
-       'medicstats.deaths_within_20s_after_uber', 'ubers', 'drops',
-       'medic_deaths', 'exchanges_initiated', 'drops_forced',
-       'successful_ubers', 'medic_deaths_forced', 'exchanges_not_initiated',
-       'successful_uber_rate', 'forced_medic_death_rate', 'forced_drop_rate',
-       'medic_deaths_capitalized', 'round_losing_medic_deaths',
-       'round_losing_medic_death_rate', 'medic_death_capitalization_rate',
-       'advantages_lost_per_round']
-
-drop_combat = ['healpm']
 
 combat_players.drop(drop_combat,axis = 1,inplace = True)
 
@@ -283,7 +289,23 @@ X = pd.concat([scout_soldier,medic_demo],axis = 1)
 
 # endregion
 
-# Merge Map 
+# Drop 30 Least Useful Predictors
+# These are gotten from a previous model iteration 
+
+unimportant_columns = ['soldier_dt_real_pct_2', 'medic_healpm', 'soldier_hrpm_1',
+       'medic_hrpm', 'scout_dt_real_pct_1', 'soldier_dt_pct_2',
+       'scout_hrpm_2', 'medic_deaths_within_20s_after_uber_rate',
+       'demoman_deaths_pct', 'soldier_deaths_pct_1',
+       'soldier_assists_pct_1', 'scout_dt_pct_2', 'medic_dt_pct',
+       'medic_kill_pct', 'demoman_dt_real_pct', 'soldier_hr_pct_2',
+       'scout_assists_pct_1', 'medic_avg_time_before_using',
+       'soldier_dt_realpm_2', 'soldier_hrpm_2', 'scout_medkits_hppm_1',
+       'medic_assists_pct', 'scout_hr_pct_1', 'demoman_hrpm',
+       'medic_dapm']
+
+X.drop(unimportant_columns,axis =1, inplace = True)
+
+# Merge Map NOT USED BC NOT IMPORTANT
 # region MAP MERGE!!!
 # Map name
 map_list = []

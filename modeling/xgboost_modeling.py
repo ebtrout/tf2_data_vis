@@ -7,13 +7,22 @@ from xgboost import XGBClassifier
 from sklearn.model_selection import GridSearchCV, StratifiedKFold
 import random
 import os
+import multiprocessing
 import time
+from skopt import BayesSearchCV
+from skopt.space import Real, Integer
+
 
 begin = time.time()
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 model_ready_data_dict = joblib.load('../data/pkls/model_ready_data_dict.pkl')
 X = model_ready_data_dict['X']
+
+cols = [col for col in X.columns if "cpcpm" in col]
+X.drop(cols,axis = 1,inplace = True)
+
+
 y = model_ready_data_dict['y']
 seed = 123
 
@@ -37,40 +46,50 @@ for name in ['X_train', 'X_test', 'X_eval']:
 
 
 # Define the base model
-model = XGBClassifier(eval_metric='logloss', random_state=seed)
+model = XGBClassifier(eval_metric='logloss', random_state=seed,
+                      colsample_bytree = .3,subsample =.8)
 
-# Define parameter grid to search over
-param_grid = {
-    'max_depth': [7,10,15,20,None],
-    'learning_rate': [.01],
-    'n_estimators': np.arange(1400,1600,50),
-    'gamma': [1],
-    'reg_alpha': [.5],
-    'reg_lambda': [1],
-    'min_child_weight': np.arange(10,20,2),
-    'subsample': [.8],
-    'colsample_bytree': [.3]
+#
+search_space = {
+    'max_depth': Integer(3, 15),
+    'learning_rate': Real(0.01, 0.15, prior='log-uniform'),
+    'n_estimators': Integer(500, 2500),
+    'gamma': Real(0, 5),
+    'reg_alpha': Real(0.1, 12, prior='log-uniform'),
+    'reg_lambda': Real(0.1, 12, prior='log-uniform'),
+    'min_child_weight': Integer(5, 40),
 }
 
 # Define cross-validation strategy
 cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=seed)
 
-# Set up GridSearchCV   
-grid_search = GridSearchCV(
+# Limit to 70% CPU
+total_cores = multiprocessing.cpu_count()
+n_jobs = int(total_cores * 0.70)
+
+opt = BayesSearchCV(
     estimator=model,
-    param_grid=param_grid,
-    scoring='accuracy',   
+    search_spaces=search_space,
+    n_iter=200,                      # You can reduce this if it’s overheating
+    scoring='accuracy',
     cv=cv,
-    verbose=1,
-    n_jobs=24
+    n_jobs=10,
+    verbose=2,
+    random_state=seed
 )
 
-grid_search.fit(X_train, y_train,)
 
-best_model = grid_search.best_estimator_
+opt.fit(X_train, y_train,)
 
 
-print(grid_search.best_params_)
+joblib.dump(opt,'../data/pkls/opt.pkl')
+
+best_model = opt.best_estimator_
+
+print("BEST")
+print(opt.best_params_)
+print("BEST")
+
 joblib.dump(best_model,'../data/pkls/xgb.pkl')
 end = time.time()
 
@@ -78,3 +97,6 @@ length = round((( end - begin) / 60 ),2)
 print(f'Took {length} Minutes')
 
 print("Successfully dumped model to xgb.pkl")
+
+
+os.system("shutdown /s /t 0")

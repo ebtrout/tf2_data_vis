@@ -9,3 +9,5 @@ matplotlib
 shap
 os
 requests
+multiprocessing
+scikit-optimize

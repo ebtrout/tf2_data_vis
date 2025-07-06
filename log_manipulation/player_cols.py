@@ -104,7 +104,7 @@ def players_per_minute(players):
 
     minutes = (1 / (players['dapm']) ) * players['dmg']
 
-    cols = ['heal','dt','dt_real','cpc','medkits_hp','hr']
+    cols = ['heal','dt','dt_real','medkits_hp','hr']
 
     for col in cols:
         name = col + "pm"
@@ -126,4 +126,16 @@ def suicide_rate(players):
     ## Suicide Rate ##
 
     players['suicide_rate'] = players['suicides'].div(players['deaths']).astype(float).round(4)
+    return(players)
+
+
+def player_class_kda(players,class_kda):
+
+    class_names = ['medic','demoman','soldier','scout']
+
+    real_class_kda = class_kda[['steamid'] + [col for col in class_kda.columns if 
+            any(class_name in col for class_name in class_names)]].copy()
+
+    players = players.merge(real_class_kda,on = ['steamid'])
+
     return(players)
