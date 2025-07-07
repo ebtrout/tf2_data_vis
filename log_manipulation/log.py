@@ -139,13 +139,14 @@ class log:
 
         players = player_cols.hroi(players = players)
 
+        players = player_cols.player_class_kda(players = players,class_kda = class_kda)
+
         players = player_cols.player_per_death(players = players)
 
         players = player_cols.players_per_minute(players = players)
 
         players = player_cols.suicide_rate(players = players)
         
-        players = player_cols.player_class_kda(players = players,class_kda = class_kda)
 
         return players
     

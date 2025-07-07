@@ -16,12 +16,12 @@ drop_cols = [ 'primary_class_time', 'name',
        'assists', 'cpc','heal', 'hr','deaths', 'dmg', 'dmg_real', 'drops',
        'dt', 'dt_real','kills','medkits','medkits_hp','sentries', 
        'suicides','ka','offclass_time','total_time','kapd','ka','ka_pct','hroi',"dmg_real_pct",
-       "dmg_pct"]
+       "dmg_pct",'suicide_rate']
 
 drop_medic = ['offclass_pct','hroi_real','hr_pct',
               'medicstats.advantages_lost','medicstats.deaths_with_95_99_uber',
        'medicstats.deaths_within_20s_after_uber', 'ubers', 'drops',
-       'medic_deaths', 'exchanges_initiated', 'drops_forced',
+       'exchanges_initiated', 'drops_forced',
        'successful_ubers', 'medic_deaths_forced', 'exchanges_not_initiated',
        'successful_uber_rate', 'forced_medic_death_rate', 'forced_drop_rate',
        'medic_deaths_capitalized', 'round_losing_medic_deaths',
@@ -32,8 +32,7 @@ drop_combat = ['healpm']
 
 unimportant_columns = ['soldier_dt_real_pct_2', 'medic_healpm', 'soldier_hrpm_1',
        'medic_hrpm', 'scout_dt_real_pct_1', 'soldier_dt_pct_2',
-       'scout_hrpm_2', 'medic_deaths_within_20s_after_uber_rate',
-       'demoman_deaths_pct', 'soldier_deaths_pct_1',
+       'scout_hrpm_2', 'demoman_deaths_pct', 'soldier_deaths_pct_1',
        'soldier_assists_pct_1', 'scout_dt_pct_2', 'medic_dt_pct',
        'medic_kill_pct', 'demoman_dt_real_pct', 'soldier_hr_pct_2',
        'scout_assists_pct_1', 'medic_avg_time_before_using',
@@ -298,10 +297,22 @@ X = pd.concat([scout_soldier,medic_demo],axis = 1)
 # endregion
 
 # Drop 30 Least Useful Predictors
+# Drop Medic Class Kill Columns
 # These are gotten from a previous model iteration 
 # region DROP NON USEFUL PREDICTORS
 
+medic_kill_cols = [col for col in X.columns if "medic" in col and "_kills" in col]
+
+medic_deaths_cols = [col for col in X.columns if col.endswith("medic_deaths") or "medic_medic_deaths" in col]
+
+print(medic_deaths_cols)
+
 X.drop(unimportant_columns,axis =1, inplace = True)
+
+X.drop(medic_deaths_cols,axis = 1, inplace = True)
+
+X.drop(medic_kill_cols,axis =1, inplace = True)
+
 
 # endregion
 

@@ -95,16 +95,36 @@ def player_per_death(players):
     
     return(players)
 
+
+def player_class_kda(players,class_kda):
+
+    class_names = ['medic','demoman','soldier','scout']
+
+    real_class_kda = class_kda[['steamid'] + [col for col in class_kda.columns if 
+            any(class_name in col for class_name in class_names)]].copy()
+    renamed_cols = ['steamid'] + [col + "_class_kda" for col in real_class_kda.columns]
+
+    real_class_kda.columns = renamed_cols
+
+    players = players.merge(real_class_kda,on = ['steamid'])
+
+    return(players)
+
 def players_per_minute(players):
     # DT
     # Deaths
     # CPC
     # healps
     # medkit_hp
+    # All class_kda cols
 
     minutes = (1 / (players['dapm']) ) * players['dmg']
 
     cols = ['heal','dt','dt_real','medkits_hp','hr']
+    
+    # Add in class_kda cols
+
+    cols = cols + [col for col in players.columns if "class_kda" in col]
 
     for col in cols:
         name = col + "pm"
@@ -129,13 +149,3 @@ def suicide_rate(players):
     return(players)
 
 
-def player_class_kda(players,class_kda):
-
-    class_names = ['medic','demoman','soldier','scout']
-
-    real_class_kda = class_kda[['steamid'] + [col for col in class_kda.columns if 
-            any(class_name in col for class_name in class_names)]].copy()
-
-    players = players.merge(real_class_kda,on = ['steamid'])
-
-    return(players)
