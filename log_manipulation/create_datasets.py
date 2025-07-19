@@ -329,55 +329,55 @@ def push_statistics(round_events,rounds_df,teams_df):
     ## PUSH STATS ##
 
 
-    ### NOT SURE IF NEEDED #### 
+    ## NOT SURE IF NEEDED #### 
 
-    # # Changing round_events names
-    # invert_team = pd.Series(["Red","Blue"],index = ['Blue','Red'])
+    # Changing round_events names
+    invert_team = pd.Series(["Red","Blue"],index = ['Blue','Red'])
 
-    # wins = round_events[round_events['type'].isin(["pointcap","round_win"])]
+    wins = round_events[round_events['type'].isin(["pointcap","round_win"])]
 
-    # wins = wins[wins["round"] == 0].reset_index()
+    wins = wins[wins["round"] == 0].reset_index()
 
-    # winning_team = wins.loc[len(wins) - 2]['team']
-    # winning_point = wins.loc[len(wins) - 2]['point']
+    winning_team = wins.loc[len(wins) - 2]['team']
+    winning_point = wins.loc[len(wins) - 2]['point']
 
-    # # Decide how to loop throuhg point numbers
-    # point_names = {}
-    # loop_list = []
-    # if winning_point == 1.0:
-    #     loop_list = [1.0,2.0,3.0,4.0,5.0]
-    # elif winning_point == 5.0:
-    #     loop_list = [5.0,4.0,3.0,2.0,1.0]
+    # Decide how to loop throuhg point numbers
+    point_names = {}
+    loop_list = []
+    if winning_point == 1.0:
+        loop_list = [1.0,2.0,3.0,4.0,5.0]
+    elif winning_point == 5.0:
+        loop_list = [5.0,4.0,3.0,2.0,1.0]
 
-    # # Change point names based on team winner
-    # for i,point in enumerate(loop_list):
-    #     s = ""
-    #     if i == 0:
-    #         team = invert_team[winning_team]
-    #         s = f'{team}_Last'
-    #     elif i == 1:
-    #         team = invert_team[winning_team]
-    #         s = f'{team}_Second'
-    #     elif i == 2:
-    #         s = f'Mid'
-    #     elif i == 3:
-    #         team = winning_team
-    #         s = f'{team}_Second'
-    #     elif i == 4:
-    #         team = winning_team
-    #         s = f'{team}_Last'
-    #     point_names[point] = s
+    # Change point names based on team winner
+    for i,point in enumerate(loop_list):
+        s = ""
+        if i == 0:
+            team = invert_team[winning_team]
+            s = f'{team}_Last'
+        elif i == 1:
+            team = invert_team[winning_team]
+            s = f'{team}_Second'
+        elif i == 2:
+            s = f'Mid'
+        elif i == 3:
+            team = winning_team
+            s = f'{team}_Second'
+        elif i == 4:
+            team = winning_team
+            s = f'{team}_Last'
+        point_names[point] = s
 
 
-    #### NOT SURE IF NEEDED
+    ### NOT SURE IF NEEDED
 
-    point_names = {
-        1.0: 'Blue_Last',
-        2.0: 'Blue_Second',
-        3.0: 'Mid',
-        4.0: 'Red_Second',
-        5.0: 'Red_Last'
-    }
+    # point_names = {
+    #     1.0: 'Blue_Last',
+    #     2.0: 'Blue_Second',
+    #     3.0: 'Mid',
+    #     4.0: 'Red_Second',
+    #     5.0: 'Red_Last'
+    # }
 
 
     # Change pointnames

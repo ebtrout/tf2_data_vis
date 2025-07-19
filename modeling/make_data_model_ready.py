@@ -164,7 +164,7 @@ drop_medic = ['offclass_pct','hroi_real','hr_pct',
        'round_losing_medic_death_rate', 'medic_death_capitalization_rate',
        'advantages_lost_per_round']
 
-drop_combat = ['heal_pm']
+drop_combat = ['healpm']
 
 combat_players.drop(drop_combat,axis = 1,inplace = True)
 
