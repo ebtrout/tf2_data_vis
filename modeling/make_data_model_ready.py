@@ -178,6 +178,20 @@ medic_players = players_fixed[players_fixed['primary_class'] == 'medic'].copy()
 medic_players = medic_players.merge(team_medic_stats,on= ['id','team'])
 
 # Drop Bad columns
+<<<<<<< HEAD
+=======
+drop_medic = ['offclass_pct','hroi_real','hr_pct',
+              'medicstats.advantages_lost','medicstats.deaths_with_95_99_uber',
+       'medicstats.deaths_within_20s_after_uber', 'ubers', 'drops',
+       'medic_deaths', 'exchanges_initiated', 'drops_forced',
+       'successful_ubers', 'medic_deaths_forced', 'exchanges_not_initiated',
+       'successful_uber_rate', 'forced_medic_death_rate', 'forced_drop_rate',
+       'medic_deaths_capitalized', 'round_losing_medic_deaths',
+       'round_losing_medic_death_rate', 'medic_death_capitalization_rate',
+       'advantages_lost_per_round']
+
+drop_combat = ['healpm']
+>>>>>>> Laptop
 
 combat_players.drop(drop_combat,axis = 1,inplace = True)
 

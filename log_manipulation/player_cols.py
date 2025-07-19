@@ -120,11 +120,15 @@ def players_per_minute(players):
 
     minutes = (1 / (players['dapm']) ) * players['dmg']
 
+<<<<<<< HEAD
     cols = ['heal','dt','dt_real','medkits_hp','hr']
     
     # Add in class_kda cols
 
     cols = cols + [col for col in players.columns if "class_kda" in col]
+=======
+    cols = ['heal','dt','dt_real','cpc','medkits_hp','hr']
+>>>>>>> Laptop
 
     for col in cols:
         name = col + "pm"

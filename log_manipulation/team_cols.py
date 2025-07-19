@@ -86,3 +86,63 @@ def winner(teams):
         teams['winner'] = pd.Series(dtype = 'int')
         
     return teams
+
+def cap_counts(teams, round_events):
+    
+        # Changing round_events names
+    invert_team = pd.Series(["Red","Blue"],index = ['Blue','Red'])
+
+    wins = round_events[round_events['type'].isin(["pointcap","round_win"])]
+
+    wins = wins[wins["round"] == 0].reset_index()
+
+    winning_team = wins.loc[len(wins) - 2]['team']
+    winning_point = wins.loc[len(wins) - 2]['point']
+
+    # Decide how to loop throuhg point numbers
+    point_names = {}
+    loop_list = []
+    if winning_point == 1.0:
+        loop_list = [1.0,2.0,3.0,4.0,5.0]
+    elif winning_point == 5.0:
+        loop_list = [5.0,4.0,3.0,2.0,1.0]
+
+    # Change point names based on team winner
+    for i,point in enumerate(loop_list):
+        s = ""
+        if i == 0:
+            team = invert_team[winning_team]
+            s = f'{team}_Last'
+        elif i == 1:
+            team = invert_team[winning_team]
+            s = f'{team}_Second'
+        elif i == 2:
+            s = f'Mid'
+        elif i == 3:
+            team = winning_team
+            s = f'{team}_Second'
+        elif i == 4:
+            team = winning_team
+            s = f'{team}_Last'
+        point_names[point] = s
+        
+    pointcap = round_events[round_events['type'] == 'pointcap'].copy()
+
+    group = pointcap.groupby(['team'])['point']
+
+    group = group.value_counts().reset_index()
+
+
+    group['point_rename'] = [point_names[point] for point in group['point']]
+
+    group = group[['team','point_rename','count']]
+
+    unstacked = group.set_index(['id','team','point_rename']).unstack('point_rename').reset_index()
+
+
+    unstacked.columns = ['team'] + [col[1] for col in unstacked.columns if col[1] != ""]
+    
+    teams = teams.merge(unstacked,on = ['team'],how = 'left')
+    
+    return teams
+        

@@ -49,6 +49,7 @@ for name in ['X_train', 'X_test', 'X_eval']:
 model = XGBClassifier(eval_metric='logloss', random_state=seed,
                       colsample_bytree = .3,subsample =.8)
 
+<<<<<<< HEAD
 #
 search_space = {
     'max_depth': Integer(3, 15),
@@ -58,6 +59,19 @@ search_space = {
     'reg_alpha': Real(0.1, 12, prior='log-uniform'),
     'reg_lambda': Real(0.1, 12, prior='log-uniform'),
     'min_child_weight': Integer(5, 40),
+=======
+# Define parameter grid to search over
+param_grid = {
+    'max_depth': [7,10,15,20,None],
+    'learning_rate': [.01],
+    'n_estimators': np.arange(1400,1600,50),
+    'gamma': [1],
+    'reg_alpha': [.5],
+    'reg_lambda': [1],
+    'min_child_weight': np.arange(10,20,2),
+    'subsample': [.8],
+    'colsample_bytree': [.3]
+>>>>>>> Laptop
 }
 
 # Define cross-validation strategy
