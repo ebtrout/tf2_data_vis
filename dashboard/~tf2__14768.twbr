@@ -1,0 +1,2457 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20243.24.1010.1014                               -->
+<workbook original-version='18.1' source-build='2024.3.0 (20243.24.1010.1014)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AccessibleZoneTabOrder />
+    <AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <SortTagCleanup />
+    <WindowsPersistSimpleIdentifiers />
+    <ZoneBackgroundTransparency />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='players' inline='true' name='federated.0eb3na51o39t5t1c0wffh1t3c3qm' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='players' name='textscan.0x9xukq0pk2ehm13eo1kh100poqn'>
+            <connection class='textscan' directory='C:/Users/emant/OneDrive/Backups/tf2_data_vis_splake/tf2_data_vis/data' filename='players.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.0x9xukq0pk2ehm13eo1kh100poqn' name='players.csv' table='[players#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='integer' name='F1' ordinal='0' />
+            <column datatype='integer' name='id' ordinal='1' />
+            <column datatype='string' name='steamid' ordinal='2' />
+            <column datatype='string' name='primary_class' ordinal='3' />
+            <column datatype='integer' name='primary_class_time' ordinal='4' />
+            <column datatype='string' name='name' ordinal='5' />
+            <column datatype='integer' name='assists' ordinal='6' />
+            <column datatype='integer' name='cpc' ordinal='7' />
+            <column datatype='integer' name='dapd' ordinal='8' />
+            <column datatype='integer' name='dapm' ordinal='9' />
+            <column datatype='integer' name='deaths' ordinal='10' />
+            <column datatype='integer' name='dmg' ordinal='11' />
+            <column datatype='integer' name='dmg_real' ordinal='12' />
+            <column datatype='integer' name='drops' ordinal='13' />
+            <column datatype='integer' name='dt' ordinal='14' />
+            <column datatype='integer' name='dt_real' ordinal='15' />
+            <column datatype='integer' name='heal' ordinal='16' />
+            <column datatype='integer' name='hr' ordinal='17' />
+            <column datatype='real' name='kapd' ordinal='18' />
+            <column datatype='integer' name='kills' ordinal='19' />
+            <column datatype='real' name='kpd' ordinal='20' />
+            <column datatype='integer' name='medkits' ordinal='21' />
+            <column datatype='integer' name='medkits_hp' ordinal='22' />
+            <column datatype='string' name='sentries' ordinal='23' />
+            <column datatype='integer' name='suicides' ordinal='24' />
+            <column datatype='string' name='team' ordinal='25' />
+            <column datatype='integer' name='ka' ordinal='26' />
+            <column datatype='real' name='offclass_time' ordinal='27' />
+            <column datatype='real' name='offclass_pct' ordinal='28' />
+            <column datatype='integer' name='total_time' ordinal='29' />
+            <column datatype='real' name='kill_pct' ordinal='30' />
+            <column datatype='real' name='deaths_pct' ordinal='31' />
+            <column datatype='real' name='dmg_pct' ordinal='32' />
+            <column datatype='real' name='dmg_real_pct' ordinal='33' />
+            <column datatype='real' name='cpc_pct' ordinal='34' />
+            <column datatype='real' name='ka_pct' ordinal='35' />
+            <column datatype='real' name='assists_pct' ordinal='36' />
+            <column datatype='real' name='dt_pct' ordinal='37' />
+            <column datatype='real' name='dt_real_pct' ordinal='38' />
+            <column datatype='real' name='hr_pct' ordinal='39' />
+            <column datatype='real' name='hroi' ordinal='40' />
+            <column datatype='real' name='hroi_real' ordinal='41' />
+            <column datatype='real' name='demoman_kills_class_kda' ordinal='42' />
+            <column datatype='real' name='medic_kills_class_kda' ordinal='43' />
+            <column datatype='real' name='scout_kills_class_kda' ordinal='44' />
+            <column datatype='real' name='soldier_kills_class_kda' ordinal='45' />
+            <column datatype='real' name='demoman_deaths_class_kda' ordinal='46' />
+            <column datatype='real' name='scout_deaths_class_kda' ordinal='47' />
+            <column datatype='real' name='soldier_deaths_class_kda' ordinal='48' />
+            <column datatype='real' name='demoman_assists_class_kda' ordinal='49' />
+            <column datatype='real' name='medic_assists_class_kda' ordinal='50' />
+            <column datatype='real' name='scout_assists_class_kda' ordinal='51' />
+            <column datatype='real' name='soldier_assists_class_kda' ordinal='52' />
+            <column datatype='real' name='assistspd' ordinal='53' />
+            <column datatype='real' name='demoman_kills_class_kdapd' ordinal='54' />
+            <column datatype='real' name='medic_kills_class_kdapd' ordinal='55' />
+            <column datatype='real' name='scout_kills_class_kdapd' ordinal='56' />
+            <column datatype='real' name='soldier_kills_class_kdapd' ordinal='57' />
+            <column datatype='real' name='demoman_deaths_class_kdapd' ordinal='58' />
+            <column datatype='real' name='scout_deaths_class_kdapd' ordinal='59' />
+            <column datatype='real' name='soldier_deaths_class_kdapd' ordinal='60' />
+            <column datatype='real' name='demoman_assists_class_kdapd' ordinal='61' />
+            <column datatype='real' name='medic_assists_class_kdapd' ordinal='62' />
+            <column datatype='real' name='scout_assists_class_kdapd' ordinal='63' />
+            <column datatype='real' name='soldier_assists_class_kdapd' ordinal='64' />
+            <column datatype='real' name='healpm' ordinal='65' />
+            <column datatype='real' name='dtpm' ordinal='66' />
+            <column datatype='real' name='dt_realpm' ordinal='67' />
+            <column datatype='real' name='medkits_hppm' ordinal='68' />
+            <column datatype='real' name='hrpm' ordinal='69' />
+            <column datatype='real' name='deathspm' ordinal='70' />
+            <column datatype='real' name='suicide_rate' ordinal='71' />
+            <column datatype='real' name='medic_deaths_class_kda' ordinal='72' />
+            <column datatype='real' name='medic_deaths_class_kdapd' ordinal='73' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[id]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>steamid</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[steamid]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>steamid</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>primary_class</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[primary_class]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>primary_class</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>primary_class_time</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[primary_class_time]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>primary_class_time</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[name]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>name</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>assists</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[assists]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>assists</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cpc</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cpc]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>cpc</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dapd</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[dapd]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>dapd</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dapm</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[dapm]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>dapm</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>deaths</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[deaths]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>deaths</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dmg</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[dmg]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>dmg</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dmg_real</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[dmg_real]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>dmg_real</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>drops</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[drops]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>drops</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dt</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[dt]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>dt</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dt_real</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[dt_real]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>dt_real</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>heal</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[heal]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>heal</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>hr</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[hr]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>hr</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>kapd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[kapd]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>kapd</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>kills</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[kills]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>kills</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>kpd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[kpd]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>kpd</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>medkits</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[medkits]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>medkits</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>medkits_hp</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[medkits_hp]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>medkits_hp</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sentries</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[sentries]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>sentries</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>suicides</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[suicides]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>suicides</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>team</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[team]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>team</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ka</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[ka]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>ka</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>offclass_time</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[offclass_time]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>offclass_time</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>offclass_pct</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[offclass_pct]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>offclass_pct</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_time</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_time]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>total_time</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>kill_pct</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[kill_pct]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>kill_pct</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>deaths_pct</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[deaths_pct]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>deaths_pct</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dmg_pct</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[dmg_pct]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>dmg_pct</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dmg_real_pct</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[dmg_real_pct]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>dmg_real_pct</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cpc_pct</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[cpc_pct]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>cpc_pct</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ka_pct</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[ka_pct]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>ka_pct</remote-alias>
+            <ordinal>35</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>assists_pct</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[assists_pct]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>assists_pct</remote-alias>
+            <ordinal>36</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dt_pct</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[dt_pct]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>dt_pct</remote-alias>
+            <ordinal>37</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dt_real_pct</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[dt_real_pct]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>dt_real_pct</remote-alias>
+            <ordinal>38</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>hr_pct</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[hr_pct]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>hr_pct</remote-alias>
+            <ordinal>39</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>hroi</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[hroi]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>hroi</remote-alias>
+            <ordinal>40</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>hroi_real</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[hroi_real]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>hroi_real</remote-alias>
+            <ordinal>41</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>demoman_kills_class_kda</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[demoman_kills_class_kda]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>demoman_kills_class_kda</remote-alias>
+            <ordinal>42</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>medic_kills_class_kda</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[medic_kills_class_kda]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>medic_kills_class_kda</remote-alias>
+            <ordinal>43</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>scout_kills_class_kda</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[scout_kills_class_kda]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>scout_kills_class_kda</remote-alias>
+            <ordinal>44</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>soldier_kills_class_kda</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[soldier_kills_class_kda]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>soldier_kills_class_kda</remote-alias>
+            <ordinal>45</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>demoman_deaths_class_kda</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[demoman_deaths_class_kda]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>demoman_deaths_class_kda</remote-alias>
+            <ordinal>46</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>scout_deaths_class_kda</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[scout_deaths_class_kda]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>scout_deaths_class_kda</remote-alias>
+            <ordinal>47</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>soldier_deaths_class_kda</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[soldier_deaths_class_kda]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>soldier_deaths_class_kda</remote-alias>
+            <ordinal>48</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>demoman_assists_class_kda</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[demoman_assists_class_kda]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>demoman_assists_class_kda</remote-alias>
+            <ordinal>49</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>medic_assists_class_kda</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[medic_assists_class_kda]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>medic_assists_class_kda</remote-alias>
+            <ordinal>50</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>scout_assists_class_kda</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[scout_assists_class_kda]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>scout_assists_class_kda</remote-alias>
+            <ordinal>51</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>soldier_assists_class_kda</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[soldier_assists_class_kda]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>soldier_assists_class_kda</remote-alias>
+            <ordinal>52</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>assistspd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[assistspd]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>assistspd</remote-alias>
+            <ordinal>53</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>demoman_kills_class_kdapd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[demoman_kills_class_kdapd]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>demoman_kills_class_kdapd</remote-alias>
+            <ordinal>54</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>medic_kills_class_kdapd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[medic_kills_class_kdapd]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>medic_kills_class_kdapd</remote-alias>
+            <ordinal>55</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>scout_kills_class_kdapd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[scout_kills_class_kdapd]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>scout_kills_class_kdapd</remote-alias>
+            <ordinal>56</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>soldier_kills_class_kdapd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[soldier_kills_class_kdapd]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>soldier_kills_class_kdapd</remote-alias>
+            <ordinal>57</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>demoman_deaths_class_kdapd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[demoman_deaths_class_kdapd]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>demoman_deaths_class_kdapd</remote-alias>
+            <ordinal>58</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>scout_deaths_class_kdapd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[scout_deaths_class_kdapd]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>scout_deaths_class_kdapd</remote-alias>
+            <ordinal>59</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>soldier_deaths_class_kdapd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[soldier_deaths_class_kdapd]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>soldier_deaths_class_kdapd</remote-alias>
+            <ordinal>60</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>demoman_assists_class_kdapd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[demoman_assists_class_kdapd]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>demoman_assists_class_kdapd</remote-alias>
+            <ordinal>61</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>medic_assists_class_kdapd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[medic_assists_class_kdapd]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>medic_assists_class_kdapd</remote-alias>
+            <ordinal>62</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>scout_assists_class_kdapd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[scout_assists_class_kdapd]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>scout_assists_class_kdapd</remote-alias>
+            <ordinal>63</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>soldier_assists_class_kdapd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[soldier_assists_class_kdapd]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>soldier_assists_class_kdapd</remote-alias>
+            <ordinal>64</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>healpm</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[healpm]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>healpm</remote-alias>
+            <ordinal>65</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dtpm</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[dtpm]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>dtpm</remote-alias>
+            <ordinal>66</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dt_realpm</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[dt_realpm]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>dt_realpm</remote-alias>
+            <ordinal>67</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>medkits_hppm</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[medkits_hppm]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>medkits_hppm</remote-alias>
+            <ordinal>68</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>hrpm</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[hrpm]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>hrpm</remote-alias>
+            <ordinal>69</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>deathspm</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[deathspm]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>deathspm</remote-alias>
+            <ordinal>70</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>suicide_rate</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[suicide_rate]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>suicide_rate</remote-alias>
+            <ordinal>71</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>medic_deaths_class_kda</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[medic_deaths_class_kda]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>medic_deaths_class_kda</remote-alias>
+            <ordinal>72</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>medic_deaths_class_kdapd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[medic_deaths_class_kdapd]</local-name>
+            <parent-name>[players.csv]</parent-name>
+            <remote-alias>medic_deaths_class_kdapd</remote-alias>
+            <ordinal>73</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[players.csv_F4076AE1068C4EF18B1308A9C5F79052]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='string' name='[:Measure Names]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:assists:qk]&quot;' value='A' />
+          <alias key='&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:dapm:qk]&quot;' value='DAPM' />
+          <alias key='&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:deaths:qk]&quot;' value='D' />
+          <alias key='&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:kills:qk]&quot;' value='K' />
+        </aliases>
+      </column>
+      <column caption='Uppercase Class' datatype='string' name='[Calculation_527765612165013504]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='UPPER(LEFT([primary_class],1)) + LOWER(MID([primary_class],2,LEN([primary_class]) - 1))' />
+      </column>
+      <column datatype='integer' name='[F1]' role='measure' type='quantitative' />
+      <column caption='players.csv' datatype='table' name='[__tableau_internal_object_id__].[players.csv_F4076AE1068C4EF18B1308A9C5F79052]' role='measure' type='quantitative' />
+      <column caption='Assists' datatype='integer' name='[assists]' role='measure' type='quantitative' />
+      <column caption='Assists Pct' datatype='real' name='[assists_pct]' role='measure' type='quantitative' />
+      <column caption='Assistspd' datatype='real' name='[assistspd]' role='measure' type='quantitative' />
+      <column caption='Cpc' datatype='integer' name='[cpc]' role='measure' type='quantitative' />
+      <column caption='Cpc Pct' datatype='real' name='[cpc_pct]' role='measure' type='quantitative' />
+      <column caption='Dapd' datatype='integer' name='[dapd]' role='measure' type='quantitative' />
+      <column caption='Dapm' datatype='integer' name='[dapm]' role='measure' type='quantitative' />
+      <column caption='Deaths' datatype='integer' name='[deaths]' role='measure' type='quantitative' />
+      <column caption='Deaths Pct' datatype='real' name='[deaths_pct]' role='measure' type='quantitative' />
+      <column caption='Deathspm' datatype='real' name='[deathspm]' role='measure' type='quantitative' />
+      <column caption='Demoman Assists Class Kda' datatype='real' name='[demoman_assists_class_kda]' role='measure' type='quantitative' />
+      <column caption='Demoman Assists Class Kdapd' datatype='real' name='[demoman_assists_class_kdapd]' role='measure' type='quantitative' />
+      <column caption='Demoman Deaths Class Kda' datatype='real' name='[demoman_deaths_class_kda]' role='measure' type='quantitative' />
+      <column caption='Demoman Deaths Class Kdapd' datatype='real' name='[demoman_deaths_class_kdapd]' role='measure' type='quantitative' />
+      <column caption='Demoman Kills Class Kda' datatype='real' name='[demoman_kills_class_kda]' role='measure' type='quantitative' />
+      <column caption='Demoman Kills Class Kdapd' datatype='real' name='[demoman_kills_class_kdapd]' role='measure' type='quantitative' />
+      <column caption='Dmg' datatype='integer' name='[dmg]' role='measure' type='quantitative' />
+      <column caption='Dmg Pct' datatype='real' name='[dmg_pct]' role='measure' type='quantitative' />
+      <column caption='Dmg Real' datatype='integer' name='[dmg_real]' role='measure' type='quantitative' />
+      <column caption='Dmg Real Pct' datatype='real' name='[dmg_real_pct]' role='measure' type='quantitative' />
+      <column caption='Drops' datatype='integer' name='[drops]' role='measure' type='quantitative' />
+      <column caption='Dt' datatype='integer' name='[dt]' role='measure' type='quantitative' />
+      <column caption='Dt Pct' datatype='real' name='[dt_pct]' role='measure' type='quantitative' />
+      <column caption='Dt Real' datatype='integer' name='[dt_real]' role='measure' type='quantitative' />
+      <column caption='Dt Real Pct' datatype='real' name='[dt_real_pct]' role='measure' type='quantitative' />
+      <column caption='Dt Realpm' datatype='real' name='[dt_realpm]' role='measure' type='quantitative' />
+      <column caption='Dtpm' datatype='real' name='[dtpm]' role='measure' type='quantitative' />
+      <column caption='Heal' datatype='integer' name='[heal]' role='measure' type='quantitative' />
+      <column caption='Healpm' datatype='real' name='[healpm]' role='measure' type='quantitative' />
+      <column caption='Hr' datatype='integer' name='[hr]' role='measure' type='quantitative' />
+      <column caption='Hr Pct' datatype='real' name='[hr_pct]' role='measure' type='quantitative' />
+      <column caption='Hroi' datatype='real' name='[hroi]' role='measure' type='quantitative' />
+      <column caption='Hroi Real' datatype='real' name='[hroi_real]' role='measure' type='quantitative' />
+      <column caption='Hrpm' datatype='real' name='[hrpm]' role='measure' type='quantitative' />
+      <column caption='Id' datatype='integer' name='[id]' role='dimension' type='ordinal' />
+      <column caption='Ka' datatype='integer' name='[ka]' role='measure' type='quantitative' />
+      <column caption='Ka Pct' datatype='real' name='[ka_pct]' role='measure' type='quantitative' />
+      <column caption='Kapd' datatype='real' name='[kapd]' role='measure' type='quantitative' />
+      <column caption='Kill Pct' datatype='real' name='[kill_pct]' role='measure' type='quantitative' />
+      <column caption='Kills' datatype='integer' name='[kills]' role='measure' type='quantitative' />
+      <column caption='Kpd' datatype='real' name='[kpd]' role='measure' type='quantitative' />
+      <column caption='Medic Assists Class Kda' datatype='real' name='[medic_assists_class_kda]' role='measure' type='quantitative' />
+      <column caption='Medic Assists Class Kdapd' datatype='real' name='[medic_assists_class_kdapd]' role='measure' type='quantitative' />
+      <column caption='Medic Deaths Class Kda' datatype='real' name='[medic_deaths_class_kda]' role='measure' type='quantitative' />
+      <column caption='Medic Deaths Class Kdapd' datatype='real' name='[medic_deaths_class_kdapd]' role='measure' type='quantitative' />
+      <column caption='Medic Kills Class Kda' datatype='real' name='[medic_kills_class_kda]' role='measure' type='quantitative' />
+      <column caption='Medic Kills Class Kdapd' datatype='real' name='[medic_kills_class_kdapd]' role='measure' type='quantitative' />
+      <column caption='Medkits' datatype='integer' name='[medkits]' role='measure' type='quantitative' />
+      <column caption='Medkits Hp' datatype='integer' name='[medkits_hp]' role='measure' type='quantitative' />
+      <column caption='Medkits Hppm' datatype='real' name='[medkits_hppm]' role='measure' type='quantitative' />
+      <column caption='Name' datatype='string' name='[name]' role='dimension' type='nominal' />
+      <column caption='Offclass Pct' datatype='real' name='[offclass_pct]' role='measure' type='quantitative' />
+      <column caption='Offclass Time' datatype='real' name='[offclass_time]' role='measure' type='quantitative' />
+      <column caption='Primary Class' datatype='string' name='[primary_class]' role='dimension' type='nominal' />
+      <column caption='Primary Class Time' datatype='integer' name='[primary_class_time]' role='measure' type='quantitative' />
+      <column caption='Scout Assists Class Kda' datatype='real' name='[scout_assists_class_kda]' role='measure' type='quantitative' />
+      <column caption='Scout Assists Class Kdapd' datatype='real' name='[scout_assists_class_kdapd]' role='measure' type='quantitative' />
+      <column caption='Scout Deaths Class Kda' datatype='real' name='[scout_deaths_class_kda]' role='measure' type='quantitative' />
+      <column caption='Scout Deaths Class Kdapd' datatype='real' name='[scout_deaths_class_kdapd]' role='measure' type='quantitative' />
+      <column caption='Scout Kills Class Kda' datatype='real' name='[scout_kills_class_kda]' role='measure' type='quantitative' />
+      <column caption='Scout Kills Class Kdapd' datatype='real' name='[scout_kills_class_kdapd]' role='measure' type='quantitative' />
+      <column caption='Sentries' datatype='string' name='[sentries]' role='dimension' type='nominal' />
+      <column caption='Soldier Assists Class Kda' datatype='real' name='[soldier_assists_class_kda]' role='measure' type='quantitative' />
+      <column caption='Soldier Assists Class Kdapd' datatype='real' name='[soldier_assists_class_kdapd]' role='measure' type='quantitative' />
+      <column caption='Soldier Deaths Class Kda' datatype='real' name='[soldier_deaths_class_kda]' role='measure' type='quantitative' />
+      <column caption='Soldier Deaths Class Kdapd' datatype='real' name='[soldier_deaths_class_kdapd]' role='measure' type='quantitative' />
+      <column caption='Soldier Kills Class Kda' datatype='real' name='[soldier_kills_class_kda]' role='measure' type='quantitative' />
+      <column caption='Soldier Kills Class Kdapd' datatype='real' name='[soldier_kills_class_kdapd]' role='measure' type='quantitative' />
+      <column caption='Steamid' datatype='string' name='[steamid]' role='dimension' type='nominal' />
+      <column caption='Suicide Rate' datatype='real' name='[suicide_rate]' role='measure' type='quantitative' />
+      <column caption='Suicides' datatype='integer' name='[suicides]' role='measure' type='quantitative' />
+      <column caption='Team' datatype='string' name='[team]' role='dimension' type='nominal' />
+      <column caption='Total Time' datatype='integer' name='[total_time]' role='measure' type='quantitative' />
+      <column-instance column='[__tableau_internal_object_id__].[players.csv_F4076AE1068C4EF18B1308A9C5F79052]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:players.csv_F4076AE1068C4EF18B1308A9C5F79052:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_527765612165013504]' derivation='Attribute' name='[attr:Calculation_527765612165013504:nk]' pivot='key' type='nominal' />
+      <column-instance column='[assists]' derivation='Attribute' name='[attr:assists:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[dapm]' derivation='Attribute' name='[attr:dapm:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[deaths]' derivation='Attribute' name='[attr:deaths:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[dmg]' derivation='Attribute' name='[attr:dmg:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[dmg_pct]' derivation='Attribute' name='[attr:dmg_pct:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[healpm]' derivation='Attribute' name='[attr:healpm:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[hrpm]' derivation='Attribute' name='[attr:hrpm:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[kills]' derivation='Attribute' name='[attr:kills:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[kpd]' derivation='Attribute' name='[attr:kpd:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_527765612165013504]' derivation='Min' name='[min:Calculation_527765612165013504:nk]' pivot='key' type='nominal' />
+      <column-instance column='[Calculation_527765612165013504]' derivation='None' name='[none:Calculation_527765612165013504:nk]' pivot='key' type='nominal' />
+      <column-instance column='[dapd]' derivation='None' name='[none:dapd:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[primary_class]' derivation='None' name='[none:primary_class:nk]' pivot='key' type='nominal' />
+      <column-instance column='[F1]' derivation='Sum' name='[sum:F1:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[assists]' derivation='Sum' name='[sum:assists:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[assists_pct]' derivation='Sum' name='[sum:assists_pct:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[assistspd]' derivation='Sum' name='[sum:assistspd:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[cpc]' derivation='Sum' name='[sum:cpc:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[cpc_pct]' derivation='Sum' name='[sum:cpc_pct:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[dapd]' derivation='Sum' name='[sum:dapd:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[dapm]' derivation='Sum' name='[sum:dapm:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[deaths]' derivation='Sum' name='[sum:deaths:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[deaths_pct]' derivation='Sum' name='[sum:deaths_pct:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[deathspm]' derivation='Sum' name='[sum:deathspm:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[demoman_assists_class_kda]' derivation='Sum' name='[sum:demoman_assists_class_kda:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[demoman_assists_class_kdapd]' derivation='Sum' name='[sum:demoman_assists_class_kdapd:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[demoman_deaths_class_kda]' derivation='Sum' name='[sum:demoman_deaths_class_kda:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[demoman_deaths_class_kdapd]' derivation='Sum' name='[sum:demoman_deaths_class_kdapd:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[demoman_kills_class_kda]' derivation='Sum' name='[sum:demoman_kills_class_kda:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[demoman_kills_class_kdapd]' derivation='Sum' name='[sum:demoman_kills_class_kdapd:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[dmg]' derivation='Sum' name='[sum:dmg:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[dmg_pct]' derivation='Sum' name='[sum:dmg_pct:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[dmg_real]' derivation='Sum' name='[sum:dmg_real:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[dmg_real_pct]' derivation='Sum' name='[sum:dmg_real_pct:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[drops]' derivation='Sum' name='[sum:drops:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[dt]' derivation='Sum' name='[sum:dt:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[dt_pct]' derivation='Sum' name='[sum:dt_pct:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[dt_real]' derivation='Sum' name='[sum:dt_real:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[dt_real_pct]' derivation='Sum' name='[sum:dt_real_pct:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[dt_realpm]' derivation='Sum' name='[sum:dt_realpm:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[dtpm]' derivation='Sum' name='[sum:dtpm:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[heal]' derivation='Sum' name='[sum:heal:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[healpm]' derivation='Sum' name='[sum:healpm:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[hr]' derivation='Sum' name='[sum:hr:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[hr_pct]' derivation='Sum' name='[sum:hr_pct:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[hroi]' derivation='Sum' name='[sum:hroi:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[hroi_real]' derivation='Sum' name='[sum:hroi_real:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[hrpm]' derivation='Sum' name='[sum:hrpm:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[ka]' derivation='Sum' name='[sum:ka:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[ka_pct]' derivation='Sum' name='[sum:ka_pct:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[kapd]' derivation='Sum' name='[sum:kapd:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[kill_pct]' derivation='Sum' name='[sum:kill_pct:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[kills]' derivation='Sum' name='[sum:kills:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[kpd]' derivation='Sum' name='[sum:kpd:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[medic_assists_class_kda]' derivation='Sum' name='[sum:medic_assists_class_kda:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[medic_assists_class_kdapd]' derivation='Sum' name='[sum:medic_assists_class_kdapd:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[medic_deaths_class_kda]' derivation='Sum' name='[sum:medic_deaths_class_kda:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[medic_deaths_class_kdapd]' derivation='Sum' name='[sum:medic_deaths_class_kdapd:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[medic_kills_class_kda]' derivation='Sum' name='[sum:medic_kills_class_kda:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[medic_kills_class_kdapd]' derivation='Sum' name='[sum:medic_kills_class_kdapd:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[medkits]' derivation='Sum' name='[sum:medkits:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[medkits_hp]' derivation='Sum' name='[sum:medkits_hp:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[medkits_hppm]' derivation='Sum' name='[sum:medkits_hppm:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[offclass_pct]' derivation='Sum' name='[sum:offclass_pct:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[offclass_time]' derivation='Sum' name='[sum:offclass_time:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[primary_class_time]' derivation='Sum' name='[sum:primary_class_time:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[scout_assists_class_kda]' derivation='Sum' name='[sum:scout_assists_class_kda:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[scout_assists_class_kdapd]' derivation='Sum' name='[sum:scout_assists_class_kdapd:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[scout_deaths_class_kda]' derivation='Sum' name='[sum:scout_deaths_class_kda:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[scout_deaths_class_kdapd]' derivation='Sum' name='[sum:scout_deaths_class_kdapd:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[scout_kills_class_kda]' derivation='Sum' name='[sum:scout_kills_class_kda:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[scout_kills_class_kdapd]' derivation='Sum' name='[sum:scout_kills_class_kdapd:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[soldier_assists_class_kda]' derivation='Sum' name='[sum:soldier_assists_class_kda:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[soldier_assists_class_kdapd]' derivation='Sum' name='[sum:soldier_assists_class_kdapd:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[soldier_deaths_class_kda]' derivation='Sum' name='[sum:soldier_deaths_class_kda:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[soldier_deaths_class_kdapd]' derivation='Sum' name='[sum:soldier_deaths_class_kdapd:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[soldier_kills_class_kda]' derivation='Sum' name='[sum:soldier_kills_class_kda:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[soldier_kills_class_kdapd]' derivation='Sum' name='[sum:soldier_kills_class_kdapd:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[suicide_rate]' derivation='Sum' name='[sum:suicide_rate:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[suicides]' derivation='Sum' name='[sum:suicides:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_time]' derivation='Sum' name='[sum:total_time:qk]' pivot='key' type='quantitative' />
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#499894'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:dtpm:qk]&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:medkits:qk]&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:total_time:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:kills:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:deathspm:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:kill_pct:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:kills:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:soldier_assists_class_kda:qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:dt_pct:qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:medic_deaths_class_kda:qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:soldier_kills_class_kda:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[none:dapd:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:dapd:qk]&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:demoman_assists_class_kdapd:qk]&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:hr:qk]&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:offclass_time:qk]&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:F1:qk]&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:medkits_hp:qk]&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:cpc_pct:qk]&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:dt_real:qk]&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:medic_deaths_class_kdapd:qk]&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:soldier_kills_class_kdapd:qk]&quot;</bucket>
+            </map>
+            <map to='#9c755f'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:cpc:qk]&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:dmg_pct:qk]&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:dmg_pct:qk]&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:ka_pct:qk]&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:scout_kills_class_kda:qk]&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:kpd:qk]&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:drops:qk]&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:kpd:qk]&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:soldier_assists_class_kdapd:qk]&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:hrpm:qk]&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:hrpm:qk]&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:scout_deaths_class_kda:qk]&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:dapm:qk]&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:dapm:qk]&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:dt_real_pct:qk]&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:medic_kills_class_kda:qk]&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:suicide_rate:qk]&quot;</bucket>
+            </map>
+            <map to='#b9ddf1'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:assists:qk]&quot;</bucket>
+            </map>
+            <map to='#b9ddf1'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:assists_pct:qk]&quot;</bucket>
+            </map>
+            <map to='#b9ddf1'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:assists:qk]&quot;</bucket>
+            </map>
+            <map to='#b9ddf1'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:assistspd:qk]&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:demoman_deaths_class_kdapd:qk]&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:hr_pct:qk]&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:primary_class_time:qk]&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:demoman_kills_class_kda:qk]&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:hroi:qk]&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:scout_assists_class_kda:qk]&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:dmg:qk]&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:dmg:qk]&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:ka:qk]&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:scout_deaths_class_kdapd:qk]&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:dmg_real_pct:qk]&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:dmg_real:qk]&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:kapd:qk]&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:scout_kills_class_kdapd:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:heal:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:medkits_hppm:qk]&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:deaths:qk]&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:deaths:qk]&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:dt_realpm:qk]&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:medic_kills_class_kdapd:qk]&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:suicides:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:demoman_deaths_class_kda:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:dt:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:medic_assists_class_kda:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:soldier_deaths_class_kda:qk]&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:demoman_kills_class_kdapd:qk]&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:hroi_real:qk]&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:scout_assists_class_kdapd:qk]&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:healpm:qk]&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:demoman_assists_class_kda:qk]&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:healpm:qk]&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:offclass_pct:qk]&quot;</bucket>
+            </map>
+            <map to='#ff9da7'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:deaths_pct:qk]&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[__tableau_internal_object_id__].[cnt:players.csv_F4076AE1068C4EF18B1308A9C5F79052:qk]&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:medic_assists_class_kdapd:qk]&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:soldier_deaths_class_kdapd:qk]&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='shape' field='[none:Calculation_527765612165013504:nk]' type='shape'>
+            <map to='class_icons/demoman.png'>
+              <bucket>&quot;Demoman&quot;</bucket>
+            </map>
+            <map to='class_icons/medic.png'>
+              <bucket>&quot;Medic&quot;</bucket>
+            </map>
+            <map to='class_icons/scout.png'>
+              <bucket>&quot;Scout&quot;</bucket>
+            </map>
+            <map to='class_icons/soldier.png'>
+              <bucket>&quot;Soldier&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='shape' field='[attr:Calculation_527765612165013504:nk]' type='shape'>
+            <map to='class_icons/demoman.png'>
+              <bucket>&quot;Demoman&quot;</bucket>
+            </map>
+            <map to='class_icons/medic.png'>
+              <bucket>&quot;Medic&quot;</bucket>
+            </map>
+            <map to='class_icons/scout.png'>
+              <bucket>&quot;Scout&quot;</bucket>
+            </map>
+            <map to='class_icons/soldier.png'>
+              <bucket>&quot;Soldier&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='shape' field='[min:Calculation_527765612165013504:nk]' type='shape'>
+            <map to='class_icons/demoman.png'>
+              <bucket>&quot;Demoman&quot;</bucket>
+            </map>
+            <map to='class_icons/medic.png'>
+              <bucket>&quot;Medic&quot;</bucket>
+            </map>
+            <map to='class_icons/scout.png'>
+              <bucket>&quot;Scout&quot;</bucket>
+            </map>
+            <map to='class_icons/soldier.png'>
+              <bucket>&quot;Soldier&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='shape' field='[none:primary_class:nk]' type='shape'>
+            <map to='class_icons/demoman.png'>
+              <bucket>&quot;demoman&quot;</bucket>
+            </map>
+            <map to='class_icons/medic.png'>
+              <bucket>&quot;medic&quot;</bucket>
+            </map>
+            <map to='class_icons/scout.png'>
+              <bucket>&quot;scout&quot;</bucket>
+            </map>
+            <map to='class_icons/soldier.png'>
+              <bucket>&quot;soldier&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='players.csv' id='players.csv_F4076AE1068C4EF18B1308A9C5F79052'>
+            <properties context=''>
+              <relation connection='textscan.0x9xukq0pk2ehm13eo1kh100poqn' name='players.csv' table='[players#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='integer' name='F1' ordinal='0' />
+                  <column datatype='integer' name='id' ordinal='1' />
+                  <column datatype='string' name='steamid' ordinal='2' />
+                  <column datatype='string' name='primary_class' ordinal='3' />
+                  <column datatype='integer' name='primary_class_time' ordinal='4' />
+                  <column datatype='string' name='name' ordinal='5' />
+                  <column datatype='integer' name='assists' ordinal='6' />
+                  <column datatype='integer' name='cpc' ordinal='7' />
+                  <column datatype='integer' name='dapd' ordinal='8' />
+                  <column datatype='integer' name='dapm' ordinal='9' />
+                  <column datatype='integer' name='deaths' ordinal='10' />
+                  <column datatype='integer' name='dmg' ordinal='11' />
+                  <column datatype='integer' name='dmg_real' ordinal='12' />
+                  <column datatype='integer' name='drops' ordinal='13' />
+                  <column datatype='integer' name='dt' ordinal='14' />
+                  <column datatype='integer' name='dt_real' ordinal='15' />
+                  <column datatype='integer' name='heal' ordinal='16' />
+                  <column datatype='integer' name='hr' ordinal='17' />
+                  <column datatype='real' name='kapd' ordinal='18' />
+                  <column datatype='integer' name='kills' ordinal='19' />
+                  <column datatype='real' name='kpd' ordinal='20' />
+                  <column datatype='integer' name='medkits' ordinal='21' />
+                  <column datatype='integer' name='medkits_hp' ordinal='22' />
+                  <column datatype='string' name='sentries' ordinal='23' />
+                  <column datatype='integer' name='suicides' ordinal='24' />
+                  <column datatype='string' name='team' ordinal='25' />
+                  <column datatype='integer' name='ka' ordinal='26' />
+                  <column datatype='real' name='offclass_time' ordinal='27' />
+                  <column datatype='real' name='offclass_pct' ordinal='28' />
+                  <column datatype='integer' name='total_time' ordinal='29' />
+                  <column datatype='real' name='kill_pct' ordinal='30' />
+                  <column datatype='real' name='deaths_pct' ordinal='31' />
+                  <column datatype='real' name='dmg_pct' ordinal='32' />
+                  <column datatype='real' name='dmg_real_pct' ordinal='33' />
+                  <column datatype='real' name='cpc_pct' ordinal='34' />
+                  <column datatype='real' name='ka_pct' ordinal='35' />
+                  <column datatype='real' name='assists_pct' ordinal='36' />
+                  <column datatype='real' name='dt_pct' ordinal='37' />
+                  <column datatype='real' name='dt_real_pct' ordinal='38' />
+                  <column datatype='real' name='hr_pct' ordinal='39' />
+                  <column datatype='real' name='hroi' ordinal='40' />
+                  <column datatype='real' name='hroi_real' ordinal='41' />
+                  <column datatype='real' name='demoman_kills_class_kda' ordinal='42' />
+                  <column datatype='real' name='medic_kills_class_kda' ordinal='43' />
+                  <column datatype='real' name='scout_kills_class_kda' ordinal='44' />
+                  <column datatype='real' name='soldier_kills_class_kda' ordinal='45' />
+                  <column datatype='real' name='demoman_deaths_class_kda' ordinal='46' />
+                  <column datatype='real' name='scout_deaths_class_kda' ordinal='47' />
+                  <column datatype='real' name='soldier_deaths_class_kda' ordinal='48' />
+                  <column datatype='real' name='demoman_assists_class_kda' ordinal='49' />
+                  <column datatype='real' name='medic_assists_class_kda' ordinal='50' />
+                  <column datatype='real' name='scout_assists_class_kda' ordinal='51' />
+                  <column datatype='real' name='soldier_assists_class_kda' ordinal='52' />
+                  <column datatype='real' name='assistspd' ordinal='53' />
+                  <column datatype='real' name='demoman_kills_class_kdapd' ordinal='54' />
+                  <column datatype='real' name='medic_kills_class_kdapd' ordinal='55' />
+                  <column datatype='real' name='scout_kills_class_kdapd' ordinal='56' />
+                  <column datatype='real' name='soldier_kills_class_kdapd' ordinal='57' />
+                  <column datatype='real' name='demoman_deaths_class_kdapd' ordinal='58' />
+                  <column datatype='real' name='scout_deaths_class_kdapd' ordinal='59' />
+                  <column datatype='real' name='soldier_deaths_class_kdapd' ordinal='60' />
+                  <column datatype='real' name='demoman_assists_class_kdapd' ordinal='61' />
+                  <column datatype='real' name='medic_assists_class_kdapd' ordinal='62' />
+                  <column datatype='real' name='scout_assists_class_kdapd' ordinal='63' />
+                  <column datatype='real' name='soldier_assists_class_kdapd' ordinal='64' />
+                  <column datatype='real' name='healpm' ordinal='65' />
+                  <column datatype='real' name='dtpm' ordinal='66' />
+                  <column datatype='real' name='dt_realpm' ordinal='67' />
+                  <column datatype='real' name='medkits_hppm' ordinal='68' />
+                  <column datatype='real' name='hrpm' ordinal='69' />
+                  <column datatype='real' name='deathspm' ordinal='70' />
+                  <column datatype='real' name='suicide_rate' ordinal='71' />
+                  <column datatype='real' name='medic_deaths_class_kda' ordinal='72' />
+                  <column datatype='real' name='medic_deaths_class_kdapd' ordinal='73' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <shared-views>
+    <shared-view name='federated.0eb3na51o39t5t1c0wffh1t3c3qm'>
+      <datasources>
+        <datasource caption='players' name='federated.0eb3na51o39t5t1c0wffh1t3c3qm' />
+      </datasources>
+      <datasource-dependencies datasource='federated.0eb3na51o39t5t1c0wffh1t3c3qm'>
+        <column caption='Id' datatype='integer' name='[id]' role='dimension' type='ordinal' />
+        <column-instance column='[id]' derivation='None' name='[none:id:ok]' pivot='key' type='ordinal' />
+      </datasource-dependencies>
+      <filter class='categorical' column='[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[none:id:ok]'>
+        <groupfilter function='member' level='[none:id:ok]' member='3886188' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+      </filter>
+    </shared-view>
+  </shared-views>
+  <worksheets>
+    <worksheet name='Player Overview'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Player Overview&#10;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='players' name='federated.0eb3na51o39t5t1c0wffh1t3c3qm' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0eb3na51o39t5t1c0wffh1t3c3qm'>
+            <column caption='Assists' datatype='integer' name='[assists]' role='measure' type='quantitative' />
+            <column-instance column='[assists]' derivation='Attribute' name='[attr:assists:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[dapm]' derivation='Attribute' name='[attr:dapm:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[deaths]' derivation='Attribute' name='[attr:deaths:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[dmg]' derivation='Attribute' name='[attr:dmg:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[dmg_pct]' derivation='Attribute' name='[attr:dmg_pct:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[healpm]' derivation='Attribute' name='[attr:healpm:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[hrpm]' derivation='Attribute' name='[attr:hrpm:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[kills]' derivation='Attribute' name='[attr:kills:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[kpd]' derivation='Attribute' name='[attr:kpd:qk]' pivot='key' type='quantitative' />
+            <column caption='Dapm' datatype='integer' name='[dapm]' role='measure' type='quantitative' />
+            <column caption='Deaths' datatype='integer' name='[deaths]' role='measure' type='quantitative' />
+            <column caption='Dmg' datatype='integer' name='[dmg]' role='measure' type='quantitative' />
+            <column caption='Dmg Pct' datatype='real' name='[dmg_pct]' role='measure' type='quantitative' />
+            <column caption='Healpm' datatype='real' name='[healpm]' role='measure' type='quantitative' />
+            <column caption='Hrpm' datatype='real' name='[hrpm]' role='measure' type='quantitative' />
+            <column caption='Id' datatype='integer' name='[id]' role='dimension' type='ordinal' />
+            <column caption='Kills' datatype='integer' name='[kills]' role='measure' type='quantitative' />
+            <column caption='Kpd' datatype='real' name='[kpd]' role='measure' type='quantitative' />
+            <column caption='Name' datatype='string' name='[name]' role='dimension' type='nominal' />
+            <column-instance column='[id]' derivation='None' name='[none:id:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[name]' derivation='None' name='[none:name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[team]' derivation='None' name='[none:team:nk]' pivot='key' type='nominal' />
+            <column-instance column='[hrpm]' derivation='Sum' name='[sum:hrpm:qk]' pivot='key' type='quantitative' />
+            <column caption='Team' datatype='string' name='[team]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:kills:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:assists:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:deaths:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:dapm:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:dmg:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:kpd:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:dmg_pct:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:healpm:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:hrpm:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <manual-sort column='[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:kills:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:assists:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:deaths:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:dmg:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:dapm:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:kpd:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:dmg_pct:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:healpm:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:hrpm:qk]&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[none:name:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[sum:hrpm:qk]' shelf='rows' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[none:id:ok]</column>
+            <column>[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[:Measure Names]</column>
+          </slices>
+          <aggregation value='false' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' value='5' />
+            <format attr='width' field='[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[:Measure Names]' value='66' />
+            <format attr='text-format' field='[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[attr:dmg_pct:qk]' value='p0.00%' />
+            <format attr='text-align' field='[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[:Measure Names]' value='center' />
+            <format attr='border-style' scope='rows' value='solid' />
+            <format attr='border-width' scope='rows' value='4' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='background-color' field='[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[none:team:nk]' value='#f7f7f0' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='vertical-align' field='[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[none:team:nk]' value='center' />
+            <format attr='text-align' field='[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[:Measure Names]' value='center' />
+            <format attr='vertical-align' field='[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[:Measure Names]' value='center' />
+            <format attr='text-align' field='[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[none:team:nk]' value='center' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='div-level' scope='rows' value='2' />
+          </style-rule>
+          <style-rule element='quick-filter'>
+            <format attr='title' field='[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[none:id:ok]' value='Id'>
+              <formatted-text>
+                <run fontalignment='1'>Id</run>
+              </formatted-text>
+            </format>
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='4' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[Multiple Values]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>Name:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[none:name:nk]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Primary Class:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[none:primary_class:nk]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Steamid:&#9;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.0eb3na51o39t5t1c0wffh1t3c3qm].[none:team:nk] / [federated.0eb3na51o39t5t1c0wffh1t3c3qm].[none:name:nk])</rows>
+        <cols>[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[:Measure Names]</cols>
+        <tooltip-style tooltip-mode='sticky' />
+      </table>
+      <simple-id uuid='{A5C711E1-F596-4D67-8B52-BFA92A474905}' />
+    </worksheet>
+    <worksheet name='Sheet 2'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='players' name='federated.0eb3na51o39t5t1c0wffh1t3c3qm' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0eb3na51o39t5t1c0wffh1t3c3qm'>
+            <column caption='Id' datatype='integer' name='[id]' role='dimension' type='ordinal' />
+            <column caption='Name' datatype='string' name='[name]' role='dimension' type='nominal' />
+            <column-instance column='[id]' derivation='None' name='[none:id:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[name]' derivation='None' name='[none:name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[primary_class]' derivation='None' name='[none:primary_class:nk]' pivot='key' type='nominal' />
+            <column caption='Primary Class' datatype='string' name='[primary_class]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <slices>
+            <column>[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[none:id:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Shape' />
+            <encodings>
+              <shape column='[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[none:primary_class:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[none:name:nk]</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{8A726C33-8EF7-4FFE-B368-541354D68B99}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard enable-sort-zone-taborder='true' name='Dashboard 1'>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <datasources>
+        <datasource caption='players' name='federated.0eb3na51o39t5t1c0wffh1t3c3qm' />
+      </datasources>
+      <datasource-dependencies datasource='federated.0eb3na51o39t5t1c0wffh1t3c3qm'>
+        <column caption='Id' datatype='integer' name='[id]' role='dimension' type='ordinal' />
+        <column-instance column='[id]' derivation='None' name='[none:id:ok]' pivot='key' type='ordinal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='2' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98000' id='5' param='horz' type-v2='layout-flow' w='98400' x='800' y='1000'>
+            <zone h='98000' id='3' type-v2='layout-basic' w='82400' x='800' y='1000'>
+              <zone h='98000' id='1' name='Player Overview' w='82400' x='800' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone fixed-size='160' h='98000' id='4' is-fixed='true' param='vert' type-v2='layout-flow' w='16000' x='83200' y='1000'>
+              <zone h='7125' id='6' mode='dropdown' name='Player Overview' param='[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[none:id:ok]' type-v2='filter' w='16000' x='83200' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones />
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{F082AFAE-F987-4537-8E4D-DAE64491BF2B}' />
+    </dashboard>
+  </dashboards>
+  <windows saved-dpi-scale-factor='1.125' source-height='32'>
+    <window class='worksheet' maximized='true' name='Player Overview'>
+      <cards>
+        <edge name='left'>
+          <strip size='252'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='dropdown' param='[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[none:id:ok]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{3C66ABE4-A4A9-428E-888F-02F315733B8F}' />
+    </window>
+    <window class='worksheet' name='Sheet 2'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0eb3na51o39t5t1c0wffh1t3c3qm].[none:primary_class:nk]' type='shape' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{B36B8F97-B6AF-4009-8EAF-4B2D78990B9E}' />
+    </window>
+    <window class='dashboard' name='Dashboard 1'>
+      <viewpoints>
+        <viewpoint name='Player Overview' />
+      </viewpoints>
+      <active id='1' />
+      <simple-id uuid='{BF4FC331-7640-4D3A-830D-DDC08443D049}' />
+    </window>
+  </windows>
+  <external>
+    <shapes>
+      <shape name='class_icons/demoman.png'>
+        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
+        f9rm49tstXEEAAAAAElFTkSuQmCC
+      </shape>
+      <shape name='class_icons/engineer.png'>
+        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
+      </shape>
+      <shape name='class_icons/heavy.png'>
+        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
+      </shape>
+      <shape name='class_icons/medic.png'>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAABCcAAAQnAEmzTo0
+        AAAEvElEQVR4nO2bT2sbRxiHH0eSWZAV9mIjsGJLFYE0oKKQqKQ316kOIV+g4EshPfQj9AsU
+        Cv4KPfTiey8Fg1BtyKGmNthUJLQ4quSiBdnBdMFWuyDL6WGl9e5o/8nalWO0DxjvzM6+O/Pb
+        d2bnnVlBRERERMT0MhOS3S0gBywAiTFt9fr/j4E6sDqmvdDZAprA+xD+jvr2AyMepDEACbLA
+        8vpT/cGX0knXO6ot1ZKW07IlfbqY5Zff2gBUd9tLB3AZZH0DF8BMORNDvXAvI39ctGb80xwq
+        s/pp2hAhaEIVACD7zffuBS40azouWZLF9k9Ud8NpPExAAIB3lQ069Zr9HVNZa9rkAcl8Abkg
+        dKGACU+AxCxI+jjQ+XPXyO7+JzzxswNLsmd+LymH8NmXIMUg3gGC94Q7gVu8ZUQC3HQFbprA
+        x4BBD9cuQfN4BX4ITL0HhCFAJgSbodkPzQPK98aNgSaD2xiwBeQkPQhxxPRWzwCk+4m6pk9g
+        0ppKInOfs7f6RCgWG7GG7SaX6gkrD2V+/tXI7Q4OJGh51G8GaACf2513EmAQzi6PWN1JINY5
+        6/O6LWxEcBIgByz/+BTOYsJUVOg0mik2K99LGE8e4MWDFNZYbzzWX5aYPz000lWly11JKCTE
+        iqleh692nB+kkwALg4Ohvixc4fSqe/EgBYCyuWG4/6hoapvKvkL50SKVfWXo/LPFBPKckCnU
+        Z6dpHC5gg5MACYDsHKgXkP3aI6Izkdb0Z66iN/7fRm2kfh8TRpzU0S6v4xql52t6xpw8fJED
+        zR++JXslkO2o7Hsi9K66QadRA01zLZfI3DeOz96O1ngnzuo1FDYA6CqH7oUliWSuwPyzNV+2
+        fQvQafhz4+u6u6fdfjgtSWKnH6bTqDHv0+7UzwRdPUADRL27XfcuEITLu9nzun9C8BD30pEH
+        RAJEAjjkt+B2xPNemNpgGzNEHuCQH3ZMfxPYtmnqPcB1HiDbnO2NuJ8szu1HZdT7iRN+uzaY
+        mXoPmHoBfAdDyVyBTqOGJKe9C/fR1OC2snzf90IjmSv4tuskQA+Ia0AnU6So7iA/zsPjPMQ9
+        4vF20zis7CukjnYtp71iBbHP18/zfPLkIwpP8nqGVzR40V+DUnc4zRSJqduGabvivjygalpW
+        QVwiE7hUT4zj8qNFXsc1I5S9DoPG1/bqAJzEZt0v6HVGsu8kwDGw9OoYtPOm9cyM+3L3ysMr
+        D6nsK5Ser6GwcS0RJDltNP73vb8AeNPzGLbedy1J6UqPY7viTgLUAb6rsVSk6bO6OoOl6/WX
+        pZGu80Ntr862V3wr0N98/5t+m0ScBFhFX0a+PHAoYIN5phU3Vm/nZLrKobGS4xXPDyFJnMRm
+        edO7w7YGB0PLnu77An2aOHxd5jYG2G4k+KDrXWRsAtt2mvp5QGgCVJVJOML4BC6ABC0JuCsx
+        vGkRDH76vG+iLnDTFbhppl6AiXwoaf760+v9lTDXSAtyb9meqfeAiQiQzPsPT63XFb0LjclE
+        usB8eY358jUvPv8j0LqIhPGLkSawvPmFnpA99vMljw8uNNN2/MqmNrCfG6+KV4TWBV7ZBp/D
+        VFpdKi3vWeN223Y944PkVv1kJvrRVERExFTzP/AUciXG+yeIAAAAAElFTkSuQmCC
+      </shape>
+      <shape name='class_icons/pyro.png'>
+        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
+      </shape>
+      <shape name='class_icons/scout.png'>
+        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
+      </shape>
+      <shape name='class_icons/sniper.png'>
+        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
+        IZdS6gAAAABJRU5ErkJggg==
+      </shape>
+      <shape name='class_icons/soldier.png'>
+        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
+      </shape>
+      <shape name='class_icons/spy.png'>
+        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
+        AElFTkSuQmCC
+      </shape>
+    </shapes>
+  </external>
+</workbook>

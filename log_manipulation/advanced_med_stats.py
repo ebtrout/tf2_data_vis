@@ -85,12 +85,14 @@ def post_uber(round_events, team_medic_stats, players,
     uber_stats['exchanges_not_initiated'] = uber_stats['exchanges_initiated'].values[::-1]
 
     team_medic_stats = team_medic_stats.merge(uber_stats,how = 'left')
-
+    
     team_medic_stats = team_medic_stats.replace(0,np.nan)
 
     team_medic_stats['successful_uber_rate'] = team_medic_stats['successful_ubers'].div(team_medic_stats['ubers']).astype(float).round(4)
 
-    team_medic_stats['exchanges_initiated'] = team_medic_stats['exchanges_initiated'].div(team_medic_stats['ubers']).astype(float).round(4)
+    team_medic_stats['exchanges_not_initiated_rate'] = team_medic_stats['exchanges_not_initiated'].div(team_medic_stats['ubers']).astype(float).round(4)
+
+    team_medic_stats['exchanges_initiated_rate'] = team_medic_stats['exchanges_initiated'].div(team_medic_stats['ubers']).astype(float).round(4)
 
     invert_medic_deaths_forced = pd.Series(team_medic_stats['medic_deaths_forced'].values[::-1])
 

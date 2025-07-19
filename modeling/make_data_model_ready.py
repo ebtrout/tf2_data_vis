@@ -26,7 +26,7 @@ drop_medic = ['offclass_pct','hroi_real','hr_pct',
        'successful_uber_rate', 'forced_medic_death_rate', 'forced_drop_rate',
        'medic_deaths_capitalized', 'round_losing_medic_deaths',
         'medic_death_capitalization_rate',
-       'advantages_lost_per_round']
+       'advantages_lost_per_round','round_losing_medic_death_rate']
 
 drop_combat = ['healpm']
 
@@ -178,20 +178,6 @@ medic_players = players_fixed[players_fixed['primary_class'] == 'medic'].copy()
 medic_players = medic_players.merge(team_medic_stats,on= ['id','team'])
 
 # Drop Bad columns
-<<<<<<< HEAD
-=======
-drop_medic = ['offclass_pct','hroi_real','hr_pct',
-              'medicstats.advantages_lost','medicstats.deaths_with_95_99_uber',
-       'medicstats.deaths_within_20s_after_uber', 'ubers', 'drops',
-       'medic_deaths', 'exchanges_initiated', 'drops_forced',
-       'successful_ubers', 'medic_deaths_forced', 'exchanges_not_initiated',
-       'successful_uber_rate', 'forced_medic_death_rate', 'forced_drop_rate',
-       'medic_deaths_capitalized', 'round_losing_medic_deaths',
-       'round_losing_medic_death_rate', 'medic_death_capitalization_rate',
-       'advantages_lost_per_round']
-
-drop_combat = ['healpm']
->>>>>>> Laptop
 
 combat_players.drop(drop_combat,axis = 1,inplace = True)
 
@@ -204,7 +190,6 @@ for df in [medic_players,combat_players]:
               if col in non_numeric_columns:
                      continue
               df[col] = pd.to_numeric(df[col])
-       df.fillna(0,inplace=True)
 
 # Remove medicstats. from colnames
 
@@ -262,6 +247,7 @@ players_wide = players_wide.merge(teams[['id','team','winner']],on =['id','team'
 
 drop_cols = ['id','team','winner'] + [col for col in players_wide if 'steamid' in col]
 
+
 X = players_wide.drop(drop_cols,axis = 1).copy()
 
 y = players_wide['winner']
@@ -315,19 +301,30 @@ X = pd.concat([scout_soldier,medic_demo],axis = 1)
 # These are gotten from a previous model iteration 
 # region DROP NON USEFUL PREDICTORS
 
-medic_kill_cols = [col for col in X.columns if "medic" in col and "_kills" in col]
+medic_deaths_cols = [col for col in X.columns if col.endswith("medic_deaths") #Drop Demo Medic Deaths
+                      or "medic_medic_deaths" in col  # Drop medic_medic_draths columns that keep coming up
+                      or "_medic_deaths_" in col] # Drop medic deaths for scout and demo
 
-medic_deaths_cols = [col for col in X.columns if col.endswith("medic_deaths") or "medic_medic_deaths" in col]
-
-print(medic_deaths_cols)
+medic_kda_cols = [col for col in X.columns if col.startswith("medic") and
+                  "kills" in col and
+                  "kdapd" in col]
+X.drop(medic_kda_cols,axis =1,inplace = True)
 
 X.drop(unimportant_columns,axis =1, inplace = True)
 
 X.drop(medic_deaths_cols,axis = 1, inplace = True)
 
-X.drop(medic_kill_cols,axis =1, inplace = True)
+class_kda_drop = [col for col in X.columns if "class_kda" in col and "pd" not in col]
+
+X.drop(class_kda_drop,axis =1, inplace = True)
 
 
+# endregion
+
+
+# region Fillna
+# Need to do this after quantiles, not before like I was doing like an idiot
+X = X.fillna(0)
 # endregion
 
 # Merge Map NOT USED BC NOT IMPORTANT
@@ -352,9 +349,15 @@ correct_map['map_name'] = map_list
 
 # Output to pkl
 
+
+# Make ids 
+
+ids = players_wide['id']
+
 model_ready_data_dict = {
      'X':X,
-     'y':y
+     'y':y,
+     'ids': ids
 }
 
 joblib.dump(model_ready_data_dict,'../data/pkls/model_ready_data_dict.pkl')

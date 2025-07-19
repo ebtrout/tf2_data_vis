@@ -3,3 +3,10 @@
 __pycache__/
 *.rar
 *.pyc
+*.xls
+*.tds
+*.txt
+*.log
+*.png
+*.hyper
+*.tps

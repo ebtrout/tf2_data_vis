@@ -182,7 +182,7 @@ def player_rounds(log):
 
     return player_rounds
 
-def healspread(log,players):
+def healspread(log):
     healspread = json_normalize(log['healspread']).T.reset_index()
 
     healspread.rename(columns={0: 'value'}, inplace=True)
@@ -195,6 +195,10 @@ def healspread(log,players):
 
     healspread = healspread[['healer', 'healed', 'value']]
 
+    return healspread
+
+def healspread_grouped(healspread,players):
+    healspread = healspread.copy()
     ## Healspread ##
     # region Healspread By Class
     healspread['steamid'] = healspread['healed']
@@ -328,7 +332,6 @@ def class_kda(log):
 def push_statistics(round_events,rounds_df,teams_df):
     ## PUSH STATS ##
 
-
     ## NOT SURE IF NEEDED #### 
 
     # Changing round_events names
@@ -369,7 +372,7 @@ def push_statistics(round_events,rounds_df,teams_df):
         point_names[point] = s
 
 
-    ### NOT SURE IF NEEDED
+    # #### NOT SURE IF NEEDED
 
     # point_names = {
     #     1.0: 'Blue_Last',
@@ -390,7 +393,7 @@ def push_statistics(round_events,rounds_df,teams_df):
     pushes = pd.DataFrame(columns=['count','time'])
 
     for num in push['round'].unique():
-        round_pushes = push[push['round'] == num].reset_index(drop=True)
+        round_pushes = push[push['round'] == num].copy().reset_index(drop=True)
 
         for i in range(len(round_pushes) - 1):  # no need to go to last index
             team = round_pushes.loc[i, "team"]
@@ -500,11 +503,11 @@ def push_statistics(round_events,rounds_df,teams_df):
   ## LAST COMEBACKS ##
     # region Last comebacks
     # Groupby team and bind winner
-    last_comebacks = push.groupby('round').agg(
+    last_comebacks = push.copy().groupby('round').agg(
         points = ('point','sum')
     ).merge(rounds_df[['round','winner']], on='round', how='left')
 
-    comebacks = pd.Series([0,0],index = ['Red','Blue'],name = "comebacks")
+    comebacks = pd.Series([0,0],index = ['Blue','Red'],name = "comebacks")
 
     # If winner's last is in round
     for i in range(0,len(last_comebacks)):
@@ -521,7 +524,14 @@ def push_statistics(round_events,rounds_df,teams_df):
 
     push_df = push_df.replace(0,np.nan)
 
-    push_df['comeback_rate'] = push_df['comebacks'].div(teams_df['score']).astype(float).round(4)
+    # Merge in score to divide instead of being dumb
+    team_score = teams_df[['score','team']].copy()
+
+    push_df = push_df.merge(team_score,on = ['team'])
+    
+    push_df['comeback_rate'] = push_df['comebacks'].div(push_df['score']).astype(float).round(4)
+
+
     # endregion
     
     # endregion
@@ -532,7 +542,25 @@ def push_statistics(round_events,rounds_df,teams_df):
     push_df['lead_changes'] = push_df['push_mid'] + push_df['takeback_mid']
     # endregion
 
+    # region number of caps
+    pointcap = round_events[round_events['type'] == 'pointcap'].copy()
 
+    group = pointcap.groupby(['team'])['point']
+
+    group = group.value_counts().reset_index()
+
+    group['point_rename'] = [point_names[point] for point in group['point']]
+
+    group = group[['team','point_rename','count']]
+
+    unstacked = group.set_index(['team','point_rename']).unstack('point_rename').reset_index()
+
+    unstacked.columns = ['team'] + [col[1] for col in unstacked.columns if col[1] != ""]
+    
+    push_df = push_df.merge(unstacked,on = ['team'],how = 'left')
+    
+    # endregion
+    
     return push_df
 
 def team_medic_stats(players_df,medic_stats_df,teams_df):

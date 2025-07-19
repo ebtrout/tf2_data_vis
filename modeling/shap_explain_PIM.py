@@ -56,7 +56,7 @@ for df in [X_test,X_eval]:
 
     for index in shap_values_flip.index:
         for class_name,num in zip(class_name_list,num_list):
-            if class_name in index and num in index:
+            if index.startswith(class_name) and num in index:
                 class_names.append(class_name + num)
  #   shap_values.drop([col for col in shap_values.columns if col in valid_map_names],axis = 1,inplace = True)
 
@@ -87,9 +87,4 @@ PIM_df = (quantiled_df * 10).round(2)
 PIM_df['winner'] = y_eval.values
 print(PIM_df.groupby("winner").mean().round(2))
 
-for col in PIM_df.columns:
-    plt.hist(PIM_df[col],bins = 40,rwidth = .8, edgecolor = "black",color = "red")
-    plt.show()
-
-
-PIM_df.to_csv()
+PIM_df.to_csv("PIM")

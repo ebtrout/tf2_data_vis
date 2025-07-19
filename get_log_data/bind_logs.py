@@ -20,6 +20,7 @@ def bind_logs(clean_log_data,print_interval = 50):
             'push_stats': pd.DataFrame(),
             'team_medic_stats': pd.DataFrame(),
             'healspread': pd.DataFrame(),
+            'healspread_grouped': pd.DataFrame(),
             'round_events':pd.DataFrame(),
             'medic_stats':pd.DataFrame(),
         }
@@ -42,6 +43,7 @@ def bind_logs(clean_log_data,print_interval = 50):
             "push_stats" : log_data.push_stats,
             "team_medic_stats" : log_data.team_medic_stats,
             "healspread" : log_data.healspread,
+            "healspread_grouped" : log_data.healspread_grouped,
             "round_events": log_data.round_events,
             "medic_stats": log_data.medic_stats
         }

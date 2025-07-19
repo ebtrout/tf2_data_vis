@@ -34,7 +34,7 @@ X_test, X_eval, y_test, y_eval = train_test_split(X_test, y_test, test_size=0.3)
 model = joblib.load("../data/pkls/xgb.pkl")
 print(model.get_params())
 
-importance = pd.Series(model.feature_importances_,name = "importance")
+importance = pd.Series(model.feature_importances_,name = "importance").round(4)
 feature_names = pd.Series(model.feature_names_in_,name = "name")
 summary = pd.concat([feature_names,importance],axis = 1).sort_values(by = 'importance',ascending=False)
 
@@ -42,14 +42,12 @@ summary = pd.concat([feature_names,importance],axis = 1).sort_values(by = 'impor
 score = model.score(X_test,y_test)
 
 # Assign values to dict 
-summary['score'] = score
+summary['score'] = round(score,4)
 
-summary['importance_relative'] = summary['importance'] / summary['importance'].max()
+summary['importance_relative'] = (summary['importance'] / summary['importance'].max()).round(2)
 
-print(summary.head(10))
 
 opposite = summary.sort_values(by = 'importance',ascending=True).copy()
-print(opposite.head(25))
 
 summary.to_csv("summary.csv")
 # endregion

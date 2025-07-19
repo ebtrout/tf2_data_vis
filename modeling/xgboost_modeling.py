@@ -49,29 +49,15 @@ for name in ['X_train', 'X_test', 'X_eval']:
 model = XGBClassifier(eval_metric='logloss', random_state=seed,
                       colsample_bytree = .3,subsample =.8)
 
-<<<<<<< HEAD
 #
 search_space = {
-    'max_depth': Integer(3, 15),
-    'learning_rate': Real(0.01, 0.15, prior='log-uniform'),
-    'n_estimators': Integer(500, 2500),
+    'max_depth': Integer(3, 8),
+    'learning_rate': Real(0.01, 0.05, prior='log-uniform'),
+    'n_estimators': Integer(1000, 5000),
     'gamma': Real(0, 5),
-    'reg_alpha': Real(0.1, 12, prior='log-uniform'),
-    'reg_lambda': Real(0.1, 12, prior='log-uniform'),
-    'min_child_weight': Integer(5, 40),
-=======
-# Define parameter grid to search over
-param_grid = {
-    'max_depth': [7,10,15,20,None],
-    'learning_rate': [.01],
-    'n_estimators': np.arange(1400,1600,50),
-    'gamma': [1],
-    'reg_alpha': [.5],
-    'reg_lambda': [1],
-    'min_child_weight': np.arange(10,20,2),
-    'subsample': [.8],
-    'colsample_bytree': [.3]
->>>>>>> Laptop
+    'reg_alpha': Real(0.1,5, prior='log-uniform'),
+    'reg_lambda': Real(0.1, 5, prior='log-uniform'),
+    'min_child_weight': Integer(25,40),
 }
 
 # Define cross-validation strategy
@@ -84,10 +70,10 @@ n_jobs = int(total_cores * 0.70)
 opt = BayesSearchCV(
     estimator=model,
     search_spaces=search_space,
-    n_iter=200,                      # You can reduce this if it’s overheating
+    n_iter=323,                      # You can reduce this if it’s overheating
     scoring='accuracy',
     cv=cv,
-    n_jobs=10,
+    n_jobs=7,
     verbose=2,
     random_state=seed
 )
@@ -111,6 +97,5 @@ length = round((( end - begin) / 60 ),2)
 print(f'Took {length} Minutes')
 
 print("Successfully dumped model to xgb.pkl")
-
 
 os.system("shutdown /s /t 0")

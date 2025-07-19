@@ -43,6 +43,9 @@ class log:
         # Create Healspread REQUIRES add_player_cols()
         self.healspread = self.create_healspread()
 
+        # Group healspread per class
+        self.healspread_grouped = self.create_healspread_grouped()
+
         # Add advanced medic stats REQUIRES team_medic_stats,players,round events
         self.advanced_med_stats_params()
         self.team_medic_stats = self.add_advanced_med_stats()
@@ -94,8 +97,12 @@ class log:
         return player_rounds
     
     def create_healspread(self):
-        healspread = cd.healspread(log = self.log,players = self.players)
+        healspread = cd.healspread(log = self.log)
         return healspread
+    
+    def create_healspread_grouped(self):
+        healspread_grouped = cd.healspread_grouped(players = self.players,healspread = self.healspread)
+        return healspread_grouped
     
     def create_class_kda(self):
         class_kda = cd.class_kda(log = self.log)
@@ -112,6 +119,7 @@ class log:
     def add_team_cols(self):
         teams = self.teams
         players = self.players
+        round_events = self.round_events
 
         teams = team_cols.midfight_conversion(rounds = self.rounds,teams = teams)
 
@@ -120,7 +128,7 @@ class log:
         teams = team_cols.round_length(teams = teams, rounds = self.rounds)
         
         teams = team_cols.winner(teams = teams)
-
+        
         return teams
 
     def add_player_cols(self):
@@ -146,8 +154,9 @@ class log:
         players = player_cols.players_per_minute(players = players)
 
         players = player_cols.suicide_rate(players = players)
-        
 
+        players = player_cols.censor_names(players= players)
+        
         return players
     
 
