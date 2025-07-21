@@ -152,7 +152,7 @@ def round_events(rounds):
 
     return rounds, round_events
 
-def player_rounds(log):
+def player_rounds(log,players):
 
     # Subsetting cols
     player_rounds = json_normalize(log['rounds']).drop('events',axis =1)
@@ -179,10 +179,15 @@ def player_rounds(log):
 
     # Pivot to get the desired format
     player_rounds = long_df.pivot(index = ['steamid','round'], columns='metric', values='value').reset_index()
+    
+    names = players[['steamid','name']].copy()
+
+    player_rounds = player_rounds.merge(names, on = ['id','steamid'])
 
     return player_rounds
 
-def healspread(log):
+def healspread(log,players):
+    # Turn steamid.steamid cols to healer and healed
     healspread = json_normalize(log['healspread']).T.reset_index()
 
     healspread.rename(columns={0: 'value'}, inplace=True)
@@ -194,10 +199,42 @@ def healspread(log):
     healspread.drop('index', axis=1, inplace=True)
 
     healspread = healspread[['healer', 'healed', 'value']]
+    
+    # bind in useful player information
+    healspread['steamid'] = healspread['healer'].copy()
+
+    players_info = players[['steamid','team','name','primary_class']].copy()
+
+    players_info.columns = ['steamid','team','medic_name','primary_class']
+
+    healspread = healspread.merge(players_info,on = ['steamid'])
+
+    healspread.drop('primary_class',axis = 1,inplace= True)
+
+    healspread['steamid'] = healspread['healed'].copy()
+
+    players_info.drop('team',axis = 1,inplace = True)
+    players_info.columns = ['steamid', 'healed_name', 'primary_class']
+
+    healspread = healspread.merge(players_info,on = ['steamid'])
+
+    healspread.drop('steamid',axis = 1,inplace = True)
 
     return healspread
 
-def healspread_grouped(healspread,players):
+def healspread_grouped(log,players):
+    
+    healspread = json_normalize(log['healspread']).T.reset_index()
+
+    healspread.rename(columns={0: 'value'}, inplace=True)
+    colnames = healspread['index'].str.split('.')
+
+    healspread['healer'] = colnames.str[0]
+    healspread['healed'] = colnames.str[1]
+
+    healspread.drop('index', axis=1, inplace=True)
+
+    healspread = healspread[['healer', 'healed', 'value']]
     healspread = healspread.copy()
     ## Healspread ##
     # region Healspread By Class

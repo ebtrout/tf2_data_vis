@@ -26,7 +26,9 @@ drop_medic = ['offclass_pct','hroi_real','hr_pct',
        'successful_uber_rate', 'forced_medic_death_rate', 'forced_drop_rate',
        'medic_deaths_capitalized', 'round_losing_medic_deaths',
         'medic_death_capitalization_rate',
-       'advantages_lost_per_round','round_losing_medic_death_rate']
+       'advantages_lost_per_round','round_losing_medic_death_rate'
+       'medic_exchanges_not_initiated_rate',
+        'medic_exchanges_initiated_rate',]
 
 drop_combat = ['healpm']
 

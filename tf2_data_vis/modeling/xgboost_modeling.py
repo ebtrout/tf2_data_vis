@@ -19,10 +19,6 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 model_ready_data_dict = joblib.load('../data/pkls/model_ready_data_dict.pkl')
 X = model_ready_data_dict['X']
 
-cols = [col for col in X.columns if "cpcpm" in col]
-X.drop(cols,axis = 1,inplace = True)
-
-
 y = model_ready_data_dict['y']
 seed = 123
 
@@ -70,7 +66,7 @@ n_jobs = int(total_cores * 0.70)
 opt = BayesSearchCV(
     estimator=model,
     search_spaces=search_space,
-    n_iter=323,                      # You can reduce this if it’s overheating
+    n_iter=100,                      # You can reduce this if it’s overheating
     scoring='accuracy',
     cv=cv,
     n_jobs=7,

@@ -1,16 +1,13 @@
-import sys
-import os
-import numpy as np
-import pandas as pd
+from log_manipulation.log import log
 
 def manipulate_logs(log_data,print_interval = 50):
     # Set option to stop thousands of warnings 
-    pd.set_option('future.no_silent_downcasting', True)
+    # pd.set_option('future.no_silent_downcasting', True)
 
-    # Grab the class object from the log_manipulation folder
-    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'log_manipulation')))
+    # # Grab the class object from the log_manipulation folder
+    # sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'log_manipulation')))
 
-    from log import log # type: ignore
+    # from log import log # type: ignore
 
     # Import RGL Logs
 

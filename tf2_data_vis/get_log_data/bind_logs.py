@@ -1,14 +1,12 @@
 import sys
 import os
 import pandas as pd
+from log_manipulation.log import log
 
 def bind_logs(clean_log_data,print_interval = 50):
     pd.set_option('future.no_silent_downcasting', True)
 
     # Grab the class object from the log_manipulation folder
-    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'log_manipulation')))
-
-    from log import log # type: ignore
 
     df_dict = {
             'info':pd.DataFrame(),
@@ -32,7 +30,7 @@ def bind_logs(clean_log_data,print_interval = 50):
         id = log_data.id
         if count == print_interval:
             count = 0
-            print(f"{i}/{len(clean_log_data)}")
+            print(f"Bound {i}/{len(clean_log_data)} logs together")
         log_df_dict = {
             "info" : log_data.info,
             "players" : log_data.players,

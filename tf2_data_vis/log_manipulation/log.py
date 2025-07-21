@@ -1,7 +1,7 @@
-import create_datasets as cd
-import player_cols 
-import team_cols
-import advanced_med_stats
+import log_manipulation.create_datasets as cd
+import log_manipulation.player_cols as player_cols
+import log_manipulation.team_cols as team_cols
+import log_manipulation.advanced_med_stats as advanced_med_stats
 
 # Organized class that takes in a logs.tf log and turns it into
 # A log class that contains all useful data from it 
@@ -93,15 +93,15 @@ class log:
         return rounds, round_events
 
     def create_player_rounds(self):
-        player_rounds = cd.player_rounds(log = self.log)
+        player_rounds = cd.player_rounds(log = self.log,players = self.players)
         return player_rounds
     
     def create_healspread(self):
-        healspread = cd.healspread(log = self.log)
+        healspread = cd.healspread(log = self.log,players = self.players)
         return healspread
     
     def create_healspread_grouped(self):
-        healspread_grouped = cd.healspread_grouped(players = self.players,healspread = self.healspread)
+        healspread_grouped = cd.healspread_grouped(players = self.players,log = self.log)
         return healspread_grouped
     
     def create_class_kda(self):
