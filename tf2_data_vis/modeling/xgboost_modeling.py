@@ -16,7 +16,7 @@ from skopt.space import Real, Integer
 begin = time.time()
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-model_ready_data_dict = joblib.load('../data/pkls/model_ready_data_dict.pkl')
+model_ready_data_dict = joblib.load('../../data/pkls/model_ready_data_dict.pkl')
 X = model_ready_data_dict['X']
 
 y = model_ready_data_dict['y']
@@ -43,7 +43,7 @@ for name in ['X_train', 'X_test', 'X_eval']:
 
 # Define the base model
 model = XGBClassifier(eval_metric='logloss', random_state=seed,
-                      colsample_bytree = .3,subsample =.8)
+                      colsample_bytree = .25,subsample =.8)
 
 #
 search_space = {
@@ -66,7 +66,7 @@ n_jobs = int(total_cores * 0.70)
 opt = BayesSearchCV(
     estimator=model,
     search_spaces=search_space,
-    n_iter=100,                      # You can reduce this if it’s overheating
+    n_iter=150,                      # You can reduce this if it’s overheating
     scoring='accuracy',
     cv=cv,
     n_jobs=7,
@@ -78,7 +78,7 @@ opt = BayesSearchCV(
 opt.fit(X_train, y_train,)
 
 
-joblib.dump(opt,'../data/pkls/opt.pkl')
+joblib.dump(opt,'../../data/pkls/opt.pkl')
 
 best_model = opt.best_estimator_
 
@@ -86,7 +86,7 @@ print("BEST")
 print(opt.best_params_)
 print("BEST")
 
-joblib.dump(best_model,'../data/pkls/xgb.pkl')
+joblib.dump(best_model,'../../data/pkls/xgb.pkl')
 end = time.time()
 
 length = round((( end - begin) / 60 ),2)
@@ -94,4 +94,3 @@ print(f'Took {length} Minutes')
 
 print("Successfully dumped model to xgb.pkl")
 
-os.system("shutdown /s /t 0")

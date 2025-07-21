@@ -6,7 +6,7 @@ import os
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 pd.set_option('future.no_silent_downcasting', True)
-data = joblib.load("../data/pkls/df_dict.pkl")
+data = joblib.load("../../data/pkls/df_dict.pkl")
 
 short_match_cutoff = 450
 
@@ -26,9 +26,9 @@ drop_medic = ['offclass_pct','hroi_real','hr_pct',
        'successful_uber_rate', 'forced_medic_death_rate', 'forced_drop_rate',
        'medic_deaths_capitalized', 'round_losing_medic_deaths',
         'medic_death_capitalization_rate',
-       'advantages_lost_per_round','round_losing_medic_death_rate'
-       'medic_exchanges_not_initiated_rate',
-        'medic_exchanges_initiated_rate',]
+       'advantages_lost_per_round','round_losing_medic_death_rate',
+       'exchanges_not_initiated_rate',
+        'exchanges_initiated_rate',]
 
 drop_combat = ['healpm']
 
@@ -362,6 +362,6 @@ model_ready_data_dict = {
      'ids': ids
 }
 
-joblib.dump(model_ready_data_dict,'../data/pkls/model_ready_data_dict.pkl')
+joblib.dump(model_ready_data_dict,'../../data/pkls/model_ready_data_dict.pkl')
 
 print("Successfully dumped Model Ready Data to pkl")
