@@ -11,14 +11,14 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 # region Setup
 # Read in Data 
-model_ready_data_dict = joblib.load('../data/pkls/model_ready_data_dict.pkl')
+model_ready_data_dict = joblib.load('../../data/pkls/model_ready_data_dict.pkl')
 X = model_ready_data_dict['X']
 y = model_ready_data_dict['y']
 
 cols = [col for col in X.columns if "cpcpm" in col]
 X.drop(cols,axis = 1,inplace = True)
 
-model = joblib.load('../data/pkls/xgb.pkl')
+model = joblib.load('../../data/pkls/xgb.pkl')
 
 # Set seeds
 seed = 123
@@ -87,4 +87,4 @@ PIM_df = (quantiled_df * 10).round(2)
 PIM_df['winner'] = y_eval.values
 print(PIM_df.groupby("winner").mean().round(2))
 
-PIM_df.to_csv("PIM")
+PIM_df.to_csv("PIM.csv")

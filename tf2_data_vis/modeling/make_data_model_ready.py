@@ -32,15 +32,15 @@ drop_medic = ['offclass_pct','hroi_real','hr_pct',
 
 drop_combat = ['healpm']
 
-unimportant_columns = ['soldier_dt_real_pct_2', 'medic_healpm', 'soldier_hrpm_1',
-       'medic_hrpm', 'scout_dt_real_pct_1', 'soldier_dt_pct_2',
-       'scout_hrpm_2', 'demoman_deaths_pct', 'soldier_deaths_pct_1',
-       'soldier_assists_pct_1', 'scout_dt_pct_2', 'medic_dt_pct',
-       'medic_kill_pct', 'demoman_dt_real_pct', 'soldier_hr_pct_2',
-       'scout_assists_pct_1', 'medic_avg_time_before_using',
-       'soldier_dt_realpm_2', 'soldier_hrpm_2', 'scout_medkits_hppm_1',
-       'medic_assists_pct', 'scout_hr_pct_1', 'demoman_hrpm',
-       'medic_dapm']
+# unimportant_columns = ['soldier_dt_real_pct_2', 'medic_healpm', 'soldier_hrpm_1',
+#        'medic_hrpm', 'scout_dt_real_pct_1', 'soldier_dt_pct_2',
+#        'scout_hrpm_2', 'demoman_deaths_pct', 'soldier_deaths_pct_1',
+#        'soldier_assists_pct_1', 'scout_dt_pct_2', 'medic_dt_pct',
+#        'medic_kill_pct', 'demoman_dt_real_pct', 'soldier_hr_pct_2',
+#        'scout_assists_pct_1', 'medic_avg_time_before_using',
+#        'soldier_dt_realpm_2', 'soldier_hrpm_2', 'scout_medkits_hppm_1',
+#        'medic_assists_pct', 'scout_hr_pct_1', 'demoman_hrpm',
+#        'medic_dapm']
 
 ### SETUP ###
 # region SETUP
@@ -312,7 +312,7 @@ medic_kda_cols = [col for col in X.columns if col.startswith("medic") and
                   "kdapd" in col]
 X.drop(medic_kda_cols,axis =1,inplace = True)
 
-X.drop(unimportant_columns,axis =1, inplace = True)
+#X.drop(unimportant_columns,axis =1, inplace = True)
 
 X.drop(medic_deaths_cols,axis = 1, inplace = True)
 

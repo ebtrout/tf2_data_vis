@@ -1,6 +1,6 @@
 from log_manipulation.log import log
 
-def manipulate_logs(log_data,print_interval = 50):
+def manipulate_logs(log_data,print_interval = 50,debug = False):
     # Set option to stop thousands of warnings 
     # pd.set_option('future.no_silent_downcasting', True)
 
@@ -28,7 +28,7 @@ def manipulate_logs(log_data,print_interval = 50):
         # Try to turn log data into clean log class object
         # If successful, add to rgl_data list
         try:
-            make_log = log(log = match,id = id)
+            make_log = log(log = match,id = id,debug = debug)
             clean_log_data[id] = make_log
         # Errors are added to the error_data list
         except Exception as e:

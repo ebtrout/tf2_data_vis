@@ -182,7 +182,7 @@ def player_rounds(log,players):
     
     names = players[['steamid','name']].copy()
 
-    player_rounds = player_rounds.merge(names, on = ['id','steamid'])
+    player_rounds = player_rounds.merge(names, on = ['steamid'])
 
     return player_rounds
 
@@ -214,11 +214,20 @@ def healspread(log,players):
     healspread['steamid'] = healspread['healed'].copy()
 
     players_info.drop('team',axis = 1,inplace = True)
+    
     players_info.columns = ['steamid', 'healed_name', 'primary_class']
 
     healspread = healspread.merge(players_info,on = ['steamid'])
 
     healspread.drop('steamid',axis = 1,inplace = True)
+    
+    # total_heal = healspread.groupby(['team'])[['value']].sum().reset_index()
+
+    # total_heal.rename(columns = {"value":"total_heal"},inplace = True)
+
+    # healspread = healspread.merge(total_heal,on =['team'])
+
+    # healspread['pct_heal'] = healspread['value'].div(healspread['total_heal']).astype(float).round(4)
 
     return healspread
 

@@ -7,8 +7,9 @@ import log_manipulation.advanced_med_stats as advanced_med_stats
 # A log class that contains all useful data from it 
 
 class log:
-    def __init__(self,log,id):
+    def __init__(self,log,id,debug = False):
         ## Init From Log
+        self.debug = debug
         self.log = log
         self.id = id
 
@@ -17,7 +18,6 @@ class log:
         self.players = self.create_players()
         self.teams = self.create_teams()
         self.rounds = self.create_rounds()
-        self.player_rounds = self.create_player_rounds()
         self.class_kda = self.create_class_kda()
         
         
@@ -42,6 +42,10 @@ class log:
 
         # Create Healspread REQUIRES add_player_cols()
         self.healspread = self.create_healspread()
+        
+        # Create player_rounds REQUIRES add_player_cols()
+
+        self.player_rounds = self.create_player_rounds()
 
         # Group healspread per class
         self.healspread_grouped = self.create_healspread_grouped()
@@ -65,61 +69,88 @@ class log:
 
     
     def create_info(self):
+        if self.debug == True:
+            print("info")
         info = cd.info(log = self.log,id = self.id)
         return info
     
     def create_players(self):
+        if self.debug == True:
+            print("players")
         players = cd.players(log = self.log)
         return players
     
     def create_medic_stats(self):
+        if self.debug == True:
+            print("create_medic_stats")
         players, medic_stats = cd.medic_stats(players = self.players)
         return players,medic_stats
     
     def create_class_stats(self):
+        if self.debug == True:
+            print("create_class_stats")
         players, class_stats = cd.class_stats(players = self.players)
         return players, class_stats
     
     def create_teams(self):
+        if self.debug == True:
+            print("create_teams")
         teams = cd.teams(log = self.log)
         return teams
     
     def create_rounds(self):
+        if self.debug == True:
+            print("create_rounds")
         rounds = cd.rounds(log = self.log)
         return rounds
     
     def create_round_events(self):
+        if self.debug == True:
+            print("create_round_events")
         rounds, round_events = cd.round_events(rounds = self.rounds)
         return rounds, round_events
 
     def create_player_rounds(self):
+        if self.debug == True:
+            print("create_player_rounds")
         player_rounds = cd.player_rounds(log = self.log,players = self.players)
         return player_rounds
     
     def create_healspread(self):
+        if self.debug == True:
+            print("create_healspread")
         healspread = cd.healspread(log = self.log,players = self.players)
         return healspread
     
     def create_healspread_grouped(self):
+        if self.debug == True:
+            print("create_healspread_grouped")
         healspread_grouped = cd.healspread_grouped(players = self.players,log = self.log)
         return healspread_grouped
     
     def create_class_kda(self):
+        if self.debug == True:
+            print("create_class_kda")
         class_kda = cd.class_kda(log = self.log)
         return class_kda
     
     def create_push_stats(self):
+        if self.debug == True:
+            print("create_push_stats")
         push_stats = cd.push_statistics(round_events = self.round_events,rounds_df = self.rounds,teams_df = self.teams)
         return push_stats
     
     def create_team_medic_stats(self):
+        if self.debug == True:
+            print("create_team_medic_stats")
         team_medic_stats = cd.team_medic_stats(players_df = self.players,medic_stats_df=self.medic_stats,teams_df=self.teams)
         return team_medic_stats
     
     def add_team_cols(self):
+        if self.debug == True:
+            print("add_team_cols")
         teams = self.teams
         players = self.players
-        round_events = self.round_events
 
         teams = team_cols.midfight_conversion(rounds = self.rounds,teams = teams)
 
@@ -132,6 +163,8 @@ class log:
         return teams
 
     def add_player_cols(self):
+        if self.debug == True:
+            print("add_player_cols")
         players = self.players
         class_stats = self.class_stats
         class_kda = self.class_kda
@@ -161,6 +194,8 @@ class log:
     
 
     def add_advanced_med_stats(self):
+        if self.debug == True:
+            print("add_advanced_med_stats")
         exchange_width = self.exchange_width
         success_width = self.success_width
         medic_death_width = self.medic_death_width

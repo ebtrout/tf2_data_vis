@@ -21,6 +21,7 @@ def get_log_data(
                  datasets_as_csv = True,
                  change_output_dir = None,
                  parent_dir = None,
+                 debug = False
                  ):
     
     # Initialize
@@ -55,7 +56,8 @@ def get_log_data(
     # If user wants to update the existing data
     
     clean_log_data,error_logs = manipulate_logs(log_data = log_data,
-                                                print_interval = print_interval)
+                                                print_interval = print_interval,
+                                                debug = debug)
 
     df_dict = bind_logs(clean_log_data=clean_log_data,
                         print_interval= print_interval)
@@ -68,6 +70,7 @@ def get_log_data(
         df_dict= df_dict,
         datasets_as_csv= datasets_as_csv,
         parent_dir = parent_dir)
+        
     elif update_log_info == False: 
         print("Keeping existing log_info_df.csv and log_data.pkl")
         save_data(
