@@ -221,13 +221,13 @@ def healspread(log,players):
 
     healspread.drop('steamid',axis = 1,inplace = True)
     
-    # total_heal = healspread.groupby(['team'])[['value']].sum().reset_index()
+    total_heal = healspread.groupby(['team'])[['value']].sum().reset_index()
 
-    # total_heal.rename(columns = {"value":"total_heal"},inplace = True)
+    total_heal.rename(columns = {"value":"total_heal"},inplace = True)
 
-    # healspread = healspread.merge(total_heal,on =['team'])
+    healspread = healspread.merge(total_heal,on =['team'])
 
-    # healspread['pct_heal'] = healspread['value'].div(healspread['total_heal']).astype(float).round(4)
+    healspread['pct_heal'] = healspread['value'].div(healspread['total_heal']).astype(float).round(4)
 
     return healspread
 

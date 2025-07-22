@@ -3,6 +3,8 @@ import numpy as np
 import joblib
 import random
 import os
+from sklearn.model_selection import train_test_split
+
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 pd.set_option('future.no_silent_downcasting', True)
@@ -247,8 +249,7 @@ players_wide = players_wide.merge(teams[['id','team','winner']],on =['id','team'
 # Make X and y
 # region MAKE X AND Y
 
-drop_cols = ['id','team','winner'] + [col for col in players_wide if 'steamid' in col]
-
+drop_cols = ['team','winner'] + [col for col in players_wide if 'steamid' in col]
 
 X = players_wide.drop(drop_cols,axis = 1).copy()
 
@@ -356,10 +357,21 @@ correct_map['map_name'] = map_list
 
 ids = players_wide['id']
 
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+X_test, X_eval, y_test, y_eval = train_test_split(X_test, y_test, test_size=0.3)
+
 model_ready_data_dict = {
      'X':X,
+     'X_train':X_train,
+     'X_test':X_test,
+     'X_eval':X_eval,
      'y':y,
+     'y_train':y_train,
+     'y_test':y_test,
+     'y_eval':y_eval,
      'ids': ids
+     
 }
 
 joblib.dump(model_ready_data_dict,'../../data/pkls/model_ready_data_dict.pkl')

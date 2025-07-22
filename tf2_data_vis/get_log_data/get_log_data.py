@@ -4,6 +4,10 @@ from .bind_logs import *
 from .save_data import * 
 from .manipulate_logs import * 
 import pandas as pd
+import os
+
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
 
 pd.set_option('future.no_silent_downcasting', True)
 def get_log_data(
@@ -45,8 +49,10 @@ def get_log_data(
                         start = request_start,
                         print_interval = print_interval)
         
-        log_data = request_log_data(log_info_df=log_info_df,
-                                print_interval=print_interval)
+        log_data = request_log_data(
+            log_info_df=log_info_df,
+            print_interval=print_interval
+            )
     else:
         print("Reading Log info and Log Data from existing files")
         log_info_df = pd.read_csv('../../data/log_info_df.csv') 
@@ -55,21 +61,28 @@ def get_log_data(
     
     # If user wants to update the existing data
     
-    clean_log_data,error_logs = manipulate_logs(log_data = log_data,
-                                                print_interval = print_interval,
-                                                debug = debug)
+    clean_log_data,error_logs = manipulate_logs(
+        log_data = log_data,
+        print_interval = print_interval,
+        debug = debug
+        )
 
-    df_dict = bind_logs(clean_log_data=clean_log_data,
-                        print_interval= print_interval)
+    df_dict = bind_logs(
+        clean_log_data=clean_log_data,
+        print_interval= print_interval
+        )
+    
     if update_log_info == True:
         print("Overwriting existing log_info_df.csv and log_data.pkl")
-        save_data(log_info_df = log_info_df, 
-            log_data = log_data,
+        save_data(
+        log_info_df = log_info_df, 
+        log_data = log_data,
         clean_log_data= clean_log_data,
         error_logs= error_logs,
         df_dict= df_dict,
         datasets_as_csv= datasets_as_csv,
-        parent_dir = parent_dir)
+        parent_dir = parent_dir
+        )
         
     elif update_log_info == False: 
         print("Keeping existing log_info_df.csv and log_data.pkl")
@@ -79,5 +92,6 @@ def get_log_data(
         df_dict= df_dict,
         datasets_as_csv= datasets_as_csv,
         change_output_dir= change_output_dir,
-        parent_dir = parent_dir)
+        parent_dir = parent_dir
+        )
 

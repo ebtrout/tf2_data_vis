@@ -15,18 +15,25 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 # region SETUP
 
 model_ready_data_dict = joblib.load('../../data/pkls/model_ready_data_dict.pkl')
+
+
+# Read in X sets
 X = model_ready_data_dict['X']
+X_train = model_ready_data_dict['X_train']
+X_test = model_ready_data_dict['X_test']
+X_eval = model_ready_data_dict['X_eval']
+
+# Read in y sets
 y = model_ready_data_dict['y']
+y_train = model_ready_data_dict['y_train']
+y_test = model_ready_data_dict['y_test']
+y_eval = model_ready_data_dict['y_eval']
 
+# Drop ids
+X_train.drop('id',axis = 1,inplace = True)
+X_test.drop('id',axis = 1,inplace = True)
+X_eval.drop('id',axis = 1,inplace = True)
 
-cols = [col for col in X.columns if "cpcpm" in col]
-X.drop(cols,axis = 1,inplace = True)
-
-
-# Split into test and eval
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-
-X_test, X_eval, y_test, y_eval = train_test_split(X_test, y_test, test_size=0.3)
 
 # endregion
 

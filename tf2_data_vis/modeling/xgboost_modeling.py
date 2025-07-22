@@ -17,21 +17,30 @@ begin = time.time()
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 model_ready_data_dict = joblib.load('../../data/pkls/model_ready_data_dict.pkl')
-X = model_ready_data_dict['X']
 
+# Read in X sets
+X = model_ready_data_dict['X']
+X_train = model_ready_data_dict['X_train']
+X_test = model_ready_data_dict['X_test']
+X_eval = model_ready_data_dict['X_eval']
+
+# Read in y sets
 y = model_ready_data_dict['y']
+y_train = model_ready_data_dict['y_train']
+y_test = model_ready_data_dict['y_test']
+y_eval = model_ready_data_dict['y_eval']
+
+# Drop
+X_train.drop('id',axis = 1,inplace = True)
+X_test.drop('id',axis = 1,inplace = True)
+X_eval.drop('id',axis = 1,inplace = True)
+
 seed = 123
 
 # Set seeds
 random.seed(seed)
 np.random.seed(seed)
 
-
-# Split into test and eval
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-
-
-X_test, X_eval, y_test, y_eval = train_test_split(X_test, y_test, test_size=0.3)
 
 # Set all the X datasets to have boolean columns
 for name in ['X_train', 'X_test', 'X_eval']:
