@@ -12,11 +12,23 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 # region Setup
 # Read in Data 
 model_ready_data_dict = joblib.load('../../data/pkls/model_ready_data_dict.pkl')
+# Read in X sets
 X = model_ready_data_dict['X']
-y = model_ready_data_dict['y']
+X_train = model_ready_data_dict['X_train']
+X_test = model_ready_data_dict['X_test']
+X_eval = model_ready_data_dict['X_eval']
 
-cols = [col for col in X.columns if "cpcpm" in col]
-X.drop(cols,axis = 1,inplace = True)
+# Read in y sets
+y = model_ready_data_dict['y']
+y_train = model_ready_data_dict['y_train']
+y_test = model_ready_data_dict['y_test']
+y_eval = model_ready_data_dict['y_eval']
+
+# Drop
+X.drop('id',axis = 1,inplace = True)
+X_train.drop('id',axis = 1,inplace = True)
+X_test.drop('id',axis = 1,inplace = True)
+X_eval.drop('id',axis = 1,inplace = True)
 
 model = joblib.load('../../data/pkls/xgb.pkl')
 
@@ -24,13 +36,6 @@ model = joblib.load('../../data/pkls/xgb.pkl')
 seed = 123
 random.seed(seed)
 np.random.seed(seed)
-
-
-# Split into test and eval
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-
-
-X_test, X_eval, y_test, y_eval = train_test_split(X_test, y_test, test_size=0.3)
 
 # endregiopn
 
@@ -42,13 +47,12 @@ num_list = ['1','2','1','2','','']
 
 sum_by_class_list = []
 
-for df in [X_test,X_eval]:
+for df in [X_test,X_eval,X]:
     shap_values = explainer.shap_values(df)
 
     shap_values = pd.DataFrame(shap_values)
     shap_values.columns = df.columns
 
-   # shap_values.drop([col for col in shap_values.columns if col in valid_map_names],axis = 1,inplace = True)
 
     class_names = []
 
@@ -58,7 +62,6 @@ for df in [X_test,X_eval]:
         for class_name,num in zip(class_name_list,num_list):
             if index.startswith(class_name) and num in index:
                 class_names.append(class_name + num)
- #   shap_values.drop([col for col in shap_values.columns if col in valid_map_names],axis = 1,inplace = True)
 
     shap_values_flip['test'] = class_names
 
@@ -83,8 +86,18 @@ quantiled_df = pd.DataFrame({
 })
 
 
-PIM_df = (quantiled_df * 10).round(2)
-PIM_df['winner'] = y_eval.values
-print(PIM_df.groupby("winner").mean().round(2))
+quantile_X = pd.DataFrame({
+    col: get_quantile_series(sum_by_class_list[0][col], sum_by_class_list[2][col])
+    for col in sum_by_class_list[1].columns
+})
 
-PIM_df.to_csv("PIM.csv")
+PIM_X_eval = (quantiled_df * 10).round(2)
+
+PIM_X = (quantile_X * 10).round(2)
+
+PIM_X_eval['winner'] = y_eval.values
+
+PIM_X['winner'] = y.values
+print(PIM_X.groupby("winner").mean().round(2))
+
+PIM_X.to_csv("../../data/PIM_X.csv",index = False)
