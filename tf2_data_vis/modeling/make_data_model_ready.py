@@ -162,7 +162,8 @@ def rename_classes_randomly(df):
 players_fixed = grouped.apply(rename_classes_randomly, include_groups=False).reset_index()
 
 # Drop the redundant index column
-players_fixed.drop('level_2', axis=1, inplace=True)
+if 'level_2' in players_fixed.columns:
+    players_fixed.drop('level_2', axis=1, inplace=True)
 
 # endregion
 

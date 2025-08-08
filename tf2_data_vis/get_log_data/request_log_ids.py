@@ -11,54 +11,38 @@ def request_log_ids(request_params: dict):
     n = request_params['n']
     cutoff_date = request_params['cutoff_date']
     request_start = request_params['request_start']
-    print_interval = request_params['print_interval']
     limit = request_params['limit']
     offset_change = request_params['offset_change']
     title_includes = request_params['title_includes']    
 
     # region use the request function
-    log_info_df = pd.DataFrame()
+    log_id_df = pd.DataFrame()
     # Loop for n rounds and request log info and add them to the df
-    count = 0 
     for i in range(0,n):
-        count = count + 1
-        if count == print_interval:
-            print(f'Requested {i} / {n} rounds of log info')
-            count = 0
+        print(f'Requested {i} / {n} rounds of log info')
+        
+        # Try to request the logs if error occurs, return None
         try:
-            result = request_rgl_logs(offset = request_start + (i * offset_change),
+            result = request_log_id(offset = request_start + (i * offset_change),
                                     limit = limit,
                                     title = title_includes,
                                     request_params = request_params)
         except Exception as e:
             print(f"Encountered an Issue:{e}")
-            
             result = None
-        if type(result) != type(None):
-            log_info_df = pd.concat([log_info_df,result])
+        
+        # Apply some basic checks
+        filtered_result = filter_result(result = result,request_params = request_params)
 
-    ### SUBSET DOWN TO REMOVE BAD LOGS
+        # Append it if the result was successful
+        if type(filtered_result) != type(None):
+            log_id_df = pd.concat([log_id_df,filtered_result])
 
-    # Incorrect plauer numbers
-    log_info_df = log_info_df[log_info_df['players'] > 11]
-    log_info_df = log_info_df[log_info_df['players'] < 14]
-
-    # :Limiit to past the specified date
-    log_info_df['date'] = pd.to_datetime(log_info_df['date'])
-    log_info_df = log_info_df[log_info_df['date'] > cutoff_date]
-
-    # Drop Dupes
-    log_info_df = log_info_df.drop_duplicates()
-
-    # Remove maps that arent cp maps
-    log_info_df = log_info_df[~log_info_df['map'].str.startswith("pl_")]
-    log_info_df = log_info_df[~log_info_df['map'].str.startswith("pass_")]
-    # endregion
-    return log_info_df
+    return log_id_df
 
 
 # region request function
-def request_rgl_logs(offset = 0,limit = 100,title = "",request_params = {}):
+def request_log_id(offset = 0,limit = 100,title = "",request_params = {}):
     sleep_between_requests = request_params['sleep_between_requests']
     time.sleep(sleep_between_requests)
     if title != "":
@@ -74,19 +58,24 @@ def request_rgl_logs(offset = 0,limit = 100,title = "",request_params = {}):
         print("Failed to retrieve data from the URL:", response.status_code)
         return None
 
-    log_info = json_normalize(result['logs'])
-    
-    if 'date' in log_info.columns:
-        log_info.sort_values(by='date', ascending=True)
-        log_info['date'] = pd.to_datetime(log_info['date'], unit='s')
-    else: 
-        return None
-    
-    if 'title' in log_info.columns:
-        # Only keep logs with RGL in title
-        log_info = log_info[(log_info['title'].str.lower().str.contains(title.lower()))]
-    else: 
-        return None
+    log_id = json_normalize(result['logs'])
 
-    return(log_info)
+    return(log_id)
 # endregion
+
+def filter_result(result,request_params = {}):
+    title_includes = request_params['title_includes']    
+    
+    if 'date' in result.columns:
+        result.sort_values(by='date', ascending=True)
+        result['date'] = pd.to_datetime(result['date'], unit='s')
+    else: 
+        return None
+    
+    if 'title' in result.columns:
+        # Only keep logs with RGL in title
+        result = result[(result['title'].str.lower().str.contains(title_includes.lower()))]
+    else: 
+        return None
+    
+    return result

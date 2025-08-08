@@ -1,4 +1,4 @@
-from log_manipulation.log import log
+from ..log_manipulation.log import log
 
 def manipulate_logs(log_data,debug = False):
     # Set option to stop thousands of warnings 

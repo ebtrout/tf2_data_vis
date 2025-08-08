@@ -1,7 +1,7 @@
-import log_manipulation.create_datasets as cd
-import log_manipulation.player_cols as player_cols
-import log_manipulation.team_cols as team_cols
-import log_manipulation.advanced_med_stats as advanced_med_stats
+from . import create_datasets as cd
+from . import player_cols as player_cols
+from . import team_cols as team_cols
+from . import advanced_med_stats as advanced_med_stats
 
 # Organized class that takes in a logs.tf log and turns it into
 # A log class that contains all useful data from it 

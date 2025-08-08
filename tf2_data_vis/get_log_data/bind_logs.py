@@ -1,5 +1,5 @@
 import pandas as pd
-from log_manipulation.log import log
+from ..log_manipulation.log import log
 
 def bind_logs(clean_log_data):
     pd.set_option('future.no_silent_downcasting', True)

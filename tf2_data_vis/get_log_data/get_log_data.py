@@ -6,9 +6,6 @@ from .manipulate_logs import *
 import pandas as pd
 import os
 
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
-
-
 pd.set_option('future.no_silent_downcasting', True)
 def get_log_data(
                  request_logs = False,
@@ -16,7 +13,6 @@ def get_log_data(
                      "n": 250,
                      "cutoff_date": '2016-07-07',
                      "request_start" : 0,
-                     "print_interval" : 1,
                      "limit": 1000,
                      "offset_change": 950,
                      "title_includes": "RGL",
