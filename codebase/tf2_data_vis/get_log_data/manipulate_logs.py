@@ -1,13 +1,11 @@
 from ..log_manipulation.log import log
+from .batch import save_batch
 
-def manipulate_logs(log_data,debug = False):
-    # Set option to stop thousands of warnings 
-    # pd.set_option('future.no_silent_downcasting', True)
-
-    # # Grab the class object from the log_manipulation folder
-    # sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'log_manipulation')))
-
-    # from log import log # type: ignore
+def manipulate_logs(log_data,
+                    debug = False,
+                    batch_size = 100,
+                    output_dir = None,
+                    parent_dir = None):
 
     # Import RGL Logs
 
@@ -15,13 +13,12 @@ def manipulate_logs(log_data,debug = False):
     error_logs = {}
 
     ids = log_data.keys()
-    count = 0
+    batch_counter = 1
     for i,id in enumerate(ids):
-        count += 1
         match = log_data[id]
 
         # Print The Progress
-        print(f'Manipulated {i} / {len(log_data)} Log Data')
+        print(f'Manipulated {i+1} / {len(log_data)} Log Data')
 
         # Try to turn log data into clean log class object
         # If successful, add to rgl_data list
@@ -32,7 +29,25 @@ def manipulate_logs(log_data,debug = False):
         except Exception as e:
             print(f"Skipping index {i} due to error: {e}")
             error_logs[id] = match
-            continue        
+            continue
 
-    return clean_log_data,error_logs
+        # Save batches
+        if i % batch_size == 0 or i == len(log_data) or i == len(log_data) -1 or i == len(log_data) + 1:
+            save_batch(batch = batch_counter,
+                       batch_type = "clean_log_data",
+                       parent_dir = parent_dir,
+                       output_dir=output_dir,
+                       object = clean_log_data
+                       )
+            save_batch(batch = batch_counter,
+                       batch_type = "error_logs",
+                       parent_dir = parent_dir,
+                       output_dir=output_dir,
+                       object = error_logs
+                       )
+            batch_counter += 1
+            clean_log_data = {}     
+            error_logs = {}
+
+    return
 

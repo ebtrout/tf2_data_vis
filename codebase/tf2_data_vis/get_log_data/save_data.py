@@ -11,8 +11,6 @@ def save_data(log_ids = None,
               datasets_as_csv = True,
               output_dir = None,
               parent_dir = None):
-    print(output_dir)
-    
     if type(output_dir) == type(None) or output_dir == "":
         output_dir = "data"
     

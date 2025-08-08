@@ -6,6 +6,7 @@ from collections import Counter
 
 
 def filter_log_ids(log_ids,map_cutoff = 100,request_params = {}):
+    
     cutoff_date = request_params['cutoff_date']
     log_ids = log_ids.drop_duplicates()
     log_ids = log_ids.dropna()
@@ -15,7 +16,7 @@ def filter_log_ids(log_ids,map_cutoff = 100,request_params = {}):
     remove_pl_pass_df = remove_pl_pass(correct_titles= correct_titles)
 
     map_names = get_map_names(remove_pl_pass_df= remove_pl_pass_df,
-                               map_cutoff= 100)
+                               map_cutoff= map_cutoff)
                                
     correct_date = date_beyond(remove_pl_pass_df = remove_pl_pass_df, cutoff_date = cutoff_date)
 

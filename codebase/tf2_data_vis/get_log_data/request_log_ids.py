@@ -1,7 +1,7 @@
 import pandas as pd
 import requests
 from pandas import json_normalize
-from .save_batch import save_batch
+from .batch import save_batch
 import numpy as np
 import time
 
@@ -10,7 +10,7 @@ def request_log_ids(request_params: dict,
                     output_dir = None,
                     parent_dir = None):
 
-    #### Grab RGL Logs from Logs.tf API ####
+    #### Grab Logs from Logs.tf API ####
 
     n = request_params['n']
     request_start = request_params['request_start']
@@ -22,7 +22,7 @@ def request_log_ids(request_params: dict,
     log_id_df = pd.DataFrame()
     # Loop for n rounds and request log info and add them to the df
     batch_counter = 1
-    for i in range(0,n):
+    for i in range(1,n+1):
         print(f'Requested {i} / {n} rounds of log info')
         
         
@@ -43,7 +43,7 @@ def request_log_ids(request_params: dict,
         if type(filtered_result) != type(None):
             log_id_df = pd.concat([log_id_df,filtered_result])
         
-        if i % batch_size == 0 or i == n - 1:
+        if i % batch_size == 0 or i == n:
             save_batch(batch = batch_counter,
                        batch_type = "log_id",
                        parent_dir = parent_dir,
@@ -51,10 +51,8 @@ def request_log_ids(request_params: dict,
                        object = log_id_df
                        )
             batch_counter += 1
-            log_id_df = pd.DataFrame()
-            
-    return log_id_df
-
+            log_id_df = pd.DataFrame()    
+    return
 
 # region request function
 def request_log_id(offset = 0,limit = 100,title = "",request_params = {}):

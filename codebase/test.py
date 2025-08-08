@@ -4,23 +4,24 @@ import os
 
 parent_dir = os.path.dirname(os.path.abspath(__file__))
 
-get_log_data(   batch_size = 1,
-                request_logs = True,
-                request_params = {
-                    "n": 4,
-                    "cutoff_date": '2016-07-07',
-                    "request_start" : 0,
-                    "print_interval" : 1,
-                    "limit": 10,
-                    "offset_change": 1000,
-                    "title_includes": "",
-                    "sleep_between_requests": 2
-                },
-                update_log_ids = True,
-                datasets_as_csv = False,
-                parent_dir = parent_dir,
-                output_dir = "testing",
-                manipulate_log_data = False,
-                debug = False,
-                request_only_ids= True,
-            )
+get_log_data(
+                    batch_size = 100,
+                    request_ids = False,
+                    request_data = True,
+                    filter_logs = True,
+                    update_log_ids = True,
+                    output_dir = "new_data",
+                    manipulate_log_data = True,
+                    parent_dir = parent_dir,
+                    debug = False,
+                    request_params = {
+                        "n": 1,
+                        "cutoff_date": '2016-07-07',
+                        "request_start" : 0,
+                        "limit": 25,
+                        "offset_change": 10,
+                        "title_includes": "",
+                        "sleep_between_requests": 1
+                    }
+                
+                )
