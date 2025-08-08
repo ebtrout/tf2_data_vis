@@ -1,0 +1,7 @@
+[project]
+name = "tf2_data_vis"
+version = "1.0"
+
+[build-system]
+requires = ["setuptools>=61.0"] 
+build-backend = "setuptools.build_meta"

@@ -1,15 +1,18 @@
 import pandas as pd
 import requests
 from pandas import json_normalize
+from .save_batch import save_batch
 import numpy as np
 import time
 
-def request_log_ids(request_params: dict):
+def request_log_ids(request_params: dict,
+                    batch_size = 100,
+                    output_dir = None,
+                    parent_dir = None):
 
     #### Grab RGL Logs from Logs.tf API ####
 
     n = request_params['n']
-    cutoff_date = request_params['cutoff_date']
     request_start = request_params['request_start']
     limit = request_params['limit']
     offset_change = request_params['offset_change']
@@ -18,8 +21,10 @@ def request_log_ids(request_params: dict):
     # region use the request function
     log_id_df = pd.DataFrame()
     # Loop for n rounds and request log info and add them to the df
+    batch_counter = 1
     for i in range(0,n):
         print(f'Requested {i} / {n} rounds of log info')
+        
         
         # Try to request the logs if error occurs, return None
         try:
@@ -37,7 +42,17 @@ def request_log_ids(request_params: dict):
         # Append it if the result was successful
         if type(filtered_result) != type(None):
             log_id_df = pd.concat([log_id_df,filtered_result])
-
+        
+        if i % batch_size == 0 or i == n - 1:
+            save_batch(batch = batch_counter,
+                       batch_type = "log_id",
+                       parent_dir = parent_dir,
+                       output_dir=output_dir,
+                       object = log_id_df
+                       )
+            batch_counter += 1
+            log_id_df = pd.DataFrame()
+            
     return log_id_df
 
 

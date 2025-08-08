@@ -8,23 +8,24 @@ import os
 
 pd.set_option('future.no_silent_downcasting', True)
 def get_log_data(
-                 request_logs = False,
-                 request_params = {
-                     "n": 250,
-                     "cutoff_date": '2016-07-07',
-                     "request_start" : 0,
-                     "limit": 1000,
-                     "offset_change": 950,
-                     "title_includes": "RGL",
-                     "sleep_between_requests": 1
-                 },
-                 update_log_ids = True,
-                 datasets_as_csv = True,
-                 output_dir = "data",
-                 manipulate_log_data = True,
-                 parent_dir = None,
-                 debug = False,
-                 request_only_ids = False
+                batch_size = 100,
+                request_logs = False,
+                request_params = {
+                    "n": 250,
+                    "cutoff_date": '2016-07-07',
+                    "request_start" : 0,
+                    "limit": 1000,
+                    "offset_change": 950,
+                    "title_includes": "RGL",
+                    "sleep_between_requests": 1
+                },
+                update_log_ids = True,
+                datasets_as_csv = True,
+                output_dir = "data",
+                manipulate_log_data = True,
+                parent_dir = None,
+                debug = False,
+                request_only_ids = False
                  ):
     
     # Initialize
@@ -36,7 +37,12 @@ def get_log_data(
     # Otherwise read from file
     if request_logs == True:
         print("Requesting logs from logs.tf API")
-        log_ids = request_log_ids(request_params= request_params)
+        log_ids = request_log_ids(
+            request_params= request_params,
+            batch_size = batch_size,
+            parent_dir = parent_dir,
+            output_dir =output_dir
+            )
         
         if request_only_ids == False:
             log_data = request_log_data(

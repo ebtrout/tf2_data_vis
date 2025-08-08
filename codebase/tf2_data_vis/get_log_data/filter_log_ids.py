@@ -5,8 +5,8 @@ import pandas as pd
 from collections import Counter
 
 
-def filter_log_ids(log_ids,map_cutoff = 100):
-
+def filter_log_ids(log_ids,map_cutoff = 100,request_params = {}):
+    cutoff_date = request_params['cutoff_date']
     log_ids = log_ids.drop_duplicates()
     log_ids = log_ids.dropna()
 
@@ -16,8 +16,10 @@ def filter_log_ids(log_ids,map_cutoff = 100):
 
     map_names = get_map_names(remove_pl_pass_df= remove_pl_pass_df,
                                map_cutoff= 100)
+                               
+    correct_date = date_beyond(remove_pl_pass_df = remove_pl_pass_df, cutoff_date = cutoff_date)
 
-    filtered_log_ids = map_includes(remove_pl_pass_df=remove_pl_pass_df,
+    filtered_log_ids = map_includes(correct_date=correct_date,
                                 map_names = map_names)
     
     return filtered_log_ids
@@ -79,7 +81,11 @@ def map_count(s,map_names):
             count +=1
     return count
 
-def map_includes(remove_pl_pass_df, map_names):
-    remove_pl_pass_df['map_count'] = remove_pl_pass_df['map'].apply(map_count,map_names = map_names)
-    correct_maps = remove_pl_pass_df[remove_pl_pass_df['map_count'] == 1]
+def map_includes(correct_date, map_names):
+    correct_date['map_count'] = correct_date['map'].apply(map_count,map_names = map_names)
+    correct_maps = correct_date[correct_date['map_count'] == 1]
     return correct_maps
+
+def date_beyond(remove_pl_pass_df,cutoff_date):
+    correct_date = remove_pl_pass_df[remove_pl_pass_df['date'] > cutoff_date]
+    return correct_date
