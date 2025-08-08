@@ -1,6 +1,6 @@
 from log_manipulation.log import log
 
-def manipulate_logs(log_data,print_interval = 50,debug = False):
+def manipulate_logs(log_data,debug = False):
     # Set option to stop thousands of warnings 
     # pd.set_option('future.no_silent_downcasting', True)
 
@@ -21,9 +21,7 @@ def manipulate_logs(log_data,print_interval = 50,debug = False):
         match = log_data[id]
 
         # Print The Progress
-        if count == print_interval:
-            count = 0
-            print(f'Manipulated {i} / {len(log_data)} Log Data')
+        print(f'Manipulated {i} / {len(log_data)} Log Data')
 
         # Try to turn log data into clean log class object
         # If successful, add to rgl_data list

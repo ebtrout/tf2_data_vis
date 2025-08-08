@@ -1,5 +1,5 @@
 from .request_log_data import * 
-from .request_log_info import * 
+from .request_log_ids import * 
 from .bind_logs import *
 from .save_data import * 
 from .manipulate_logs import * 
@@ -19,79 +19,83 @@ def get_log_data(
                      "print_interval" : 1,
                      "limit": 1000,
                      "offset_change": 950,
-                     "title_includes": "RGL"
+                     "title_includes": "RGL",
+                     "sleep_between_requests": 1
                  },
-                 update_log_info = True,
+                 update_log_ids = True,
                  datasets_as_csv = True,
-                 change_output_dir = None,
+                 output_dir = "data",
+                 manipulate_log_data = True,
                  parent_dir = None,
-                 debug = False
+                 debug = False,
+                 request_only_ids = False
                  ):
     
     # Initialize
-    n = request_params['n']
-    cutoff_date = request_params['cutoff_date']
-    request_start = request_params['request_start']
-    print_interval = request_params['print_interval']
-    limit = request_params['limit']
-    offset_change = request_params['offset_change']
-    title = request_params['title_includes']
-    
+    if request_params['limit'] > 10000:
+        request_params['limit'] = 10000
+        print('limit too high: setting to 10,000')
+
     # If user wants to request logs from API
     # Otherwise read from file
     if request_logs == True:
         print("Requesting logs from logs.tf API")
-        log_info_df = request_log_info(limit = limit, 
-                        title = title,
-                        offset_change = offset_change, 
-                        n = n,
-                        date = cutoff_date,
-                        start = request_start,
-                        print_interval = print_interval)
+        log_ids = request_log_ids(request_params= request_params)
         
-        log_data = request_log_data(
-            log_info_df=log_info_df,
-            print_interval=print_interval
-            )
+        if request_only_ids == False:
+            log_data = request_log_data(
+                log_ids =log_ids,
+                request_params = request_params
+                )
     else:
         print("Reading Log info and Log Data from existing files")
-        log_info_df = pd.read_csv('../../data/log_info_df.csv') 
+        log_ids = pd.read_csv('../../data/log_ids.csv') 
 
         log_data = joblib.load('../../data/pkls/log_data.pkl')
     
-    # If user wants to update the existing data
-    
-    clean_log_data,error_logs = manipulate_logs(
-        log_data = log_data,
-        print_interval = print_interval,
-        debug = debug
-        )
+    # If user wants to manipulate the log data and not just grab log ids
+    if manipulate_log_data == True and request_only_ids == False:    
+        clean_log_data,error_logs = manipulate_logs(
+            log_data = log_data,
+            debug = debug
+            )
 
-    df_dict = bind_logs(
-        clean_log_data=clean_log_data,
-        print_interval= print_interval
-        )
-    
-    if update_log_info == True:
-        print("Overwriting existing log_info_df.csv and log_data.pkl")
-        save_data(
-        log_info_df = log_info_df, 
-        log_data = log_data,
-        clean_log_data= clean_log_data,
-        error_logs= error_logs,
-        df_dict= df_dict,
-        datasets_as_csv= datasets_as_csv,
-        parent_dir = parent_dir
-        )
+        # Bind them all together
+        df_dict = bind_logs(
+            clean_log_data=clean_log_data,
+            )
         
-    elif update_log_info == False: 
-        print("Keeping existing log_info_df.csv and log_data.pkl")
+        # If user wants to replace existing log_ids and log_data
+        if update_log_ids == True:
+            print("Overwriting existing log_ids.csv and log_data.pkl")
+            print(output_dir)
+            save_data(
+            log_ids = log_ids, 
+            log_data = log_data,
+            clean_log_data= clean_log_data,
+            error_logs= error_logs,
+            output_dir = output_dir,
+            df_dict= df_dict,
+            datasets_as_csv= datasets_as_csv,
+            parent_dir = parent_dir
+            )
+            
+        elif update_log_ids == False: 
+            print("Keeping existing log_ids.csv and log_data.pkl")
+            print(output_dir)
+            save_data(
+            clean_log_data= clean_log_data,
+            error_logs= error_logs,
+            df_dict= df_dict,
+            datasets_as_csv= datasets_as_csv,
+            output_dir= output_dir,
+            parent_dir = parent_dir
+            )
+    elif manipulate_log_data == False and request_only_ids == True:
         save_data(
-        clean_log_data= clean_log_data,
-        error_logs= error_logs,
-        df_dict= df_dict,
-        datasets_as_csv= datasets_as_csv,
-        change_output_dir= change_output_dir,
-        parent_dir = parent_dir
+            parent_dir = parent_dir,
+            output_dir = output_dir,
+            log_ids = log_ids
         )
-
+    elif manipulate_log_data == True and request_only_ids == False:
+        print("invalid combination of manipulate_log_data and request_only_ids")

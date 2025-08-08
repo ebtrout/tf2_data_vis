@@ -1,13 +1,10 @@
-import sys
-import os
 import pandas as pd
 from log_manipulation.log import log
 
-def bind_logs(clean_log_data,print_interval = 50):
+def bind_logs(clean_log_data):
     pd.set_option('future.no_silent_downcasting', True)
 
-    # Grab the class object from the log_manipulation folder
-
+    # Setup a dict of all dfs needed
     df_dict = {
             'info':pd.DataFrame(),
             'players': pd.DataFrame(),
@@ -24,13 +21,14 @@ def bind_logs(clean_log_data,print_interval = 50):
         }
 
     count = 0
+
+    # Loop through and append each log's data to the df dict 
     for i,id in enumerate(clean_log_data.keys()):
         log_data =clean_log_data[id]
         count += 1
         id = log_data.id
-        if count == print_interval:
-            count = 0
-            print(f"Bound {i}/{len(clean_log_data)} logs together")
+        # Print Progress
+        print(f"Bound {i}/{len(clean_log_data)} logs together")
         log_df_dict = {
             "info" : log_data.info,
             "players" : log_data.players,
