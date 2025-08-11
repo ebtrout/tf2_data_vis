@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 pd.set_option('future.no_silent_downcasting', True)
-data = joblib.load("../../data/pkls/df_dict.pkl")
+data = joblib.load("../../../new_data/pkls/df_dict.pkl")
 
 short_match_cutoff = 450
 
@@ -334,26 +334,6 @@ X.drop(class_kda_drop,axis =1, inplace = True)
 X = X.fillna(0)
 # endregion
 
-# Merge Map NOT USED BC NOT IMPORTANT
-# region MAP MERGE!!!
-# Map name
-map_list = []
-
-for map in correct_map['map'].str.lower().values:
-    for map_name in valid_map_names:
-        if map_name in map:
-            map_list.append(map_name)
-
-correct_map['map_name'] = map_list
-
-# Bind that sucker in
-# team_maps = players_wide.merge(correct_map[['id','map_name']],on = 'id')['map_name']
-# map_dummies = pd.get_dummies(team_maps)
-# X = pd.concat([X,map_dummies],axis =1 )
-# X = X.astype({col: bool for col in X.select_dtypes(include='object').columns})
-
-# endregion
-
 # Output to pkl
 
 
@@ -382,6 +362,6 @@ model_ready_data_dict = {
      
 }
 
-joblib.dump(model_ready_data_dict,'../../data/pkls/model_ready_data_dict.pkl')
+joblib.dump(model_ready_data_dict,'../../../new_data/pkls/model_ready_data_dict.pkl')
 
 print("Successfully dumped Model Ready Data to pkl")

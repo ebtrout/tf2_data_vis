@@ -14,7 +14,9 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 # region SETUP
 
-model_ready_data_dict = joblib.load('../../data/pkls/model_ready_data_dict.pkl')
+model_ready_data_dict = joblib.load('../../../new_data/pkls/model_ready_data_dict.pkl')
+model = joblib.load("../../../new_data/pkls/xgb.pkl")
+
 
 
 # Read in X sets
@@ -38,7 +40,6 @@ X_eval.drop('id',axis = 1,inplace = True)
 # endregion
 
 # region Make Model Summary
-model = joblib.load("../../data/pkls/xgb.pkl")
 print(model.get_params())
 
 importance = pd.Series(model.feature_importances_,name = "importance").round(4)

@@ -11,7 +11,9 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 # region Setup
 # Read in Data 
-model_ready_data_dict = joblib.load('../../data/pkls/model_ready_data_dict.pkl')
+model_ready_data_dict = joblib.load('../../../new_data/pkls/model_ready_data_dict.pkl')
+model = joblib.load('../../../new_data/pkls/xgb.pkl')
+
 # Read in X sets
 X = model_ready_data_dict['X']
 X_train = model_ready_data_dict['X_train']
@@ -30,7 +32,6 @@ X_train.drop('id',axis = 1,inplace = True)
 X_test.drop('id',axis = 1,inplace = True)
 X_eval.drop('id',axis = 1,inplace = True)
 
-model = joblib.load('../../data/pkls/xgb.pkl')
 
 # Set seeds
 seed = 123
@@ -98,6 +99,7 @@ PIM_X = (quantile_X * 10).round(2)
 PIM_X_eval['winner'] = y_eval.values
 
 PIM_X['winner'] = y.values
+PIM_X['id'] = model_ready_data_dict['ids'].values
 print(PIM_X.groupby("winner").mean().round(2))
 
-PIM_X.to_csv("../../data/PIM_X.csv",index = False)
+PIM_X.to_csv("../../../new_data/PIM_X.csv",index = False)

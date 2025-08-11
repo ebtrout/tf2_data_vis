@@ -16,7 +16,7 @@ from skopt.space import Real, Integer
 begin = time.time()
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-model_ready_data_dict = joblib.load('../../data/pkls/model_ready_data_dict.pkl')
+model_ready_data_dict = joblib.load('../../../new_data/pkls/model_ready_data_dict.pkl')
 
 # Read in X sets
 X = model_ready_data_dict['X']
@@ -58,11 +58,11 @@ model = XGBClassifier(eval_metric='logloss', random_state=seed,
 search_space = {
     'max_depth': Integer(3, 8),
     'learning_rate': Real(0.01, 0.05, prior='log-uniform'),
-    'n_estimators': Integer(1000, 5000),
+    'n_estimators': Integer(2000, 5000),
     'gamma': Real(0, 5),
     'reg_alpha': Real(0.1,5, prior='log-uniform'),
     'reg_lambda': Real(0.1, 5, prior='log-uniform'),
-    'min_child_weight': Integer(25,40),
+    'min_child_weight': Integer(10,100),
 }
 
 # Define cross-validation strategy
@@ -75,7 +75,7 @@ n_jobs = int(total_cores * 0.70)
 opt = BayesSearchCV(
     estimator=model,
     search_spaces=search_space,
-    n_iter=100,                      # You can reduce this if it’s overheating
+    n_iter=50,                      # You can reduce this if it’s overheating
     scoring='accuracy',
     cv=cv,
     n_jobs=7,
@@ -87,7 +87,7 @@ opt = BayesSearchCV(
 opt.fit(X_train, y_train,)
 
 
-joblib.dump(opt,'../../data/pkls/opt.pkl')
+joblib.dump(opt,'../../../new_data/pkls/opt.pkl')
 
 best_model = opt.best_estimator_
 
@@ -95,7 +95,7 @@ print("BEST")
 print(opt.best_params_)
 print("BEST")
 
-joblib.dump(best_model,'../../data/pkls/xgb.pkl')
+joblib.dump(best_model,'../../../new_data/pkls/xgb.pkl')
 end = time.time()
 
 length = round((( end - begin) / 60 ),2)
