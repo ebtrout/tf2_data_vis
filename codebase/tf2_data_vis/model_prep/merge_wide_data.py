@@ -9,4 +9,3 @@ def merge_wide_data(medic_wide,combat_wide,teams):
     players_wide = players_wide.merge(teams[['id','team','winner']],on =['id','team'])
     
     return players_wide
-    # endregion

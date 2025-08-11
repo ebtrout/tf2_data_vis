@@ -1,10 +1,7 @@
-### SETUP ###
-import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split
 import joblib
 from xgboost import XGBClassifier
-from sklearn.model_selection import GridSearchCV, StratifiedKFold
+from sklearn.model_selection import  StratifiedKFold
 import random
 import os
 import multiprocessing
@@ -12,94 +9,97 @@ import time
 from skopt import BayesSearchCV
 from skopt.space import Real, Integer
 
+def xgboost_modeling(parent_dir,output_dir,skip_model = False):
+    if skip_model == True:
+        print("Skipping modeling and reading from a file assuming modeling has already been done")
+        return
+    seed = 123
 
-begin = time.time()
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    # Set seeds
+    random.seed(seed)
+    np.random.seed(seed)
+    
+    path = os.path.join(parent_dir,'..',output_dir,'pkls','model_ready_data_dict.pkl')
+    model_ready_data_dict = joblib.load(path)
+    # Read in X sets
+    X = model_ready_data_dict['X']
+    X_train = model_ready_data_dict['X_train']
+    X_test = model_ready_data_dict['X_test']
+    X_eval = model_ready_data_dict['X_eval']
 
-model_ready_data_dict = joblib.load('../../../new_data/pkls/model_ready_data_dict.pkl')
+    # Read in y sets
+    y = model_ready_data_dict['y']
+    y_train = model_ready_data_dict['y_train']
+    y_test = model_ready_data_dict['y_test']
+    y_eval = model_ready_data_dict['y_eval']
 
-# Read in X sets
-X = model_ready_data_dict['X']
-X_train = model_ready_data_dict['X_train']
-X_test = model_ready_data_dict['X_test']
-X_eval = model_ready_data_dict['X_eval']
-
-# Read in y sets
-y = model_ready_data_dict['y']
-y_train = model_ready_data_dict['y_train']
-y_test = model_ready_data_dict['y_test']
-y_eval = model_ready_data_dict['y_eval']
-
-# Drop
-X_train.drop('id',axis = 1,inplace = True)
-X_test.drop('id',axis = 1,inplace = True)
-X_eval.drop('id',axis = 1,inplace = True)
-
-seed = 123
-
-# Set seeds
-random.seed(seed)
-np.random.seed(seed)
-
-
-# Set all the X datasets to have boolean columns
-for name in ['X_train', 'X_test', 'X_eval']:
-    df = eval(name)
-    df = df.astype({col: bool for col in X.select_dtypes(include='object').columns})
-    locals()[name] = df
+    # Drop
+    X_train.drop('id',axis = 1,inplace = True)
+    X_test.drop('id',axis = 1,inplace = True)
+    X_eval.drop('id',axis = 1,inplace = True)
 
 
 
-# Define the base model
-model = XGBClassifier(eval_metric='logloss', random_state=seed,
-                      colsample_bytree = .25,subsample =.8)
+    # Set all the X datasets to have boolean columns
+    for name in ['X_train', 'X_test', 'X_eval']:
+        df = eval(name)
+        df = df.astype({col: bool for col in X.select_dtypes(include='object').columns})
+        locals()[name] = df
 
-#
-search_space = {
-    'max_depth': Integer(3, 8),
-    'learning_rate': Real(0.01, 0.05, prior='log-uniform'),
-    'n_estimators': Integer(2000, 5000),
-    'gamma': Real(0, 5),
-    'reg_alpha': Real(0.1,5, prior='log-uniform'),
-    'reg_lambda': Real(0.1, 5, prior='log-uniform'),
-    'min_child_weight': Integer(10,100),
-}
+    # Define the base model
+    model = XGBClassifier(eval_metric='logloss', random_state=seed,
+                        colsample_bytree = .25,subsample =.8)
 
-# Define cross-validation strategy
-cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=seed)
+    #
+    search_space = {
+        'max_depth': Integer(3, 8),
+        'learning_rate': Real(0.01, 0.05, prior='log-uniform'),
+        'n_estimators': Integer(2000, 5000),
+        'gamma': Real(0, 5),
+        'reg_alpha': Real(0.1,5, prior='log-uniform'),
+        'reg_lambda': Real(0.1, 5, prior='log-uniform'),
+        'min_child_weight': Integer(10,100),
+    }
 
-# Limit to 70% CPU
-total_cores = multiprocessing.cpu_count()
-n_jobs = int(total_cores * 0.70)
+    # Define cross-validation strategy
+    cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=seed)
 
-opt = BayesSearchCV(
-    estimator=model,
-    search_spaces=search_space,
-    n_iter=50,                      # You can reduce this if it’s overheating
-    scoring='accuracy',
-    cv=cv,
-    n_jobs=7,
-    verbose=2,
-    random_state=seed
-)
+    # Limit to 70% CPU
+    total_cores = multiprocessing.cpu_count()
+    n_jobs = int(total_cores * 0.70)
+
+    full_fit = BayesSearchCV(
+        estimator=model,
+        search_spaces=search_space,
+        n_iter=50,                      # You can reduce this if it’s overheating
+        scoring='accuracy',
+        cv=cv,
+        n_jobs=7,
+        verbose=2,
+        random_state=seed
+    )
+
+    begin = time.time()
+
+    full_fit.fit(X_train, y_train,)
 
 
-opt.fit(X_train, y_train,)
+    path = os.path.join(parent_dir,'..',output_dir,'pkls','full_fit.pkl')
+    joblib.dump(full_fit,path)
 
+    best_model = full_fit.best_estimator_
 
-joblib.dump(opt,'../../../new_data/pkls/opt.pkl')
+    print("BEST")
+    print(full_fit.best_params_)
+    print("BEST")
 
-best_model = opt.best_estimator_
+    path= os.path.join(parent_dir,'..',output_dir,'pkls','xgb.pkl')
+    joblib.dump(best_model,path)
 
-print("BEST")
-print(opt.best_params_)
-print("BEST")
+    end = time.time()
 
-joblib.dump(best_model,'../../../new_data/pkls/xgb.pkl')
-end = time.time()
+    length = round((( end - begin) / 60 ),2)
+    print(f'Took {length} Minutes')
 
-length = round((( end - begin) / 60 ),2)
-print(f'Took {length} Minutes')
-
-print("Successfully dumped model to xgb.pkl")
+    print("Successfully dumped model to xgb.pkl")
 

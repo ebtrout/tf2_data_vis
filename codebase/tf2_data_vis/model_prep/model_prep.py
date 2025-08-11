@@ -12,13 +12,12 @@ import pandas as pd
 import os
 import joblib
 def model_prep(parent_dir,output_dir):
-    players,info,team_medic_stats,teams = read_data(parent_dir,output_dir)
-
-
-    players = pd.read_csv('C:/Users/emant/OneDrive/Backups/tf2_data_repo/tf2_data_vis/data/players.csv')
-    info = pd.read_csv('C:/Users/emant/OneDrive/Backups/tf2_data_repo/tf2_data_vis/data/info.csv')
-    team_medic_stats = pd.read_csv('C:/Users/emant/OneDrive/Backups/tf2_data_repo/tf2_data_vis/data/team_medic_stats.csv')
-    teams = pd.read_csv('C:/Users/emant/OneDrive/Backups/tf2_data_repo/tf2_data_vis/data/teams.csv')
+    # Read data
+    data_dict = read_data(parent_dir,output_dir)
+    players = data_dict['players']
+    info = data_dict['info']
+    team_medic_stats = data_dict['team_medic_stats']
+    teams = data_dict['teams']
 
     players_team_comp = team_class_comp(players = players)
 

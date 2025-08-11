@@ -6,6 +6,9 @@ def drop_bad_predictors(X):
     medic_kda_cols = [col for col in X.columns if col.startswith("medic") and
                     "kills" in col and
                     "kdapd" in col]
+    unnamed_cols = [col for col in X.columns if 'Unnamed' in col]
+    X.drop(unnamed_cols,axis =1,inplace = True)
+
     X.drop(medic_kda_cols,axis =1,inplace = True)
 
     #X.drop(unimportant_columns,axis =1, inplace = True)
