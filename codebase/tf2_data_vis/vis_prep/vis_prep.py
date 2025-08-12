@@ -4,8 +4,6 @@ from .koth_fix import koth_matches,koth_stats,koth_rounds,make_is_koth
 from .fix_push_stats import fix_push_stats
 from .long_datasets import long_players,class_kda_long
 from .players_quantile import players_quantile
-import time
-import os
 
 def vis_prep(parent_dir,output_dir):
     valid_ids_to_csv(parent_dir=parent_dir,output_dir=output_dir)

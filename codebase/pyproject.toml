@@ -3,5 +3,17 @@ name = "tf2_data_vis"
 version = "1.0"
 
 [build-system]
-requires = ["setuptools>=61.0"] 
+requires = [
+    "setuptools",
+    "scikit-learn",
+    "pandas",
+    "joblib",
+    "numpy",
+    "xgboost",
+    "scipy",
+    "shap",
+    "requests",
+    "scikit-optimize",
+    "better_profanity"
+]
 build-backend = "setuptools.build_meta"

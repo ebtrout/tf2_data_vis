@@ -4,7 +4,6 @@ from xgboost import XGBClassifier
 from sklearn.model_selection import  StratifiedKFold
 import random
 import os
-import multiprocessing
 import time
 from skopt import BayesSearchCV
 from skopt.space import Real, Integer
@@ -65,8 +64,6 @@ def xgboost_modeling(parent_dir,output_dir,skip_model = False):
     cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=seed)
 
     # Limit to 70% CPU
-    total_cores = multiprocessing.cpu_count()
-    n_jobs = int(total_cores * 0.70)
 
     full_fit = BayesSearchCV(
         estimator=model,
