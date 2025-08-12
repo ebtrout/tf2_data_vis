@@ -12,9 +12,9 @@ def make_PIM_long(parent_dir,output_dir):
 
 
     path = os.path.join(parent_dir,'..',output_dir,'PIM_X.csv')
-    PIM = pd.read_csv("../data/PIM_X.csv")
+    PIM = pd.read_csv(path)
     path = os.path.join(parent_dir,'..',output_dir,'teams.csv')
-    teams = pd.read_csv("../data/teams.csv")
+    teams = pd.read_csv(path)
 
 
     ### GET PLAYER CLASS NAMES TO BE STEAMID + SCOUT1 / SOLDIER2 / DEMO
@@ -55,5 +55,5 @@ def make_PIM_long(parent_dir,output_dir):
     PIM_long = PIM_long.merge(player_class_long,on = ['id','team','class'],how = 'left')
     PIM_long.rename(columns={"steamiplayers_wided":"steamid"},inplace = True)
 
-    path = os.path.join(parent_dir,'..',output_dir,'PIM_X.csv')
-    PIM_long.to_csv(path,index = False)
+    path = os.path.join(parent_dir,'..',output_dir,'PIM_long.csv')
+    PIM_long.to_csv(path,index = True)
