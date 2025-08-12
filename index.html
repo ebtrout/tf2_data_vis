@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>TF2 6v6 Competetive Tableau Dashboard</title>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Team_Fortress_2_style_logo.svg/2048px-Team_Fortress_2_style_logo.svg.png" type="image/png" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            transform-origin: top left;
+            transform: scale(0.8);
+            width: 125%;
+            height: 125%;
+            margin: 20px;
+
+            /* Replace background-color with a soft gradient */
+            background: linear-gradient(135deg, #f0f4f8 0%, #d9ecd9 100%);
+        }
+
+        #fontCheckResults {
+            position: absolute;
+            top: 20px;
+            right: 1050px;
+            background: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            font-size: 14px;
+            line-height: 1.5;
+            max-width: 250px;
+        }
+        #fontCheckResults a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        #fontCheckResults a:hover {
+            text-decoration: underline;
+        }
+        .has-font {
+            color: green;
+            font-weight: bold;
+        }
+        .no-font {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Tableau Embed -->
+    <div class='tableauPlaceholder' id='viz1755032888192' style='position: relative'>
+        <noscript>
+            <a href='#'>
+                <img alt='Home Page' src='https://public.tableau.com/static/images/Te/TeamFortress26v6CompetetiveStatistics/HomePage/1_rss.png' style='border: none' />
+            </a>
+        </noscript>
+        <object class='tableauViz' style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+            <param name='embed_code_version' value='3' />
+            <param name='site_root' value='' />
+            <param name='name' value='TeamFortress26v6CompetetiveStatistics/HomePage' />
+            <param name='tabs' value='no' />
+            <param name='toolbar' value='yes' />
+            <param name='static_image' value='https://public.tableau.com/static/images/Te/TeamFortress26v6CompetetiveStatistics/HomePage/1.png' />
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+            <param name='language' value='en-US' />
+        </object>
+    </div>
+
+    <!-- Font detection output -->
+    <div id="fontCheckResults">
+        Checking fonts...
+    </div>
+
+    <script type='text/javascript'>
+        // Tableau embed sizing script
+        var divElement = document.getElementById('viz1755032888192');
+        var vizElement = divElement.getElementsByTagName('object')[0];
+        if (divElement.offsetWidth > 800) { 
+            vizElement.style.width = '1000px';
+            vizElement.style.height = '1027px';
+        } else if (divElement.offsetWidth > 500) { 
+            vizElement.style.width = '1000px';
+            vizElement.style.height = '1027px';
+        } else { 
+            vizElement.style.width = '100%';
+            vizElement.style.height = '2027px';
+        }
+        var scriptElement = document.createElement('script');
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        vizElement.parentNode.insertBefore(scriptElement, vizElement);
+
+        // Font detection function
+        function detectFont(font) {
+            var canvas = document.createElement("canvas");
+            var context = canvas.getContext("2d");
+
+            context.font = "72px monospace";
+            var baselineSize = context.measureText("abcdefghijklmnopqrstuvwxyz0123456789").width;
+
+            context.font = "72px '" + font + "', monospace";
+            var newSize = context.measureText("abcdefghijklmnopqrstuvwxyz0123456789").width;
+
+            return newSize !== baselineSize;
+        }
+
+        var fontsToCheck = [
+            { name: "TF2", url: "https://www.dafont.com/tf2.font" },
+            { name: "TF2 Build", url: "https://www.dafont.com/tf2-build.font" },
+            { name: "TF2 Secondary", url: "https://www.dafont.com/tf2-secondary.font" }
+        ];
+
+        var resultsDiv = document.getElementById("fontCheckResults");
+        resultsDiv.innerHTML = "<strong>Font Check:</strong><br><br>";
+
+        fontsToCheck.forEach(function(font) {
+            var hasFont = detectFont(font.name);
+            resultsDiv.innerHTML += font.name + ": " 
+                + (hasFont ? "<span class='has-font'>Installed</span>" 
+                           : "<span class='no-font'>Not Installed</span>") 
+                + " — <a href='" + font.url + "' target='_blank' rel='noopener noreferrer'>Download</a><br>";
+        });
+    </script>
+
+</body>
+</html>

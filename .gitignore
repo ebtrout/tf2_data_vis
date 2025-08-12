@@ -10,3 +10,4 @@ __pycache__/
 *.png
 *.hyper
 *.tps
+**/*.egg-info/
