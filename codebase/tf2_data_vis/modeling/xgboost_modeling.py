@@ -47,13 +47,13 @@ def xgboost_modeling(parent_dir,output_dir,skip_model = False):
 
     # Define the base model
     model = XGBClassifier(eval_metric='logloss', random_state=seed,
-                        colsample_bytree = .25,subsample =.8)
+                        colsample_bytree = .30,subsample =.8)
 
     #
     search_space = {
         'max_depth': Integer(3, 8),
-        'learning_rate': Real(0.01, 0.05, prior='log-uniform'),
-        'n_estimators': Integer(2000, 5000),
+        'learning_rate': Real(0.005, 0.03, prior='log-uniform'),
+        'n_estimators': Integer(2000, 7000),
         'gamma': Real(0, 5),
         'reg_alpha': Real(0.1,5, prior='log-uniform'),
         'reg_lambda': Real(0.1, 5, prior='log-uniform'),
@@ -68,10 +68,9 @@ def xgboost_modeling(parent_dir,output_dir,skip_model = False):
     full_fit = BayesSearchCV(
         estimator=model,
         search_spaces=search_space,
-        n_iter=50,                      # You can reduce this if it’s overheating
+        n_iter=35,                      # You can reduce this if it’s overheating
         scoring='accuracy',
         cv=cv,
-        n_jobs=7,
         verbose=2,
         random_state=seed
     )

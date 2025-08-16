@@ -36,7 +36,7 @@ def model_summary(parent_dir,output_dir):
     # endregion
 
     # region Make Model Summary
-    #print(model.get_params())
+    print(model.get_params())
 
     importance = pd.Series(model.feature_importances_,name = "importance").round(4)
     feature_names = pd.Series(model.feature_names_in_,name = "name")

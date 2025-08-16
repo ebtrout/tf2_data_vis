@@ -12,16 +12,17 @@ def names(log,players):
     df = pd.DataFrame.from_dict(log['names'], orient='index')
     df = df.reset_index().rename(columns={'index':'steamid',0:'name'})
 
-    players = pd.concat([df['name'],players],axis = 1)
+    players = players.merge(df,on = ['steamid'])
+    
     return players
 
 ## REQUIRES CLASS_STATS and PLAYERS ##
 def primary_class(class_stats,players):
 ## Primary Class ## 
-    class_stats.sort_values(by = ['steamid','total_time'],ascending= False, inplace=True)
-    primary_class = class_stats.groupby('steamid').first().reset_index()[['steamid', 'type','total_time']]
+    class_stats.sort_values(by = ['steamid','class_time'],ascending= False, inplace=True)
+    primary_class = class_stats.groupby('steamid').first().reset_index()[['steamid', 'type','class_time']]
 
-    primary_class.rename(columns={'type': 'primary_class','total_time':'primary_class_time'}, inplace=True)
+    primary_class.rename(columns={'type': 'primary_class','class_time':'primary_class_time'}, inplace=True)
 
     players = primary_class.merge(players, on='steamid', how='left')
 
@@ -30,7 +31,7 @@ def primary_class(class_stats,players):
 def offclass(class_stats,players):
 ## Percent time offclassing ##
 
-    primary_class = class_stats.groupby("steamid").first().replace(0,np.nan)
+    primary_class = class_stats.sort_values(by = ['steamid','class_time'],ascending = False).groupby("steamid").first().copy().replace(0,np.nan)
 
     primary_class['offclass_time'] = primary_class['total_time'] - primary_class['class_time']
 

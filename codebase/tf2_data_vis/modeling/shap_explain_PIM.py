@@ -45,7 +45,7 @@ def shap_explain_PIM(parent_dir,output_dir):
     # region Shap Explainer Sum by Class
     explainer = shap.TreeExplainer(model)
     class_name_list = ['scout','scout','soldier','soldier','medic','demoman']
-    num_list = ['1','2','1','2','','']
+    num_list = ['pocket','roamer','pocket','roamer','','']
 
 
     sum_by_class_list = []
