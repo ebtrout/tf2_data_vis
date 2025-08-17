@@ -2,6 +2,7 @@ from tf2_data_vis.get_log_data.get_log_data import *
 from tf2_data_vis.model_prep.model_prep import model_prep
 from tf2_data_vis.modeling.modeling import modeling
 from tf2_data_vis.vis_prep.vis_prep import vis_prep
+from tf2_data_vis.team_division.team_division import team_division
 import os
 
 parent_dir = os.path.dirname(os.path.abspath(__file__))
@@ -58,8 +59,10 @@ output_dir = 'data'
                 
 #                 )
 
-model_prep(parent_dir,output_dir)
+#model_prep(parent_dir,output_dir)
 
-modeling(parent_dir=parent_dir,output_dir=output_dir,skip_model= False)
+team_division(parent_dir=parent_dir,output_dir=output_dir)
+
+#modeling(parent_dir=parent_dir,output_dir=output_dir,skip_model= False)
  
-vis_prep(parent_dir=parent_dir,output_dir=output_dir)
+#vis_prep(parent_dir=parent_dir,output_dir=output_dir)

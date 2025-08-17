@@ -1,13 +1,7 @@
-from .team_class_comp import team_class_comp
-from .short_matches import short_matches
-from .rename_scout_soldier import rename_scout_soldier
-from .split_combat_medic import split_combat_medic
-from .widen_data import widen_data
-from .merge_wide_data import merge_wide_data
+from .manipulate_raw_data import * 
 from .make_X_y import make_X_y
 from .drop_bad_predictors import drop_bad_predictors
-from .model_ready_data import model_ready_data
-from .read_data import read_data
+from .model_ready_data import make_model_ready_data_dict
 import pandas as pd
 import os
 import joblib
@@ -37,7 +31,7 @@ def model_prep(parent_dir,output_dir):
 
     X = X.fillna(0)
 
-    model_ready_data_dict = model_ready_data(players_wide,X,y)
+    model_ready_data_dict = make_model_ready_data_dict(players_wide,X,y)
     path = os.path.join(parent_dir,'..',output_dir,'pkls','model_ready_data_dict.pkl')
     print('dumping')
     joblib.dump(model_ready_data_dict,path)

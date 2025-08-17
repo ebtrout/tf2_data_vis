@@ -28,7 +28,10 @@ def join_batch_df(
     output_path = os.path.join(parent_dir,'..',output_dir)
     pkl_path = os.path.join(output_path,'pkls')
     folder_path = os.path.join(pkl_path,batch_type)
+    os.makedirs(folder_path, exist_ok=True)
     files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
+    if len(files) == 0:
+        return None
 
     batches = []
     for f in files:
@@ -46,7 +49,10 @@ def join_batch_dict(
     output_path = os.path.join(parent_dir,'..',output_dir)
     pkl_path = os.path.join(output_path,'pkls')
     folder_path = os.path.join(pkl_path,batch_type)
+    os.makedirs(folder_path, exist_ok=True)
     files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
+    if len(files) == 0:
+        return None
 
     batches = {}
     for f in files:
@@ -56,6 +62,27 @@ def join_batch_dict(
             batches[key] = batch[key]
     return batches
 
+def join_rgl_info_batch(
+               parent_dir = None,
+               output_dir = None,
+               batch_type: str = None,
+    ):
+    output_path = os.path.join(parent_dir,'..',output_dir)
+    pkl_path = os.path.join(output_path,'pkls')
+    folder_path = os.path.join(pkl_path,batch_type)
+    files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
+
+    batches = {
+        'id': [],
+        'info':[]
+    }
+    for f in files:
+        file_path = os.path.join(folder_path,f)
+        batch = joblib.load(file_path)
+        for key in batch.keys():
+            batches[key] += batch[key]
+    return batches
+
 def join_batch_df_dict(
                parent_dir = None,
                output_dir = None,
@@ -63,7 +90,11 @@ def join_batch_df_dict(
     output_path = os.path.join(parent_dir,'..',output_dir)
     pkl_path = os.path.join(output_path,'pkls')
     folder_path = os.path.join(pkl_path,"df_dict")
+    os.makedirs(folder_path, exist_ok=True)
+
     files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
+    if len(files) == 0:
+        return None
 
     master_dict = {
         'info': [],

@@ -2,7 +2,7 @@ from sklearn.model_selection import train_test_split
 import random
 import numpy as np
 
-def model_ready_data(players_wide,X,y):
+def make_model_ready_data_dict(players_wide,X,y):
     random.seed(123)
     np.random.seed(123)
     ids = players_wide['id']

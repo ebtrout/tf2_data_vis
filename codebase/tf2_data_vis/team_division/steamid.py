@@ -1,5 +1,6 @@
 import os 
 import pandas as pd
+import re
 
 def steamid_list(parent_dir,output_dir):
     steamid_df = load_players(parent_dir,output_dir)
@@ -29,3 +30,16 @@ def add_steamid64(players):
     valve_offset = 76561197960265728
     steamid_df['steamid64'] = steamid_df['account_id'].astype(int) + valve_offset 
     return(steamid_df)
+
+def convert_steamid(s):
+    # Remove square brackets
+    s = re.sub(r'[\[\]]', '', s)
+    
+    # Split and take the 3rd part
+    s = s.split(":")[2]
+    
+    # Convert to int and add offset
+    valve_offset = 76561197960265728
+    s = int(s) + valve_offset
+    
+    return s  # return as string
