@@ -28,11 +28,16 @@ def shap_explain_PIM(parent_dir,output_dir):
     y_test = model_ready_data_dict['y_test']
     y_eval = model_ready_data_dict['y_eval']
 
+    
+    weights_train = X_train['weights']
+    weights_test = X_test['weights']
+    weights_eval = X_eval['weights']
+
     # Drop
-    X.drop('id',axis = 1,inplace = True)
-    X_train.drop('id',axis = 1,inplace = True)
-    X_test.drop('id',axis = 1,inplace = True)
-    X_eval.drop('id',axis = 1,inplace = True)
+    X.drop(['weights','id'],axis = 1,inplace = True)
+    X_train.drop(['weights','id'],axis = 1,inplace = True)
+    X_test.drop(['weights','id'],axis = 1,inplace = True)
+    X_eval.drop(['weights','id'],axis = 1,inplace = True)
 
 
     # Set seeds

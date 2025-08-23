@@ -23,7 +23,7 @@ def request_loop(sleep,parent_dir,output_dir,rgl_batches = None):
     
     for i,steamid in enumerate(steamids):
 
-        if i % 100 == 0 or i == len(steamids) or i == len(steamids) -1:
+        if i % 100 == 0 or i == len(steamids) or i == len(steamids):
             print(f'Requested {i} / {n} rgl profiles and team info')
             if i != 0 or ((n) == 1 and i == 0):
                 save_batch(

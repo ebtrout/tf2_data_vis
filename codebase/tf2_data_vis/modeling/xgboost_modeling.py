@@ -32,10 +32,14 @@ def xgboost_modeling(parent_dir,output_dir,skip_model = False):
     y_test = model_ready_data_dict['y_test']
     y_eval = model_ready_data_dict['y_eval']
 
+    weights_train = X_train['weights']
+    weights_test = X_test['weights']
+    weights_eval = X_eval['weights']
+
     # Drop
-    X_train.drop('id',axis = 1,inplace = True)
-    X_test.drop('id',axis = 1,inplace = True)
-    X_eval.drop('id',axis = 1,inplace = True)
+    X_train.drop(['weights','id'],axis = 1,inplace = True)
+    X_test.drop(['weights','id'],axis = 1,inplace = True)
+    X_eval.drop(['weights','id'],axis = 1,inplace = True)
 
 
 
@@ -47,17 +51,18 @@ def xgboost_modeling(parent_dir,output_dir,skip_model = False):
 
     # Define the base model
     model = XGBClassifier(eval_metric='logloss', random_state=seed,
-                        colsample_bytree = .30,subsample =.8)
+                        colsample_bytree = .30,subsample =.8,
+                        learning_rate = .1,
+                        min_child_weight = int(.005 * len(X_train)))
 
     #
     search_space = {
         'max_depth': Integer(3, 8),
-        'learning_rate': Real(0.005, 0.03, prior='log-uniform'),
         'n_estimators': Integer(2000, 7000),
         'gamma': Real(0, 5),
         'reg_alpha': Real(0.1,5, prior='log-uniform'),
         'reg_lambda': Real(0.1, 5, prior='log-uniform'),
-        'min_child_weight': Integer(10,100),
+
     }
 
     # Define cross-validation strategy
@@ -68,7 +73,7 @@ def xgboost_modeling(parent_dir,output_dir,skip_model = False):
     full_fit = BayesSearchCV(
         estimator=model,
         search_spaces=search_space,
-        n_iter=35,                      # You can reduce this if it’s overheating
+        n_iter=50,                      # You can reduce this if it’s overheating
         scoring='accuracy',
         cv=cv,
         verbose=2,
@@ -77,7 +82,7 @@ def xgboost_modeling(parent_dir,output_dir,skip_model = False):
 
     begin = time.time()
 
-    full_fit.fit(X_train, y_train,)
+    full_fit.fit(X_train, y_train,sample_weight = weights_train)
 
 
     path = os.path.join(parent_dir,'..',output_dir,'pkls','full_fit.pkl')

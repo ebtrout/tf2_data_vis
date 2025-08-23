@@ -2,12 +2,14 @@ from . import create_datasets as cd
 from . import player_cols as player_cols
 from . import team_cols as team_cols
 from . import advanced_med_stats as advanced_med_stats
+import time
 
 # Organized class that takes in a logs.tf log and turns it into
 # A log class that contains all useful data from it 
 
 class log:
     def __init__(self,log,id,debug = False):
+        start = time.time()
         ## Init From Log
         self.debug = debug
         self.log = log
@@ -53,6 +55,8 @@ class log:
         # Add advanced medic stats REQUIRES team_medic_stats,players,round events
         self.advanced_med_stats_params()
         self.team_medic_stats = self.add_advanced_med_stats()
+        end = time.time()
+        print(f'{round((end - start),2)} Seconds')
         
     def advanced_med_stats_params(self):
         self.exchange_width = 6
